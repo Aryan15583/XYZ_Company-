@@ -1,0 +1,118 @@
+"use client";
+
+import Link from "next/link";
+import { useState } from "react";
+import { useCart } from "./CartContext";
+import { useCurrency } from "./CurrencyContext";
+import { WishlistButton } from "./WishlistButton";
+import type { ProductDTO } from "@/lib/types";
+import { reviewsLabel, starString } from "@/lib/stars";
+import { isPriced } from "@/lib/pricing";
+import { thumbnailFor } from "@/lib/product-thumbs";
+
+export function ProductCard({ product }: { product: ProductDTO }) {
+  const { addToCart } = useCart();
+  const { format } = useCurrency();
+  const [added, setAdded] = useState(false);
+
+  const priced = isPriced(product);
+  const isOut = priced && product.stock === 0;
+  const isLow = priced && !isOut && product.stock <= product.lowStockThreshold;
+
+  function handleAdd() {
+    addToCart({ id: product.id, name: product.name, priceUsd: product.priceUsd, imageUrl: product.imageUrl, stock: product.stock });
+    setAdded(true);
+    setTimeout(() => setAdded(false), 1500);
+  }
+
+  const thumb = thumbnailFor(product.imageUrl);
+
+  return (
+    <article className="product-card" role="listitem">
+      <Link href={`/product/${encodeURIComponent(product.id)}`} className="product-img-link" aria-label={`View ${product.name} details`}>
+        <div className="product-img-wrap">
+          <picture>
+            {thumb && <source srcSet={thumb} type="image/webp" />}
+            <img
+              src={product.imageUrl || "/assets/placeholder.svg"}
+              alt={product.name}
+              className="product-img"
+              loading="lazy"
+              decoding="async"
+              width={400}
+              height={400}
+            />
+          </picture>
+          {product.badge && (
+            <div
+              className={`product-badge ${product.badge === "New" ? "product-badge--new" : ""} ${
+                product.badge === "Sale" ? "product-badge--sale" : ""
+              }`}
+              aria-label={product.badge}
+            >
+              {product.badge}
+            </div>
+          )}
+          {isOut && (
+            <div className="stock-warning" aria-label="Out of stock" role="status">
+              Out of stock
+            </div>
+          )}
+          {isLow && (
+            <div className="stock-warning" aria-label={`Low stock: only ${product.stock} left`} role="status">
+              Only {product.stock} left!
+            </div>
+          )}
+        </div>
+      </Link>
+      <WishlistButton productId={product.id} productName={product.name} />
+      <div className="product-info">
+        <h3 className="product-name">
+          <Link href={`/product/${encodeURIComponent(product.id)}`}>{product.name}</Link>
+        </h3>
+        <p className="product-material">{product.material}</p>
+        {product.reviewCount > 0 ? (
+          <div className="product-rating" aria-label={`Rating: ${product.rating} out of 5 stars, ${reviewsLabel(product.reviewCount)}`}>
+            <span aria-hidden="true">{starString(product.rating)}</span>
+            <span className="rating-count">({product.reviewCount})</span>
+          </div>
+        ) : (
+          <div className="product-rating product-rating-empty">No reviews yet</div>
+        )}
+        <div className="product-price-row">
+          {priced ? (
+          <span>
+            <span className="product-price">{format(product.priceUsd)}</span>
+            {product.originalPriceUsd && (
+              <>
+                {" "}
+                <span className="price-original">{format(product.originalPriceUsd)}</span>
+              </>
+            )}
+          </span>
+          ) : (
+            <span className="product-price product-price--request">Price on request</span>
+          )}
+          {priced ? (
+            <button
+              className="btn btn-primary btn-sm add-to-cart"
+              onClick={handleAdd}
+              disabled={isOut}
+              aria-label={`Add ${product.name} to cart`}
+            >
+              {added ? "✓ Added!" : isOut ? "Out of Stock" : "Add to Cart"}
+            </button>
+          ) : (
+            <Link
+              href={`/contact?product=${encodeURIComponent(product.id)}`}
+              className="btn btn-outline btn-sm add-to-cart"
+              aria-label={`Ask for the price of ${product.name}`}
+            >
+              Enquire
+            </Link>
+          )}
+        </div>
+      </div>
+    </article>
+  );
+}

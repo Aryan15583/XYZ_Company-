@@ -1,1 +1,2 @@
-# XYZ_Company-
+# Arise-Numero-
+numerology website 
