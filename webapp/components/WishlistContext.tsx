@@ -7,7 +7,7 @@ import { createContext, useCallback, useContext, useMemo, useSyncExternalStore }
 // storage: the server renders an empty list, the client swaps in the real one
 // after hydration with no mismatch, and changes in other tabs sync automatically.
 
-const KEY = "ariseNumero_wishlist";
+const KEY = "xyzCompany_wishlist";
 const listeners = new Set<() => void>();
 
 function readRaw(): string {

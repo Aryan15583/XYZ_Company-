@@ -7,7 +7,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "Shopping Cart",
   description:
-    "Your Arise Numero shopping cart. Review items, update quantities, apply coupon codes and proceed to secure checkout.",
+    "Your XYZ Company shopping cart. Review items, update quantities, apply coupon codes and proceed to secure checkout.",
   path: "/cart",
   noindex: true,
 });

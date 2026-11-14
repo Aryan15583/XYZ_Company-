@@ -11,7 +11,7 @@ export const revalidate = 60;
 export const metadata = pageMetadata({
   title: "About Us",
   description:
-    "About Arise Numero — our story, our commitment to authentic crystals, and our passion for numerology. Handcrafted jewelry and spiritual guidance delivered worldwide.",
+    "About XYZ Company — who we are, what we sell and how we look after our customers.",
   path: "/about",
 });
 
@@ -31,42 +31,27 @@ export default async function AboutPage() {
         <section className="page-hero" aria-labelledby="about-hero-heading">
           <div className="container">
             <p className="eyebrow">Our Story</p>
-            <h1 id="about-hero-heading" className="page-title">Born from a Love of Crystals &amp; Numbers</h1>
+            <h1 id="about-hero-heading" className="page-title">About XYZ Company</h1>
             <p className="page-subtitle" style={{ marginInline: "auto" }}>
-              Arise Numero was founded on the belief that beautiful, authentic gemstones and the ancient wisdom of
-              numerology can help people connect more deeply with themselves.
+              XYZ Company makes it simple to shop quality products online, with secure checkout and friendly support.
             </p>
           </div>
         </section>
 
         <section className="section about-story" aria-labelledby="story-heading">
-          <div className="container about-story-inner">
-            <div className="about-story-img">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/assets/products/about-workbench.jpg" alt="An amethyst and rose quartz bracelet surrounded by loose crystal beads" width={600} height={600} loading="lazy" />
-            </div>
+          <div className="container about-story-inner about-story-inner--single">
             <div className="about-story-text">
-              <h2 id="story-heading" className="section-title">How Arise Numero Began</h2>
+              <h2 id="story-heading" className="section-title">Who We Are</h2>
+              {/* TODO: replace this placeholder with XYZ Company's own story. */}
               <p>
-                Arise Numero was born in 2019 out of a small workshop and a large passion. Our founder, having spent
-                years studying gemology and numerology across India and Southeast Asia, wanted to create something
-                that combined the tactile beauty of authentic crystals with the introspective depth of numerical
-                wisdom.
+                XYZ Company is an online shop focused on quality products and a smooth buying experience. Every
+                order is checked and packed with care, and our team is here to help before and after you buy.
               </p>
               <p>
-                What started as handcrafted bracelets gifted to friends and family quickly grew into an international
-                brand trusted by customers in over 50 countries. Every product we sell is a continuation of that
-                original vision: accessible, authentic, and meaningful.
+                Have a question about a product or an order? <Link href="/contact">Get in touch</Link> and we&apos;ll
+                get back to you as soon as we can.
               </p>
-              <p>
-                We are not a mass-production factory. Every bracelet is assembled by hand. Every numerology reading
-                is written individually. We believe quality and intention matter — in the products we make and the
-                services we offer.
-              </p>
-              <div className="about-stats" aria-label="Arise Numero by the numbers">
-                <div className="stat-item"><span className="stat-num">50+</span><span className="stat-label">Countries Served</span></div>
-                <div className="stat-item"><span className="stat-num">12k+</span><span className="stat-label">Happy Customers</span></div>
-                <div className="stat-item"><span className="stat-num">100%</span><span className="stat-label">Authentic Crystals</span></div>
+              <div className="about-stats" aria-label="XYZ Company by the numbers">
                 {storeRating && (
                   <div className="stat-item"><span className="stat-num">{storeRating.rating.toFixed(1)}★</span><span className="stat-label">Average Rating</span></div>
                 )}
@@ -80,24 +65,24 @@ export default async function AboutPage() {
             <h2 id="values-heading" className="section-title text-center">What We Stand For</h2>
             <div className="values-grid" role="list">
               <div className="value-card" role="listitem">
-                <div className="value-icon"><Icon name="gem" size={26} /></div>
-                <h3>Authenticity</h3>
-                <p>We source only genuine, certified gemstones. Natural colour variations are celebrated, not hidden.</p>
+                <div className="value-icon"><Icon name="check" size={26} /></div>
+                <h3>Quality</h3>
+                <p>We only list products we would be happy to buy ourselves, and check every order before it ships.</p>
               </div>
               <div className="value-card" role="listitem">
                 <div className="value-icon"><Icon name="leaf" size={26} /></div>
-                <h3>Ethical Sourcing</h3>
-                <p>We work exclusively with suppliers who adhere to fair labour practices and responsible mining standards.</p>
+                <h3>Responsible Business</h3>
+                <p>We work with suppliers who share our standards for fair and responsible practices.</p>
               </div>
               <div className="value-card" role="listitem">
                 <div className="value-icon"><Icon name="search" size={26} /></div>
                 <h3>Transparency</h3>
-                <p>Our readings are clearly labelled as entertainment and self-insight tools. We never make false claims.</p>
+                <p>Clear prices, honest product descriptions and no hidden fees.</p>
               </div>
               <div className="value-card" role="listitem">
                 <div className="value-icon"><Icon name="globe" size={26} /></div>
                 <h3>Accessibility</h3>
-                <p>We ship to 50+ countries, support multiple currencies, and offer a free numerology calculator to all visitors.</p>
+                <p>Shop in your preferred currency and pay the way that suits you.</p>
               </div>
               <div className="value-card" role="listitem">
                 <div className="value-icon"><Icon name="lock" size={26} /></div>
@@ -133,10 +118,10 @@ export default async function AboutPage() {
         <section className="section about-cta" aria-labelledby="about-cta-heading">
           <div className="container text-center">
             <h2 id="about-cta-heading" className="section-title">Ready to Explore?</h2>
-            <p>Browse our crystals and gemstone jewellery, or discover your numerology blueprint with our free calculator.</p>
+            <p>Browse the full XYZ Company range.</p>
             <div className="hero-cta-group" style={{ justifyContent: "center" }}>
               <Link href="/shop" className="btn btn-primary btn-lg">Shop the Collection</Link>
-              <Link href="/numerology" className="btn btn-outline btn-lg">Free Reading</Link>
+              <Link href="/contact" className="btn btn-outline btn-lg">Contact Us</Link>
             </div>
           </div>
         </section>

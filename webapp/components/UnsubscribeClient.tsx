@@ -35,7 +35,7 @@ export function UnsubscribeClient({ token }: { token: string }) {
   return (
     <>
       <h1 className="page-title">Unsubscribe from our newsletter?</h1>
-      <p className="page-subtitle">You&apos;ll stop receiving news about new collections and numerology tips.</p>
+      <p className="page-subtitle">You&apos;ll stop receiving news about new products and offers.</p>
       <div className="notfound-links">
         <button className="btn btn-primary" onClick={confirm} disabled={state === "working"}>
           {state === "working" ? "Unsubscribing…" : "Yes, unsubscribe me"}

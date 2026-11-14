@@ -2,7 +2,7 @@
 //
 // Why server-side and not just the client-side button from before:
 //   1. Prices are looked up from OUR database, not trusted from the browser,
-//      so nobody can edit the page and pay $0.01 for a $50 bracelet.
+//      so nobody can edit the page and pay $0.01 for a $50 item.
 //   2. We only mark an order "paid" after PayPal itself confirms the capture,
 //      so the admin Orders tab reflects real, confirmed payments.
 //
@@ -85,11 +85,11 @@ router.post('/paypal/create-order', async (req, res) => {
       body: JSON.stringify({
         intent: 'CAPTURE',
         purchase_units: [{
-          description: 'Arise Numero — Crystal Bracelet Order',
+          description: 'XYZ Company Order',
           amount: { currency_code: 'USD', value: total.toFixed(2) },
         }],
         application_context: {
-          brand_name: 'Arise Numero',
+          brand_name: 'XYZ Company',
           shipping_preference: 'NO_SHIPPING',
           user_action: 'PAY_NOW',
         },

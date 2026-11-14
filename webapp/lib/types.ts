@@ -62,20 +62,3 @@ export type OrderDTO = {
   carrier: string | null;
   date: string;
 };
-
-export type BookingDTO = {
-  id: string;
-  firstName: string | null;
-  lastName: string | null;
-  clientEmail: string;
-  birthName: string;
-  dateOfBirth: string;
-  packageSelected: string | null;
-  packagePriceUsd: number | null;
-  timezone: string | null;
-  sessionDate: string | null;
-  readingFocus: string | null;
-  additionalNotes: string | null;
-  status: string;
-  submittedAt: string;
-};

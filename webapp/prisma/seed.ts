@@ -1,245 +1,34 @@
-// Idempotent seed — ports the catalogue that used to be hardcoded in
-// shop.html/index.html, plus the coupon codes that used to be hardcoded in
-// main.js, into the real database. Safe to re-run: it skips rows that
-// already exist and won't overwrite admin edits. (Admin sign-in is an emailed
-// one-time code — there's no admin credential to seed.)
+// Idempotent local-development seed. The XYZ Company catalogue starts empty:
+// add categories, products and coupons from the admin panel (/admin).
+// Add starter rows to the arrays below if you want a fresh dev database to
+// come pre-filled. Safe to re-run: existing rows are skipped, never overwritten.
 //
 // Run with: npm run seed
 
-import { readFileSync } from "node:fs";
-import { join } from "node:path";
 import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-const products = [
-  {
-    id: "amethyst-8mm",
-    name: "Amethyst Serenity",
-    material: "Authentic 8mm Amethyst, elastic cord",
-    description:
-      "Handcrafted using genuine, ethically sourced amethyst gemstones. Each bead displays the natural colour variations unique to authentic amethyst — no two bracelets are exactly the same. Note on natural variations: as a natural gemstone, colour, texture, and pattern may vary slightly from the photos shown. This is a mark of authenticity, not a defect.",
-    priceUsd: 24.99,
-    originalPriceUsd: null,
-    category: "amethyst",
-    beadSize: "8mm",
-    stock: 3,
-    lowStockThreshold: 5,
-    imageUrl: "/assets/products/amethyst-8mm.jpg",
-    images: [
-      "/assets/products/amethyst-8mm.jpg",
-      "/assets/products/amethyst-8mm-closeup.jpg",
-      "/assets/products/amethyst-8mm-slate.jpg",
-      "/assets/products/amethyst-8mm-box.jpg",
-    ],
-    badge: "Bestseller",
-    active: false, // hidden: not in the current catalogue (hide_original_bracelets migration)
-    featured: false,
-  },
-  {
-    id: "lapis-lazuli",
-    name: "Lapis Lazuli Wisdom",
-    material: "Authentic Lapis Lazuli, gold accents",
-    description:
-      "Deep blue Lapis Lazuli beads finished with gold-tone accents, prized historically as a stone of insight and truth.",
-    priceUsd: 32.99,
-    originalPriceUsd: null,
-    category: "lapis-lazuli",
-    beadSize: "8mm",
-    stock: 20,
-    lowStockThreshold: 5,
-    imageUrl: "/assets/products/lapis-lazuli.jpg",
-    images: ["/assets/products/lapis-lazuli.jpg", "/assets/products/lapis-lazuli-closeup.jpg"],
-    badge: "New",
-    active: false, // hidden: not in the current catalogue (hide_original_bracelets migration)
-    featured: false,
-  },
-  {
-    id: "rose-quartz",
-    name: "Rose Quartz Love",
-    material: "Authentic 10mm Rose Quartz, elastic cord",
-    description:
-      "Soft pink 10mm Rose Quartz beads on durable elastic cord — the classic stone of love and gentle energy.",
-    priceUsd: 22.99,
-    originalPriceUsd: null,
-    category: "rose-quartz",
-    beadSize: "10mm",
-    stock: 20,
-    lowStockThreshold: 5,
-    imageUrl: "/assets/products/rose-quartz.jpg",
-    images: ["/assets/products/rose-quartz.jpg", "/assets/products/rose-quartz-closeup.jpg"],
-    badge: null,
-    active: false, // hidden: not in the current catalogue (hide_original_bracelets migration)
-    featured: false,
-  },
-  {
-    id: "black-tourmaline",
-    name: "Black Tourmaline Shield",
-    material: "Authentic Black Tourmaline, elastic cord",
-    description: "Matte black Tourmaline beads, worn traditionally as a grounding, protective stone.",
-    priceUsd: 27.99,
-    originalPriceUsd: null,
-    category: "tourmaline",
-    beadSize: "8mm",
-    stock: 5,
-    lowStockThreshold: 5,
-    imageUrl: "/assets/products/black-tourmaline.jpg",
-    images: ["/assets/products/black-tourmaline.jpg", "/assets/products/black-tourmaline-closeup.jpg"],
-    badge: null,
-    active: false, // hidden: not in the current catalogue (hide_original_bracelets migration)
-    featured: false,
-  },
-  {
-    id: "citrine",
-    name: "Citrine Abundance",
-    material: "Authentic 8mm Citrine, elastic cord",
-    description: "Warm golden-yellow Citrine beads, associated with abundance and positive energy.",
-    priceUsd: 29.99,
-    originalPriceUsd: 39.99,
-    category: "citrine",
-    beadSize: "8mm",
-    stock: 20,
-    lowStockThreshold: 5,
-    imageUrl: "/assets/products/citrine.jpg",
-    images: ["/assets/products/citrine.jpg", "/assets/products/citrine-closeup.jpg"],
-    badge: "Sale",
-    active: false, // hidden: not in the current catalogue (hide_original_bracelets migration)
-    featured: false,
-  },
-  {
-    id: "obsidian",
-    name: "Obsidian Grounding",
-    material: "Authentic 10mm Obsidian, elastic cord",
-    description: "Glossy black Obsidian beads, a volcanic glass valued for its grounding, clarifying qualities.",
-    priceUsd: 25.99,
-    originalPriceUsd: null,
-    category: "obsidian",
-    beadSize: "10mm",
-    stock: 20,
-    lowStockThreshold: 5,
-    imageUrl: "/assets/products/obsidian.jpg",
-    images: ["/assets/products/obsidian.jpg", "/assets/products/obsidian-closeup.jpg"],
-    badge: null,
-    active: false, // hidden: not in the current catalogue (hide_original_bracelets migration)
-    featured: false,
-  },
-  {
-    id: "amethyst-6mm",
-    name: "Amethyst Clarity",
-    material: "Authentic 6mm Amethyst, silver accents",
-    description: "A delicate 6mm take on our signature Amethyst, finished with silver-tone accents.",
-    priceUsd: 34.99,
-    originalPriceUsd: null,
-    category: "amethyst",
-    beadSize: "6mm",
-    stock: 20,
-    lowStockThreshold: 5,
-    imageUrl: "/assets/products/amethyst-6mm.jpg",
-    images: ["/assets/products/amethyst-6mm.jpg", "/assets/products/amethyst-6mm-closeup.jpg"],
-    badge: null,
-    active: false, // hidden: not in the current catalogue (hide_original_bracelets migration)
-    featured: false,
-  },
-  {
-    id: "rose-quartz-premium",
-    name: "Rose Quartz Premium Set",
-    material: "8mm Rose Quartz, gold spacers, gift box",
-    description:
-      "Our premium Rose Quartz bracelet with gold-tone spacer beads, presented in a keepsake gift box.",
-    priceUsd: 49.99,
-    originalPriceUsd: null,
-    category: "rose-quartz",
-    beadSize: "8mm",
-    stock: 20,
-    lowStockThreshold: 5,
-    imageUrl: "/assets/products/rose-quartz-premium.jpg",
-    images: ["/assets/products/rose-quartz-premium.jpg", "/assets/products/rose-quartz-premium-pair.jpg"],
-    badge: "Premium",
-    active: false, // hidden: not in the current catalogue (hide_original_bracelets migration)
-    featured: false,
-  },
-];
-
-const coupons = [
-  { code: "ARISENUMERO", discountPercent: 15, description: "General site-wide discount." },
-  { code: "WELCOME10", discountPercent: 10, description: "First-order welcome discount." },
-  { code: "CRYSTALS20", discountPercent: 20, description: "Promotional 20% off." },
-  { code: "NEWUSER", discountPercent: 12, description: "New customer discount." },
-];
-
-// The rest of the catalogue (pendants, rings, pencils, …) and its stones come
-// from prisma/catalogue.json. A new database already gets all of this from the
-// seed_catalogue migration; this seed is for local development.
-type CatalogueProduct = {
-  id: string; name: string; productType: string; category: string | null;
-  material: string; description: string; beadSize: string | null;
-};
-const catalogue = JSON.parse(readFileSync(join(__dirname, "catalogue.json"), "utf8")) as {
-  categories: { slug: string; name: string; description: string }[];
-  products: CatalogueProduct[];
-};
-const categories = [
-  { slug: "amethyst", name: "Amethyst", description: "Deep purple stone of calm and clarity." },
-  { slug: "rose-quartz", name: "Rose Quartz", description: "Soft pink stone of love and gentle energy." },
-  { slug: "lapis-lazuli", name: "Lapis Lazuli", description: "Deep blue stone of insight and truth." },
-  { slug: "tourmaline", name: "Black Tourmaline", description: "Grounding, protective black stone." },
-  { slug: "citrine", name: "Citrine", description: "Warm golden stone of abundance." },
-  { slug: "obsidian", name: "Obsidian", description: "Glossy black volcanic glass, grounding and clarifying." },
-];
+const categories: { slug: string; name: string; description?: string }[] = [];
+const coupons: { code: string; discountPercent: number; description?: string }[] = [];
 
 async function main() {
-  let productsAdded = 0;
-  for (let i = 0; i < products.length; i++) {
-    const p = products[i];
-    const exists = await prisma.product.findUnique({ where: { id: p.id } });
-    if (exists) continue;
-    await prisma.product.create({
-      data: { ...p, images: JSON.stringify(p.images), sortOrder: i },
-    });
-    productsAdded++;
-  }
-
-  // Catalogue items start with no price ("price on request") and no stock.
-  for (let i = 0; i < catalogue.products.length; i++) {
-    const p = catalogue.products[i];
-    const exists = await prisma.product.findUnique({ where: { id: p.id } });
-    if (exists) continue;
-    const image = `/assets/products/${p.id}.jpg`;
-    await prisma.product.create({
-      data: {
-        ...p,
-        priceUsd: 0,
-        stock: 0,
-        lowStockThreshold: 2,
-        imageUrl: image,
-        images: JSON.stringify([image]),
-        sortOrder: 100 + i,
-      },
-    });
-    productsAdded++;
-  }
-
-  let couponsAdded = 0;
-  for (const c of coupons) {
-    const exists = await prisma.coupon.findUnique({ where: { code: c.code } });
-    if (exists) continue;
-    await prisma.coupon.create({ data: c });
-    couponsAdded++;
-  }
-
   let categoriesAdded = 0;
-  const allCategories = [...categories, ...catalogue.categories];
-  for (let i = 0; i < allCategories.length; i++) {
-    const c = allCategories[i];
-    const exists = await prisma.category.findUnique({ where: { slug: c.slug } });
-    if (exists) continue;
+  for (let i = 0; i < categories.length; i++) {
+    const c = categories[i];
+    if (await prisma.category.findUnique({ where: { slug: c.slug } })) continue;
     await prisma.category.create({ data: { ...c, sortOrder: i } });
     categoriesAdded++;
   }
 
-  console.log(
-    `Seed complete — ${productsAdded} product(s), ${couponsAdded} coupon(s), ${categoriesAdded} categor${categoriesAdded === 1 ? "y" : "ies"} added.`
-  );
+  let couponsAdded = 0;
+  for (const c of coupons) {
+    if (await prisma.coupon.findUnique({ where: { code: c.code } })) continue;
+    await prisma.coupon.create({ data: c });
+    couponsAdded++;
+  }
+
+  console.log(`Seed complete — ${categoriesAdded} categor${categoriesAdded === 1 ? "y" : "ies"}, ${couponsAdded} coupon(s) added.`);
 }
 
 main()

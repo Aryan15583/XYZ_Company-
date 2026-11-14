@@ -1,4 +1,4 @@
-# Arise Numero — Setup & Deployment Guide
+# XYZ Company — Setup & Deployment Guide
 
 This turns the site from a browser-only prototype into a real client → server →
 database app. One Node process serves both the storefront/admin HTML **and**
@@ -16,7 +16,7 @@ server/
     seed.js              ← one-time seed of your 8 products + 4 coupons
     middleware/auth.js  ← admin JWT check
     routes/
-      products.js  coupons.js  bookings.js  orders.js  paypal.js  admin.js
+      products.js  coupons.js  orders.js  paypal.js  admin.js
 ```
 
 ## 1. Run it locally
@@ -71,7 +71,7 @@ Visit:
    JWTs, all writes go through the API.
 
 **Bonus fix:** `main.js` had a genuine syntax error (`await` used inside a
-non-`async` function, in both the booking and contact form submit handlers)
+non-`async` function, in the contact form submit handler)
 that would have silently broken *all* JavaScript on every page in a real
 browser. Fixed — confirmed via `node --check` before and after.
 
@@ -107,7 +107,7 @@ a plain VPS). Render's free/starter web service is the simplest:
    PayPal credentials once you're ready to accept real payments,
    `PAYPAL_MODE=live`).
 5. Add a persistent disk mounted at `server/data` so your SQLite file (and
-   therefore your products/orders/bookings) survives redeploys — on Render:
+   therefore your products/orders) survives redeploys — on Render:
    Settings → Disks → mount path `/opt/render/project/src/data` (adjust to
    wherever your repo lands).
 
@@ -120,7 +120,7 @@ page source and was published on the live site. Use the Next.js admin panel in
 ## 6. Known limitations / good next steps
 
 - **No email receipts yet from the backend** — EmailJS still fires from the
-  browser for booking confirmations; order confirmation is just the on-page
+  browser for contact messages; order confirmation is just the on-page
   "Order Confirmed!" screen. Wiring a transactional email (e.g. via Resend
   or SendGrid) into `routes/paypal.js` after a successful capture would be
   a clean next step.

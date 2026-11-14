@@ -74,7 +74,7 @@ export function CheckoutClient() {
       })
       .catch(() => {});
 
-    const savedCoupon = sessionStorage.getItem("ariseNumero_coupon");
+    const savedCoupon = sessionStorage.getItem("xyzCompany_coupon");
     if (savedCoupon) {
       fetch("/api/coupons/validate", {
         method: "POST",
@@ -87,7 +87,7 @@ export function CheckoutClient() {
             setCouponCode(savedCoupon);
             setDiscountPercent(d.discountPercent);
           } else {
-            sessionStorage.removeItem("ariseNumero_coupon");
+            sessionStorage.removeItem("xyzCompany_coupon");
           }
         })
         .catch(() => {});
@@ -176,7 +176,7 @@ export function CheckoutClient() {
         return;
       }
 
-      sessionStorage.removeItem("ariseNumero_coupon");
+      sessionStorage.removeItem("xyzCompany_coupon");
       clearCart();
       setConfirmation({ id: data.id, totalUsd: data.totalUsd, paymentMethod: data.paymentMethod, bankInstructions: data.bankInstructions });
     } catch {
@@ -382,7 +382,7 @@ export function CheckoutClient() {
                   shipping: { firstName, lastName, address1, address2, city, state, postalCode, country },
                 })}
                 onSuccess={(orderId, totalUsd) => {
-                  sessionStorage.removeItem("ariseNumero_coupon");
+                  sessionStorage.removeItem("xyzCompany_coupon");
                   clearCart();
                   setConfirmation({ id: orderId, totalUsd, paymentMethod: "cashfree" });
                 }}
@@ -407,7 +407,7 @@ export function CheckoutClient() {
                   shipping: { firstName, lastName, address1, address2, city, state, postalCode, country },
                 })}
                 onSuccess={(orderId, totalUsd) => {
-                  sessionStorage.removeItem("ariseNumero_coupon");
+                  sessionStorage.removeItem("xyzCompany_coupon");
                   clearCart();
                   setConfirmation({ id: orderId, totalUsd, paymentMethod: "paypal" });
                 }}

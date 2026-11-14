@@ -31,7 +31,7 @@ model Product {
   originalPriceUsd  Float?   @map("original_price_usd")
   category          String? // the stone, e.g. "amethyst" (Category.slug)
   // What kind of item it is — see lib/product-types.ts (bracelets, pendants, rings…)
-  productType       String   @default("bracelets") @map("product_type")
+  productType       String   @default("products") @map("product_type")
   beadSize          String?  @map("bead_size")
   stock             Int      @default(0)
   lowStockThreshold Int      @default(5) @map("low_stock_threshold")
@@ -162,26 +162,6 @@ model OrderEvent {
 
   @@index([orderId])
   @@map("order_events")
-}
-
-model Booking {
-  id              String   @id @default(cuid())
-  firstName       String?  @map("first_name")
-  lastName        String?  @map("last_name")
-  clientEmail     String   @map("client_email")
-  birthName       String   @map("birth_name")
-  dateOfBirth     String   @map("date_of_birth")
-  packageSelected String?  @map("package_selected")
-  packagePriceUsd Float?   @map("package_price_usd")
-  timezone        String?
-  sessionDate     String?  @map("session_date")
-  readingFocus    String?  @map("reading_focus")
-  additionalNotes String?  @map("additional_notes")
-  status          String   @default("new") // new, confirmed, completed, cancelled
-  submittedAt     DateTime @default(now()) @map("submitted_at")
-
-  @@index([status])
-  @@map("bookings")
 }
 
 model ContactMessage {

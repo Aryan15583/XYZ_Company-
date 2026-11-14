@@ -4,14 +4,14 @@
 //      The simplest way to get the admin login code into a real inbox.
 //   2. Resend (RESEND_API_KEY).
 // If both are set, SMTP wins. If neither is, we log instead of sending so the
-// rest of the app (orders, bookings, contact) keeps working with zero setup.
+// rest of the app (orders, contact) keeps working with zero setup.
 
 import nodemailer from "nodemailer";
 import type { Transporter } from "nodemailer";
 import { Resend } from "resend";
 import { getSiteUrl } from "./seo";
 
-const FROM_ADDRESS = process.env.EMAIL_FROM || "Arise Numero <onboarding@resend.dev>";
+const FROM_ADDRESS = process.env.EMAIL_FROM || "XYZ Company <onboarding@resend.dev>";
 const ADMIN_NOTIFY_ADDRESS = process.env.ADMIN_NOTIFY_EMAIL || null;
 
 // Every email template below interpolates user-supplied text (names, contact
@@ -47,7 +47,7 @@ function smtpConfig() {
   // Setting only SMTP_PASS (a Gmail App Password) is enough: host and account
   // default to Gmail and the admin address.
   const host = process.env.SMTP_HOST?.trim() || "smtp.gmail.com";
-  const user = process.env.SMTP_USER?.trim() || process.env.ADMIN_LOGIN_EMAIL?.trim() || "arisenumero@gmail.com";
+  const user = process.env.SMTP_USER?.trim() || process.env.ADMIN_LOGIN_EMAIL?.trim() || "admin@example.com";
   const port = parseInt(process.env.SMTP_PORT || "465", 10) || 465;
   return { host, user, pass, port };
 }
@@ -97,7 +97,7 @@ export async function sendEmail(opts: { to: string; subject: string; html: strin
     if (provider === "smtp") {
       const cfg = smtpConfig()!;
       await getSmtpTransport(cfg).sendMail({
-        from: process.env.SMTP_FROM || `Arise Numero <${cfg.user}>`,
+        from: process.env.SMTP_FROM || `XYZ Company <${cfg.user}>`,
         to: opts.to,
         subject: opts.subject,
         html: opts.html,
@@ -114,7 +114,7 @@ export async function sendEmail(opts: { to: string; subject: string; html: strin
     }
     return "sent";
   } catch (err) {
-    // Email failures should never break the order/booking/contact flow itself.
+    // Email failures should never break the order/contact flow itself.
     const code = (err as { code?: string }).code;
     if (provider === "smtp" && code === "EAUTH") {
       console.error(
@@ -139,10 +139,10 @@ export function adminLoginCodeEmail(opts: {
   requestIp: string | null;
 }): { subject: string; html: string } {
   return {
-    subject: "Your Arise Numero admin login code",
+    subject: "Your XYZ Company admin login code",
     html: `
       <div style="font-family:sans-serif;max-width:480px;margin:auto;">
-        <h1 style="color:#b8975a;">Arise Numero</h1>
+        <h1 style="color:#b8975a;">XYZ Company</h1>
         <p>Use this one-time code to sign in to the admin panel:</p>
         <p style="font-size:30px;letter-spacing:6px;font-family:monospace;font-weight:700;
                   background:#f5f1eb;padding:16px 20px;border-radius:10px;text-align:center;">
@@ -163,9 +163,9 @@ export function adminLoginCodeEmail(opts: {
 function emailShell(inner: string): string {
   return `
     <div style="font-family:sans-serif;max-width:520px;margin:auto;color:#1a1228;">
-      <h1 style="color:#b8975a;">Arise Numero</h1>
+      <h1 style="color:#b8975a;">XYZ Company</h1>
       ${inner}
-      <p style="color:#7a6e8a;font-size:12px;margin-top:32px;">Arise Numero · Authentic crystal bracelets &amp; numerology readings</p>
+      <p style="color:#7a6e8a;font-size:12px;margin-top:32px;">XYZ Company</p>
     </div>
   `;
 }
@@ -267,7 +267,7 @@ export function orderStatusEmail(
     case "completed":
       return {
         subject: `Your order ${order.id} is complete`,
-        html: emailShell(`${hi}<p>Order <strong>${id}</strong> is complete. We hope you love your crystals — if you do, a review on the product page means the world to us.</p>${note}`),
+        html: emailShell(`${hi}<p>Order <strong>${id}</strong> is complete. We hope you love your order — if you do, a review on the product page means the world to us.</p>${note}`),
       };
     case "cancelled":
       return {
@@ -290,30 +290,15 @@ export function newsletterWelcomeEmail(opts: {
       } on your first order.</p>`
     : "";
   return {
-    subject: "Welcome to Arise Numero ✦",
+    subject: "Welcome to XYZ Company ✦",
     html: emailShell(`
-      <p>Thanks for subscribing! You'll hear from us about new crystal collections and numerology insights — never spam.</p>
+      <p>Thanks for subscribing! You'll hear from us about new products and offers — never spam.</p>
       ${offer}
       <p style="font-size:12px;color:#7a6e8a;">Changed your mind? <a href="${escapeHtml(opts.unsubscribeUrl)}">Unsubscribe</a> any time.</p>
     `),
   };
 }
 
-export function bookingConfirmationEmail(booking: {
-  id: string;
-  packageSelected: string | null;
-}): { subject: string; html: string } {
-  return {
-    subject: `Booking Confirmed — ${booking.packageSelected || "Numerology Reading"}`,
-    html: `
-      <div style="font-family:sans-serif;max-width:480px;margin:auto;">
-        <h1 style="color:#b8975a;">Arise Numero</h1>
-        <p>Thank you for booking a <strong>${escapeHtml(booking.packageSelected || "numerology reading")}</strong>.</p>
-        <p>We'll be in touch within 24 hours to confirm the details.</p>
-      </div>
-    `,
-  };
-}
 
 export function backInStockEmail(opts: { productName: string; productUrl: string }): { subject: string; html: string } {
   return {

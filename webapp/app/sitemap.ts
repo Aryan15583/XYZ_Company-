@@ -2,9 +2,6 @@ import type { MetadataRoute } from "next";
 import { prisma } from "@/lib/db";
 import { absoluteUrl, productPath } from "@/lib/seo";
 import { PRODUCT_TYPES } from "@/lib/product-types";
-import { LIFE_PATH_GUIDES, lifePathPath } from "@/lib/guides/life-path";
-import { CRYSTAL_GUIDES, crystalPath } from "@/lib/guides/crystals";
-import { RUDRAKSHA_PATH } from "@/lib/guides/rudraksha";
 
 // Built from the live catalogue on each request (not at build time), so a
 // product added or hidden in the admin panel shows up without a redeploy.
@@ -13,8 +10,6 @@ export const dynamic = "force-dynamic";
 const STATIC_PAGES: { path: string; priority: number; changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"] }[] = [
   { path: "/", priority: 1, changeFrequency: "weekly" },
   { path: "/shop", priority: 0.9, changeFrequency: "daily" },
-  { path: "/numerology", priority: 0.7, changeFrequency: "monthly" },
-  { path: "/booking", priority: 0.7, changeFrequency: "monthly" },
   { path: "/about", priority: 0.5, changeFrequency: "yearly" },
   { path: "/faq", priority: 0.6, changeFrequency: "monthly" },
   { path: "/contact", priority: 0.5, changeFrequency: "yearly" },
@@ -47,10 +42,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "weekly" as const,
       priority: 0.8,
     })),
-    { url: absoluteUrl("/guides"), changeFrequency: "monthly" as const, priority: 0.7 },
-    ...LIFE_PATH_GUIDES.map((g) => ({ url: absoluteUrl(lifePathPath(g.number)), changeFrequency: "monthly" as const, priority: 0.7 })),
-    ...CRYSTAL_GUIDES.map((c) => ({ url: absoluteUrl(crystalPath(c.slug)), changeFrequency: "monthly" as const, priority: 0.7 })),
-    { url: absoluteUrl(RUDRAKSHA_PATH), changeFrequency: "monthly" as const, priority: 0.7 },
     ...products.map((p) => ({
       url: absoluteUrl(productPath(p.id)),
       lastModified: p.updatedAt,

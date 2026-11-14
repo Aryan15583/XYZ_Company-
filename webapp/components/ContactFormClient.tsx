@@ -70,7 +70,6 @@ export function ContactFormClient({ productName }: { productName?: string } = {}
           <option value="order">Order / Tracking Enquiry</option>
           <option value="product">Product Question</option>
           <option value="return">Return / Refund Request</option>
-          <option value="numerology">Numerology Reading Enquiry</option>
           <option value="wholesale">Wholesale / Partnership</option>
           <option value="other">Other</option>
         </select>

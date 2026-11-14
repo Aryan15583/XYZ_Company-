@@ -8,7 +8,7 @@ import { absoluteUrl } from "@/lib/seo";
 export function ShareButtons({ path, title }: { path: string; title: string }) {
   const [copied, setCopied] = useState(false);
   const url = absoluteUrl(path);
-  const text = `${title} — Arise Numero`;
+  const text = `${title} — XYZ Company`;
   const enc = encodeURIComponent;
 
   const links = [

@@ -43,14 +43,14 @@ than a card directly.
 ## 3. Real email — **required** for admin login in production
 
 The admin panel has no PIN or password. You sign in with a one-time code that
-is emailed to **arisenumero@gmail.com** (change it with `ADMIN_LOGIN_EMAIL`).
-Order/booking/contact emails use the same sender. Until email is configured,
+is emailed to **admin@example.com** (change it with `ADMIN_LOGIN_EMAIL`).
+Order/contact emails use the same sender. Until email is configured,
 locally the code is printed in the terminal running `npm run dev`, and in
 production **admin login is disabled** (by design — no backdoor).
 
 **Easiest: send through the Gmail account itself (about 2 minutes).**
 
-1. Sign in to arisenumero@gmail.com and turn on **2-Step Verification**:
+1. Sign in to admin@example.com and turn on **2-Step Verification**:
    https://myaccount.google.com/security
 2. Create an **App Password**: https://myaccount.google.com/apppasswords
    (Google shows a 16-character code — this is *not* your normal password.)
@@ -62,38 +62,32 @@ production **admin login is disabled** (by design — no backdoor).
 
 **Alternative: Resend** (https://resend.com) — set `RESEND_API_KEY` instead.
 Its free `onboarding@resend.dev` sender can only deliver to the address the
-Resend account was created with, so sign up with arisenumero@gmail.com, or
+Resend account was created with, so sign up with admin@example.com, or
 verify your own domain and set `EMAIL_FROM`. If both `SMTP_*` and
 `RESEND_API_KEY` are set, SMTP is used.
 
-Also set `ADMIN_NOTIFY_EMAIL` to get pinged on every new order, booking,
+Also set `ADMIN_NOTIFY_EMAIL` to get pinged on every new order,
 contact message, and review.
 
 ## 4. Security basics before going live
 
 - [ ] Set a real, random `JWT_SECRET` in production (`node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`) — the one in `.env` right now is a placeholder. **The app now refuses to start in production with a placeholder secret**, so this isn't optional — it'll fail fast and tell you.
-- [ ] Turn on 2-Step Verification for arisenumero@gmail.com — whoever can read that inbox can sign in to the admin panel, so its security *is* the admin security.
+- [ ] Turn on 2-Step Verification for admin@example.com — whoever can read that inbox can sign in to the admin panel, so its security *is* the admin security.
 - [ ] Delete the test data from this session's testing: one order for
       "Backend Test", the Cashfree/COD test orders from earlier sessions, a
-      test booking, a test review, and now also an audit log full of test
+      test review, and now also an audit log full of test
       login attempts/lockouts from security testing — or just reset with
-      `npx prisma migrate reset` (wipes the database and reloads the catalogue — never run it against the live database).
+      `npx prisma migrate reset` (wipes the database — never run it against the live database).
 
 ## 5. Product content
 
-- [ ] **Product images are computer renders, not photos.** Every product now has
-      realistic rendered images (`public/assets/products/*.jpg`: bracelet, close-up,
-      and for some a gift-box or second-surface shot), made by
-      `scripts/render-product-images.mjs`. They show the right stone, colour, bead
-      size and bead count, but they are illustrations: swap in real photos of your
-      own bracelets when you can: Admin → Products → Edit → **Product Images** →
-      "Upload image" (up to 4 per product; the first is the main photo — use
-      "Set as main" or the arrows to reorder). Square photos look best; big phone
-      photos are shrunk to 1600px JPEG in the browser before upload (4 MB limit).
-      Uploads are stored in the database, so back up the database to keep them.
-      Customers trust real photos more.
-- [ ] Review the auto-generated category descriptions (Admin → Categories)
-      and adjust to your own voice.
+- [ ] **Add your catalogue.** It starts empty. Create categories (Admin →
+      Categories), then products (Admin → Products) with real photos: Edit →
+      **Product Images** → "Upload image" (up to 4 per product; the first is the
+      main photo). Square photos look best; big phone photos are shrunk to
+      1600px JPEG in the browser before upload (4 MB limit). Uploads are stored
+      in the database, so back up the database to keep them.
+- [ ] Edit the product types in `lib/product-types.ts` to match what you sell.
 - [ ] Moderate incoming reviews regularly — Admin → Reviews, they start as
       "Pending" and won't show publicly until you approve them. Approving,
       rejecting or deleting a review updates that product's rating instantly.
@@ -102,7 +96,7 @@ contact message, and review.
 
 The app now runs on Postgres (Neon) instead of the old SQLite file, so it works
 on Vercel/serverless hosts. Setup steps are in **DEPLOY.md**. A new database gets
-all tables plus the full catalogue from `npx prisma migrate deploy` (Vercel runs
+all tables from `npx prisma migrate deploy` (Vercel runs
 it on every build). The old SQLite migrations are kept for reference in
 `prisma/migrations-sqlite-archive/`.
 
@@ -117,7 +111,7 @@ easiest drop-in) so limits are enforced consistently across instances.
 ## 8. Set your real domain
 
 Once deployed, set `NEXT_PUBLIC_SITE_URL` in your production environment to
-your real domain (e.g. `https://arisenumero.com`) — Cashfree's payment
+your real domain (e.g. `https://example.com`) — Cashfree's payment
 return/notify URLs and PayPal both need absolute URLs, and this is the one
 place that assembles them.
 
@@ -149,7 +143,7 @@ these — they're live now — but you should know they're there:
 - **Hardened cookies**: the admin session cookie is httpOnly (invisible to
   page JavaScript, so it can't be stolen via an XSS bug), SameSite=Strict,
   and Secure (HTTPS-only) in production.
-- **HTML-injection fix**: customer-supplied text (names, order/booking
+- **HTML-injection fix**: customer-supplied text (names, order
   details, contact messages) is now escaped before going into notification
   emails — previously someone could have put HTML/script tags in a form
   field and had it render in the admin's inbox.
@@ -168,7 +162,7 @@ Not urgent, but keep these in mind:
       unlike "Sign Out All Other Sessions," it invalidates *every* session
       immediately, including your own, and you'll need to log in again with
       your PIN.
-- [ ] If arisenumero@gmail.com is ever compromised, change `ADMIN_LOGIN_EMAIL`
+- [ ] If admin@example.com is ever compromised, change `ADMIN_LOGIN_EMAIL`
       to a safe address and restart, then use "Sign Out All Other Sessions".
 - [ ] Check Admin → Audit Log occasionally, especially after enabling public
       internet access to `/admin/login` — failed-login clusters from
@@ -187,7 +181,7 @@ Not urgent, but keep these in mind:
       clears it, or turn on GitHub's Dependabot once this is in a repo.
 - [ ] Longer-term/optional: a passkey for the admin login on top of the
       emailed code, and field-level encryption for the more
-      sensitive personal fields in bookings (birth name/date of birth) if
+      sensitive personal fields if
       you're ever storing them at meaningful scale.
 
 ## 11. SEO — what's built, and what only you can do
@@ -202,7 +196,7 @@ old `?id=` links redirect permanently); category landing pages
 
 **You need to:**
 
-- [ ] **Set `NEXT_PUBLIC_SITE_URL` to your real domain (e.g. `https://arisenumero.co.in`) in the
+- [ ] **Set `NEXT_PUBLIC_SITE_URL` to your real domain (e.g. `https://example.com`) in the
       production environment *before building*.** Every canonical URL, sitemap
       entry and social card is built from it. While it points at `localhost`
       the site deliberately tells search engines **not** to index it.
@@ -230,7 +224,7 @@ old `?id=` links redirect permanently); category landing pages
 ## 12. GitHub & deployment
 
 - The GitHub repo's `main` branch **publishes the whole repository to your live
-  site (`arisenumero.co.in`) via GitHub Pages** (`.github/workflows/static.yml`).
+  site (`example.com`) via GitHub Pages** (`.github/workflows/static.yml`).
   GitHub Pages can only serve static files — it **cannot run this Next.js app**
   (it needs a server for the database, payments, and admin).
 - The Pages workflow now publishes **only** the old static storefront files
@@ -273,8 +267,8 @@ All of these work out of the box; the items below are the bits only you can fill
 - [ ] Review the **FAQ** page text (`app/faq/page.tsx`) — it summarises your current
       policies (14-day returns, delivery times, payment methods). Edit it if any of
       that changes.
-- [ ] **Clean out the test data** before launch (a few test orders, a booking, a
-      message, an audit log) — or reset with `npx prisma migrate reset` (wipes the database and reloads the catalogue — never run it against the live database).
+- [ ] **Clean out the test data** before launch (a few test orders, a
+      message, an audit log) — or reset with `npx prisma migrate reset` (wipes the database — never run it against the live database).
 
 ## 14. Newer store features — how to use them
 
@@ -292,31 +286,8 @@ All built and working; nothing to configure except the announcement text.
   a star breakdown you can click to filter, sorting, and "show more".
 - **Shopping helpers:** search box in the header (inside the menu on phones), a
   free-shipping progress bar in the cart (uses your Free Shipping Threshold setting),
-  "Recently viewed" products, related products from the same crystal type first,
+  "Recently viewed" products, related products from the same type first,
   and a real 2× hover zoom on product photos.
 - **Add to Home screen:** the site has a web app manifest and app icons, so it can be
-  installed on phones with the Arise Numero icon.
+  installed on phones with the XYZ Company icon.
 
-## 15. Full catalogue — set prices and stock
-
-All 42 items from your catalogue list now have their own product page (pencils,
-pendants, rings, bowls & plates, anklets, Rudraksha, pyramid bracelets and the
-certificate), grouped into shop sections at `/shop?type=…` with a "Shop by
-Category" row on the home page.
-
-- [ ] **Set a price and stock for each new item** (Admin → Products, filter by
-      type). Until an item has a price it shows **"Price on request"** with an
-      *Enquire* button that opens the contact form with the item's name filled in,
-      and it can't be added to the cart or ordered. As soon as you save a price
-      and stock it becomes a normal buyable product.
-- [ ] Check the descriptions — especially **Money Magnet Bowl** (described as a
-      crystal bowl with natural Pyrite) and the **Certificate of Authenticity**
-      (described as a printed certificate added to an order) — and edit anything
-      that doesn't match what you actually sell.
-- [ ] The **Pyramid Bracelets** (Sunstone, Howlite, Persian Turquoise, Mix) are
-      their own section. If "Pyramid" and "Bracelets" were meant to be two
-      separate sections, change their Product Type in the admin.
-- [ ] Upload real photos for each item (Admin → Products → Product Images); the
-      current pictures are rendered illustrations.
-- [ ] Rings: add your available ring sizes to each ring's description, or ask
-      customers to contact you for sizing (the description already says so).

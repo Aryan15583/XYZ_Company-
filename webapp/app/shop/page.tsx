@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { crystalPath, getCrystalGuide } from "@/lib/guides/crystals";
-import { RUDRAKSHA_PATH } from "@/lib/guides/rudraksha";
 import { prisma } from "@/lib/db";
 import { serializeProduct } from "@/lib/serialize";
 import { Header } from "@/components/Header";
@@ -14,7 +12,7 @@ import { absoluteUrl, breadcrumbJsonLd, pageMetadata, productPath, truncate } fr
 type Props = { searchParams: Promise<{ cat?: string; q?: string; type?: string }> };
 
 const SHOP_DESCRIPTION =
-  "Shop authentic crystals at Arise Numero — bracelets, pendants, rings, 3 inch pencils, anklets, Rudraksha, bowls & plates. Ships worldwide.";
+  "Shop the full XYZ Company range. Delivered to your door.";
 
 // Each product type (/shop?type=pendants), stone (/shop?cat=amethyst) and the two
 // combined is its own indexable landing page with its own title and canonical
@@ -33,12 +31,12 @@ function landing(type: ProductTypeInfo | null, category: { slug: string; name: s
   const heading =
     type && category ? `${category.name} ${type.name}`
     : type ? type.name
-    : category ? `${category.name} Crystals`
-    : "Shop All Crystals";
+    : category ? category.name
+    : "Shop All Products";
   const description =
-    type && category ? `Shop natural ${category.name} ${type.name.toLowerCase()} at Arise Numero. ${category.description || ""} Ships worldwide.`
-    : type ? `${type.description} Shop ${type.name.toLowerCase()} at Arise Numero. Ships worldwide.`
-    : category ? `${category.description ? `${category.description} ` : ""}Shop natural ${category.name} bracelets, pendants, rings and more. Ships worldwide.`
+    type && category ? `Shop ${category.name} ${type.name.toLowerCase()} at XYZ Company. ${category.description || ""} Ships worldwide.`
+    : type ? `${type.description} Shop ${type.name.toLowerCase()} at XYZ Company. Ships worldwide.`
+    : category ? `${category.description ? `${category.description} ` : ""}Shop ${category.name} at XYZ Company. Ships worldwide.`
     : SHOP_DESCRIPTION;
   return { path, heading, description: truncate(description) };
 }
@@ -112,13 +110,7 @@ export default async function ShopPage({ searchParams }: Props) {
 
         <div className="page-header container">
           <h1 className="page-title">{heading}</h1>
-          <p className="page-subtitle">{productType ? productType.description : "Natural crystals and gemstones. Each piece is unique with natural variations."}</p>
-          {(() => {
-            const g = category ? getCrystalGuide(category.slug) : null;
-            if (g) return <Link href={crystalPath(g.slug)} className="page-guide-link">{g.name} meaning, benefits &amp; care →</Link>;
-            if (productType?.slug === "rudraksha") return <Link href={RUDRAKSHA_PATH} className="page-guide-link">What each Rudraksha mukhi means →</Link>;
-            return null;
-          })()}
+          <p className="page-subtitle">{productType ? productType.description : "Browse the full XYZ Company range."}</p>
         </div>
 
         <ShopClient initialProducts={products} initialCat={cat} initialQuery={q} initialType={productType?.slug} categories={categories} />

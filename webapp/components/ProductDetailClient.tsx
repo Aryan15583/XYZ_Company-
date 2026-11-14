@@ -16,15 +16,12 @@ import { isPriced } from "@/lib/pricing";
 import { getProductType } from "@/lib/product-types";
 import { Icon } from "./Icon";
 
-const SIZE_LABELS: Record<string, string> = { S: "15–16cm", M: "17–18cm", L: "19–20cm" };
-
-export function ProductDetailClient({ product, guide }: { product: ProductDTO; guide?: { href: string; label: string } }) {
+export function ProductDetailClient({ product }: { product: ProductDTO }) {
   const { addToCart } = useCart();
   const { format } = useCurrency();
   const [activeImg, setActiveImg] = useState(product.imageUrl || product.images[0] || "/assets/placeholder.svg");
-  const [wristSize, setWristSize] = useState("M");
   const [qty, setQty] = useState(1);
-  const [activeTab, setActiveTab] = useState<"reviews" | "shipping" | "returns" | "care">("reviews");
+  const [activeTab, setActiveTab] = useState<"reviews" | "shipping" | "returns">("reviews");
   const [added, setAdded] = useState(false);
   const [freeShippingThreshold, setFreeShippingThreshold] = useState(50);
   const [zoomOrigin, setZoomOrigin] = useState<string | null>(null);
@@ -45,7 +42,6 @@ export function ProductDetailClient({ product, guide }: { product: ProductDTO; g
   const images = product.images.length ? product.images : [product.imageUrl || "/assets/placeholder.svg"];
   const priced = isPriced(product);
   const type = getProductType(product.productType);
-  const isBracelet = product.productType === "bracelets" || product.productType === "pyramid-bracelets";
   const isOut = product.stock === 0;
   const isLow = !isOut && product.stock <= product.lowStockThreshold;
   const maxQty = Math.max(1, Math.min(10, product.stock));
@@ -99,7 +95,6 @@ export function ProductDetailClient({ product, guide }: { product: ProductDTO; g
           <div className="product-detail-info">
             <div className="product-detail-badges" aria-label="Product badges">
               {product.badge && <span className="badge badge-bestseller">{product.badge}</span>}
-              <span className="badge badge-authentic"><Icon name="check" size={12} /> Natural stone</span>
             </div>
 
             <h1 id="product-heading" className="product-detail-title">{product.name}</h1>
@@ -152,29 +147,11 @@ export function ProductDetailClient({ product, guide }: { product: ProductDTO; g
                 {type && <div className="spec-row"><dt>Type</dt><dd>{type.singular}</dd></div>}
                 <div className="spec-row"><dt>Material</dt><dd>{product.material}</dd></div>
                 {type?.beaded && product.beadSize && <div className="spec-row"><dt>Bead Size</dt><dd>{product.beadSize} diameter</dd></div>}
-                {isBracelet && <div className="spec-row"><dt>Wrist Size</dt><dd>Adjustable — fits 15–20cm wrists</dd></div>}
-                {product.productType === "anklets" && <div className="spec-row"><dt>Fit</dt><dd>Adjustable to most ankles</dd></div>}
-                {product.productType !== "certificates" && <div className="spec-row"><dt>Origin</dt><dd>Natural stone, ethically sourced</dd></div>}
-                {isBracelet && <div className="spec-row"><dt>Packaging</dt><dd>Arise Numero gift box included</dd></div>}
               </dl>
             </div>
 
             {priced && (
             <div className="product-options">
-              {isBracelet && (
-              <fieldset className="option-group">
-                <legend className="option-label">Wrist Size</legend>
-                <div className="size-options" role="radiogroup" aria-label="Select wrist size">
-                  {Object.entries(SIZE_LABELS).map(([size, range]) => (
-                    <label className="size-option" key={size}>
-                      <input type="radio" name="wrist-size" checked={wristSize === size} onChange={() => setWristSize(size)} />
-                      <span>{size} <em>({range})</em></span>
-                    </label>
-                  ))}
-                </div>
-              </fieldset>
-              )}
-
               <div className="quantity-group">
                 <label className="option-label" htmlFor="qty-input">Quantity</label>
                 <div className="quantity-control">
@@ -213,17 +190,14 @@ export function ProductDetailClient({ product, guide }: { product: ProductDTO; g
               <div className="trust-item-sm"><Icon name="lock" size={16} /> Secure checkout</div>
               <div className="trust-item-sm"><Icon name="globe" size={16} /> Ships worldwide</div>
               <div className="trust-item-sm"><Icon name="returns" size={16} /> 14-day returns</div>
-              <div className="trust-item-sm"><Icon name="gem" size={16} /> Natural crystal</div>
+              <div className="trust-item-sm"><Icon name="check" size={16} /> Quality checked</div>
             </div>
 
             <ShareButtons path={productPath(product.id)} title={product.name} />
 
             <div className="product-description">
-              <h2>About This {product.productType === "certificates" ? "Certificate" : product.productType === "rudraksha" ? "Rudraksha" : "Crystal"}</h2>
+              <h2>About This {type?.singular ?? "Product"}</h2>
               <p>{product.description}</p>
-              {guide && (
-                <Link href={guide.href} className="product-guide-link">{guide.label} →</Link>
-              )}
             </div>
           </div>
         </div>
@@ -237,9 +211,6 @@ export function ProductDetailClient({ product, guide }: { product: ProductDTO; g
           </button>
           <button className={`tab-btn ${activeTab === "returns" ? "active" : ""}`} role="tab" aria-selected={activeTab === "returns"} onClick={() => setActiveTab("returns")}>
             Returns
-          </button>
-          <button className={`tab-btn ${activeTab === "care" ? "active" : ""}`} role="tab" aria-selected={activeTab === "care"} onClick={() => setActiveTab("care")}>
-            Crystal Care
           </button>
         </div>
 
@@ -284,7 +255,7 @@ export function ProductDetailClient({ product, guide }: { product: ProductDTO; g
             <h3>Return &amp; Refund Policy</h3>
             <p>We offer a <strong>14-day return window</strong> on all non-customised products, in compliance with the EU Distance Selling Directive and applicable consumer protection laws.</p>
             <ul className="info-list">
-              <li>Items must be unworn and in original packaging</li>
+              <li>Items must be unused and in original packaging</li>
               <li>Contact us within 14 days of delivery to initiate a return</li>
               <li>Refunds are processed within 5–7 business days of receiving the return</li>
               <li>Return shipping costs are the buyer&apos;s responsibility unless the item is defective</li>
@@ -293,18 +264,6 @@ export function ProductDetailClient({ product, guide }: { product: ProductDTO; g
           </div>
         )}
 
-        {activeTab === "care" && (
-          <div className="tab-panel">
-            <h3>Crystal Care Guide</h3>
-            <ul className="info-list">
-              <li>Avoid prolonged exposure to direct sunlight, which may fade natural colours</li>
-              <li>Remove before swimming, bathing, or using chemical cleaners</li>
-              <li>Clean gently with a soft, dry cloth</li>
-              <li>Store in the included gift box or a soft pouch to prevent scratching</li>
-              <li>Elastic cord is high-grade but avoid over-stretching</li>
-            </ul>
-          </div>
-        )}
       </section>
     </>
   );

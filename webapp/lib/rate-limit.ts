@@ -1,5 +1,5 @@
 // In-memory sliding-window rate limiter for public write endpoints
-// (orders, bookings, contact, coupon validation, admin login).
+// (orders, contact, coupon validation, admin login).
 //
 // This is process-local — correct and sufficient for a single Node.js
 // instance, which covers most small-to-medium deployments. It does NOT

@@ -59,15 +59,6 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ type
       );
       break;
     }
-    case "bookings": {
-      const rows = await prisma.booking.findMany({ orderBy: { submittedAt: "desc" }, take: MAX_ROWS });
-      count = rows.length;
-      csv = toCsv(
-        ["Booking ID", "Submitted", "Status", "First name", "Last name", "Email", "Birth name", "Date of birth", "Package", "Price USD", "Timezone", "Session date", "Reading focus", "Notes"],
-        rows.map((b) => [b.id, b.submittedAt, b.status, b.firstName, b.lastName, b.clientEmail, b.birthName, b.dateOfBirth, b.packageSelected, b.packagePriceUsd, b.timezone, b.sessionDate, b.readingFocus, b.additionalNotes])
-      );
-      break;
-    }
     case "messages": {
       const rows = await prisma.contactMessage.findMany({ orderBy: { createdAt: "desc" }, take: MAX_ROWS });
       count = rows.length;

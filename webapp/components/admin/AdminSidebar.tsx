@@ -28,9 +28,8 @@ const NAV_SECTIONS = [
     ],
   },
   {
-    label: "Readings & Inbox",
+    label: "Inbox",
     items: [
-      { href: "/admin/bookings", icon: "📅", label: "Bookings" },
       { href: "/admin/messages", icon: "✉️", label: "Messages" },
       { href: "/admin/subscribers", icon: "📰", label: "Subscribers" },
     ],
@@ -54,10 +53,9 @@ export function AdminSidebar() {
     setLastPath(pathname);
     setMenuOpen(false); // close after choosing a page
   }
-  const [counts, setCounts] = useState<{ products: number; orders: number; bookings: number; messages: number; reviews: number }>({
+  const [counts, setCounts] = useState<{ products: number; orders: number; messages: number; reviews: number }>({
     products: 0,
     orders: 0,
-    bookings: 0,
     messages: 0,
     reviews: 0,
   });
@@ -66,7 +64,6 @@ export function AdminSidebar() {
     adminFetchJson<{
       totalProducts: number;
       totalOrders: number;
-      totalBookings: number;
       newMessagesCount: number;
       pendingReviewsCount: number;
     }>("/api/admin/dashboard")
@@ -74,7 +71,6 @@ export function AdminSidebar() {
         setCounts({
           products: d.totalProducts,
           orders: d.totalOrders,
-          bookings: d.totalBookings,
           messages: d.newMessagesCount,
           reviews: d.pendingReviewsCount,
         })
@@ -91,7 +87,6 @@ export function AdminSidebar() {
   const badgeFor: Record<string, number> = {
     "/admin/products": counts.products,
     "/admin/orders": counts.orders,
-    "/admin/bookings": counts.bookings,
     "/admin/messages": counts.messages,
     "/admin/reviews": counts.reviews,
   };
@@ -100,7 +95,7 @@ export function AdminSidebar() {
     <aside className={`sidebar ${menuOpen ? "is-open" : ""}`}>
       <div className="sidebar-header">
         <div>
-          <div className="sidebar-logo">✦ Arise Numero</div>
+          <div className="sidebar-logo">✦ XYZ Company</div>
           <div className="sidebar-subtitle">Admin Panel</div>
         </div>
         <button

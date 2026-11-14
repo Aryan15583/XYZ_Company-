@@ -51,7 +51,7 @@ export function RecentlyViewed({ currentId }: { currentId: string }) {
     <section className="section related-products" aria-labelledby="recent-heading">
       <div className="container">
         <h2 id="recent-heading" className="section-title">Recently Viewed</h2>
-        <div className="product-grid" role="list" aria-label="Recently viewed bracelets">
+        <div className="product-grid" role="list" aria-label="Recently viewed products">
           {products.map((p) => (
             <ProductCard key={p.id} product={p} />
           ))}

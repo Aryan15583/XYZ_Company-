@@ -12,7 +12,7 @@ const Database = require('better-sqlite3');
 const DATA_DIR = path.join(__dirname, '..', 'data');
 if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });
 
-const DB_PATH = path.join(DATA_DIR, 'arisenumero.sqlite');
+const DB_PATH = path.join(DATA_DIR, 'xyzcompany.sqlite');
 const db = new Database(DB_PATH);
 db.pragma('journal_mode = WAL');
 db.pragma('foreign_keys = ON');
@@ -65,21 +65,6 @@ db.exec(`
     date                TEXT NOT NULL DEFAULT (datetime('now'))
   );
 
-  CREATE TABLE IF NOT EXISTS bookings (
-    id                  TEXT PRIMARY KEY,
-    first_name          TEXT,
-    last_name           TEXT,
-    client_email        TEXT,
-    birth_name          TEXT,
-    date_of_birth       TEXT,
-    package_selected    TEXT,
-    timezone            TEXT,
-    session_date        TEXT,
-    reading_focus       TEXT,
-    additional_notes    TEXT,
-    status              TEXT NOT NULL DEFAULT 'new', -- new | confirmed | completed | cancelled
-    submitted_at        TEXT NOT NULL DEFAULT (datetime('now'))
-  );
 
   CREATE TABLE IF NOT EXISTS admin_settings (
     key    TEXT PRIMARY KEY,

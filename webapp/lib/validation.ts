@@ -32,19 +32,6 @@ export const orderCreateSchema = z.object({
   shipping: shippingAddressSchema.partial().optional(),
 });
 
-export const bookingCreateSchema = z.object({
-  firstName: z.string().max(100).optional().nullable(),
-  lastName: z.string().max(100).optional().nullable(),
-  clientEmail: z.string().email(),
-  birthName: z.string().min(1).max(200),
-  dateOfBirth: z.string().min(1),
-  packageSelected: z.string().max(60).optional().nullable(),
-  timezone: z.string().max(60).optional().nullable(),
-  sessionDate: z.string().max(30).optional().nullable(),
-  readingFocus: z.union([z.array(z.string()), z.string()]).optional().nullable(),
-  additionalNotes: z.string().max(2000).optional().nullable(),
-});
-
 export const contactCreateSchema = z.object({
   name: z.string().min(1).max(200),
   email: z.string().email(),
@@ -195,11 +182,7 @@ export const adminCouponUpdateSchema = z.object({
   ...couponRules,
 });
 
-// ── Admin bookings / messages ─────────────────────────────────────────────
-
-export const adminBookingStatusSchema = z.object({
-  status: z.enum(["new", "confirmed", "completed", "cancelled"]),
-});
+// ── Admin messages ────────────────────────────────────────────────────────
 
 export const adminMessageStatusSchema = z.object({
   status: z.enum(["new", "read", "replied"]),

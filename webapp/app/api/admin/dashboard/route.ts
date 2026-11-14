@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import { requireAdmin } from "@/lib/require-admin";
-import { serializeBooking } from "@/lib/serialize";
 
 // ADMIN: aggregated stats for the dashboard landing page. Uses count/
 // aggregate queries instead of loading full tables into memory — this stays
@@ -25,9 +24,6 @@ export async function GET(req: NextRequest) {
     revenueAgg,
     outOfStockCount,
     lowStockProducts,
-    recentBookings,
-    totalBookingsCount,
-    newBookingsCount,
     newMessagesCount,
     pendingReviewsCount,
     pendingOrdersCount,
@@ -52,9 +48,6 @@ export async function GET(req: NextRequest) {
       take: 50,
       select: { id: true, name: true, stock: true, lowStockThreshold: true },
     }),
-    prisma.booking.findMany({ orderBy: { submittedAt: "desc" }, take: 5 }),
-    prisma.booking.count(),
-    prisma.booking.count({ where: { status: "new" } }),
     prisma.contactMessage.count({ where: { status: "new" } }),
     prisma.review.count({ where: { status: "pending" } }),
     prisma.order.count({ where: { status: "pending" } }),
@@ -89,9 +82,6 @@ export async function GET(req: NextRequest) {
     lowStockCount: lowStock.length,
     outOfStockCount,
     lowStockProducts: lowStock.slice(0, 6).map((p) => ({ id: p.id, name: p.name, stock: p.stock })),
-    totalBookings: totalBookingsCount,
-    newBookingsCount,
-    recentBookings: recentBookings.map(serializeBooking),
     newMessagesCount,
     pendingReviewsCount,
     pendingOrdersCount,

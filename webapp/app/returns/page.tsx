@@ -6,7 +6,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "Returns & Shipping Policy",
   description:
-    "Arise Numero Returns and Shipping Policy — 14-day returns, international shipping rates, customs information and delivery times worldwide.",
+    "XYZ Company Returns and Shipping Policy — 14-day returns, international shipping rates, customs information and delivery times worldwide.",
   path: "/returns",
 });
 
@@ -49,17 +49,16 @@ export default function ReturnsPage() {
                 <strong>To be eligible for a return, items must be:</strong>
                 <ul>
                   <li>Returned within 14 days of your delivery date</li>
-                  <li>Unworn and in original condition</li>
-                  <li>In their original packaging (Arise Numero gift box)</li>
+                  <li>Unused and in original condition</li>
+                  <li>In their original packaging</li>
                   <li>Not customised or personalised</li>
                 </ul>
               </div>
-              <p><strong>Natural variations</strong> in crystal colour, texture, or pattern are characteristics of authentic gemstones and do not qualify as defects.</p>
             </section>
 
             <section id="how-to-return"><h2>2. How to Return</h2>
               <ol className="numbered-list">
-                <li><strong>Contact us</strong> within 14 days of delivery at <a href="mailto:returns@arisenumero.com">returns@arisenumero.com</a> with your order number and reason for return</li>
+                <li><strong>Contact us</strong> within 14 days of delivery at <a href="mailto:returns@example.com">returns@example.com</a> with your order number and reason for return</li>
                 <li><strong>Receive your return authorisation</strong> — we&apos;ll confirm your return is eligible and provide a return address</li>
                 <li><strong>Pack securely</strong> — use the original packaging if possible</li>
                 <li><strong>Ship the item</strong> — use a tracked shipping method</li>
@@ -73,8 +72,7 @@ export default function ReturnsPage() {
 
             <section id="non-returnable"><h2>4. Non-Returnable Items</h2>
               <ul>
-                <li>Customised or personalised bracelets</li>
-                <li>Numerology readings once delivered (digital personalised service)</li>
+                <li>Customised or personalised items</li>
                 <li>Items returned after the 14-day window</li>
               </ul>
             </section>
@@ -106,14 +104,14 @@ export default function ReturnsPage() {
             </section>
 
             <section id="lost-damaged"><h2>8. Lost or Damaged Orders</h2>
-              <p>If your order arrives damaged, please photograph the damage immediately and contact us at <a href="mailto:hello@arisenumero.com">hello@arisenumero.com</a> within 48 hours of delivery. We will arrange a replacement or full refund.</p>
+              <p>If your order arrives damaged, please photograph the damage immediately and contact us at <a href="mailto:hello@example.com">hello@example.com</a> within 48 hours of delivery. We will arrange a replacement or full refund.</p>
             </section>
 
             <section id="contact-returns"><h2>9. Contact</h2>
               <address>
-                <strong>Arise Numero — Returns &amp; Shipping</strong><br />
-                Email: <a href="mailto:returns@arisenumero.com">returns@arisenumero.com</a><br />
-                General enquiries: <a href="mailto:hello@arisenumero.com">hello@arisenumero.com</a>
+                <strong>XYZ Company — Returns &amp; Shipping</strong><br />
+                Email: <a href="mailto:returns@example.com">returns@example.com</a><br />
+                General enquiries: <a href="mailto:hello@example.com">hello@example.com</a>
               </address>
             </section>
           </article>

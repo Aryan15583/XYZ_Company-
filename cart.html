@@ -4,9 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="description" content="Your Arise Numero shopping cart. Review items, update quantities, apply coupon codes and proceed to secure checkout." />
+  <meta name="description" content="Your XYZ Company shopping cart. Review items, update quantities, apply coupon codes and proceed to secure checkout." />
   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
-  <title>Shopping Cart — Arise Numero</title>
+  <title>Shopping Cart — XYZ Company</title>
   <link rel="stylesheet" href="styles.css" />
   <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
   <!--
@@ -32,7 +32,7 @@
   <script>
     (function() {
       var consent = {};
-      try { consent = JSON.parse(localStorage.getItem("ariseNumero_cookieConsent") || "{}"); } catch(e) {}
+      try { consent = JSON.parse(localStorage.getItem("xyzCompany_cookieConsent") || "{}"); } catch(e) {}
       if (consent.analytics) {
         window.dataLayer = window.dataLayer || [];
         function gtag(){ dataLayer.push(arguments); }
@@ -55,13 +55,11 @@
   <!-- Header -->
   <header class="site-header" role="banner">
     <div class="header-inner container">
-      <a href="index.html" class="logo" aria-label="Arise Numero Home"><span class="logo-symbol" aria-hidden="true">✦</span><span class="logo-text">Arise Numero</span></a>
+      <a href="index.html" class="logo" aria-label="XYZ Company Home"><span class="logo-symbol" aria-hidden="true">✦</span><span class="logo-text">XYZ Company</span></a>
       <nav class="main-nav" role="navigation" aria-label="Main navigation">
         <ul class="nav-list" role="list">
           <li><a href="index.html" class="nav-link">Home</a></li>
           <li><a href="shop.html" class="nav-link">Shop</a></li>
-          <li><a href="numerology.html" class="nav-link">Numerology</a></li>
-          <li><a href="booking.html" class="nav-link">Book a Reading</a></li>
           <li><a href="about.html" class="nav-link">About</a></li>
           <li><a href="contact.html" class="nav-link">Contact</a></li>
         </ul>
@@ -77,8 +75,6 @@
       <ul class="mobile-nav-list" role="list">
         <li><a href="index.html" class="nav-link">Home</a></li>
         <li><a href="shop.html" class="nav-link">Shop</a></li>
-        <li><a href="numerology.html" class="nav-link">Numerology</a></li>
-        <li><a href="booking.html" class="nav-link">Book a Reading</a></li>
         <li><a href="about.html" class="nav-link">About</a></li>
         <li><a href="contact.html" class="nav-link">Contact</a></li>
       </ul>
@@ -128,8 +124,8 @@
         <div id="cart-empty" class="cart-empty" hidden>
           <div class="cart-empty-icon" aria-hidden="true">🛒</div>
           <h2>Your cart is empty</h2>
-          <p>Add some beautiful crystal bracelets to get started.</p>
-          <a href="shop.html" class="btn btn-primary" aria-label="Continue shopping for bracelets">Continue Shopping</a>
+          <p>Add some products to get started.</p>
+          <a href="shop.html" class="btn btn-primary" aria-label="Continue shopping">Continue Shopping</a>
         </div>
 
         <!-- Cart Items Table -->
@@ -254,11 +250,11 @@
   <!-- Footer -->
   <footer class="site-footer" role="contentinfo">
     <div class="container footer-inner">
-      <div class="footer-brand"><a href="index.html" class="logo" aria-label="Arise Numero Home"><span class="logo-symbol" aria-hidden="true">✦</span><span class="logo-text">Arise Numero</span></a><p>Authentic crystal bracelets &amp; numerology readings.</p></div>
-      <nav class="footer-nav" aria-label="Shop navigation"><h4>Shop</h4><ul role="list"><li><a href="shop.html">All Bracelets</a></li></ul></nav>
+      <div class="footer-brand"><a href="index.html" class="logo" aria-label="XYZ Company Home"><span class="logo-symbol" aria-hidden="true">✦</span><span class="logo-text">XYZ Company</span></a><p>Quality products, delivered to your door.</p></div>
+      <nav class="footer-nav" aria-label="Shop navigation"><h4>Shop</h4><ul role="list"><li><a href="shop.html">All Products</a></li></ul></nav>
       <nav class="footer-nav" aria-label="Legal navigation"><h4>Legal</h4><ul role="list"><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms of Service</a></li><li><a href="returns.html">Returns &amp; Shipping</a></li></ul></nav>
     </div>
-    <div class="footer-disclaimer"><div class="container"><p><strong>Numerology Disclaimer:</strong> Numerology readings are for self-insight and entertainment purposes only.</p><p class="footer-legal-links">&copy; <span class="footer-year"></span> Arise Numero. All rights reserved. &nbsp;|&nbsp; <a href="privacy.html">Privacy Policy</a> &nbsp;|&nbsp; <a href="terms.html">Terms</a></p></div></div>
+    <div class="footer-disclaimer"><div class="container"><p class="footer-legal-links">&copy; <span class="footer-year"></span> XYZ Company. All rights reserved. &nbsp;|&nbsp; <a href="privacy.html">Privacy Policy</a> &nbsp;|&nbsp; <a href="terms.html">Terms</a></p></div></div>
   </footer>
 
   <script src="main.js"></script>

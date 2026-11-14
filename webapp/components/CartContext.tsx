@@ -3,7 +3,7 @@
 import { createContext, useCallback, useContext, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 
-const CART_KEY = "ariseNumero_cart";
+const CART_KEY = "xyzCompany_cart";
 
 // The server rejects more than 10 of one product per order (and more than is in
 // stock), so the cart enforces the same ceiling instead of letting shoppers build

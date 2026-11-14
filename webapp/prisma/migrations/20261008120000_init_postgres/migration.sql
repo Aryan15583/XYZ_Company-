@@ -22,7 +22,7 @@ CREATE TABLE "products" (
     "price_usd" DOUBLE PRECISION NOT NULL DEFAULT 0,
     "original_price_usd" DOUBLE PRECISION,
     "category" TEXT,
-    "product_type" TEXT NOT NULL DEFAULT 'bracelets',
+    "product_type" TEXT NOT NULL DEFAULT 'products',
     "bead_size" TEXT,
     "stock" INTEGER NOT NULL DEFAULT 0,
     "low_stock_threshold" INTEGER NOT NULL DEFAULT 5,
@@ -129,26 +129,6 @@ CREATE TABLE "order_events" (
 );
 
 -- CreateTable
-CREATE TABLE "bookings" (
-    "id" TEXT NOT NULL,
-    "first_name" TEXT,
-    "last_name" TEXT,
-    "client_email" TEXT NOT NULL,
-    "birth_name" TEXT NOT NULL,
-    "date_of_birth" TEXT NOT NULL,
-    "package_selected" TEXT,
-    "package_price_usd" DOUBLE PRECISION,
-    "timezone" TEXT,
-    "session_date" TEXT,
-    "reading_focus" TEXT,
-    "additional_notes" TEXT,
-    "status" TEXT NOT NULL DEFAULT 'new',
-    "submitted_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-
-    CONSTRAINT "bookings_pkey" PRIMARY KEY ("id")
-);
-
--- CreateTable
 CREATE TABLE "contact_messages" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
@@ -242,9 +222,6 @@ CREATE INDEX "orders_payment_reference_idx" ON "orders"("payment_reference");
 
 -- CreateIndex
 CREATE INDEX "order_events_order_id_idx" ON "order_events"("order_id");
-
--- CreateIndex
-CREATE INDEX "bookings_status_idx" ON "bookings"("status");
 
 -- CreateIndex
 CREATE INDEX "contact_messages_status_idx" ON "contact_messages"("status");

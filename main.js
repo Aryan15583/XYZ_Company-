@@ -1,6 +1,6 @@
 /**
  * ================================================================
- * ARISE NUMERO — main.js
+ * XYZ COMPANY — main.js
  * Single JavaScript file for all 12 pages
  *
  * TABLE OF CONTENTS
@@ -16,8 +16,6 @@
  * LINE  780  — 9.  PRODUCT GALLERY
  * LINE  840  — 10. PRODUCT TABS
  * LINE  900  — 11. QUANTITY CONTROLS
- * LINE  960  — 12. NUMEROLOGY CALCULATOR
- * LINE 1120  — 13. BOOKING PAGE
  * LINE 1210  — 14. SHOP FILTERS & SORT
  * LINE 1340  — 15. CONTACT FORM
  * LINE 1400  — 16. FAQ ACCORDION ANIMATION
@@ -154,7 +152,7 @@ function initMobileNav() {
    Shows on first visit. Remembers choice in localStorage.
    Manage panel allows per-category control.
    ================================================================ */
-const COOKIE_KEY = 'ariseNumero_cookieConsent';
+const COOKIE_KEY = 'xyzCompany_cookieConsent';
 
 function initCookieBanner() {
   const banner  = document.getElementById('cookie-banner');
@@ -283,7 +281,7 @@ function showCookieManageModal(onSave) {
    Manual override via select dropdown.
    Converts all [data-usd] prices across the page instantly.
    ================================================================ */
-const CURRENCY_KEY = 'ariseNumero_currency';
+const CURRENCY_KEY = 'xyzCompany_currency';
 
 // LINE 227: Exchange rates relative to USD
 const EXCHANGE_RATES = {
@@ -372,7 +370,7 @@ function convertAllPrices() {
    LINE 310 — 6. CART SYSTEM
    localStorage-based cart. Works across all pages.
    ================================================================ */
-const CART_KEY = 'ariseNumero_cart';
+const CART_KEY = 'xyzCompany_cart';
 
 // LINE 315: Load cart from localStorage
 function getCart() {
@@ -503,35 +501,6 @@ function initAddToCartButtons() {
   });
 }
 
-// LINE 435: Package select buttons (booking page)
-function initPackageSelect() {
-  document.querySelectorAll('.select-package').forEach(btn => {
-    btn.addEventListener('click', () => {
-      // Highlight selected package card
-      document.querySelectorAll('.package-card').forEach(c => c.classList.remove('package-card--selected'));
-      btn.closest('.package-card')?.classList.add('package-card--selected');
-
-      const pkg   = btn.dataset.package;
-      const price = btn.dataset.price;
-
-      const nameEl  = document.getElementById('selected-package-name');
-      const priceEl = document.getElementById('selected-package-price');
-
-      const labels = {
-        core:    'Core Blueprint',
-        full:    'Full Numeroscope',
-        premium: 'Premium + Live Session'
-      };
-
-      if (nameEl)  nameEl.textContent  = labels[pkg] || pkg;
-      if (priceEl) priceEl.textContent = formatPrice(price, currentCurrency);
-
-      // Scroll to booking form
-      document.getElementById('booking-form-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-  });
-}
-
 
 /* ================================================================
    LINE 475 — CART TOTALS CALCULATOR
@@ -540,12 +509,8 @@ function initPackageSelect() {
 let appliedDiscount = 0; // percentage
 
 // LINE 480: Valid coupon codes
-const COUPONS = {
-  'ARISENUMERO':  15,
-  'WELCOME10':    10,
-  'CRYSTALS20':   20,
-  'NEWUSER':      12,
-};
+// Add codes here as 'CODE': percentOff, e.g. 'WELCOME10': 10
+const COUPONS = {};
 
 function calcCartTotals() {
   const cart     = getCart();
@@ -632,13 +597,12 @@ function initCartPage() {
 
       row.innerHTML = `
         <td class="cart-product-cell">
-          <img src="assets/${item.id}-bracelet.jpg"
+          <img src="assets/${item.id}.jpg"
                onerror="this.src='assets/placeholder.jpg'"
-               alt="${item.name} crystal bracelet"
+               alt="${item.name}"
                class="cart-item-img" width="80" height="80" />
           <div class="cart-item-info">
             <span class="cart-item-name">${item.name}</span>
-            <span class="cart-item-meta">Crystal Bracelet</span>
           </div>
         </td>
         <td class="cart-price" aria-label="Unit price">${curr.symbol}${unitPrice}</td>
@@ -849,7 +813,7 @@ function populateCheckoutSummary() {
 
   container.innerHTML = cart.map(item => `
     <div class="checkout-order-item">
-      <img src="assets/${item.id}-bracelet.jpg"
+      <img src="assets/${item.id}.jpg"
            onerror="this.src='assets/placeholder.jpg'"
            alt="${item.name}"
            width="56" height="56" />
@@ -913,7 +877,7 @@ function initPayPalButton() {
       // PayPal always needs USD for base currency
       return actions.order.create({
         purchase_units: [{
-          description: 'Arise Numero — Crystal Bracelet Order',
+          description: 'XYZ Company Order',
           amount: {
             currency_code: 'USD',
             value: after.toFixed(2),
@@ -932,7 +896,7 @@ function initPayPalButton() {
           }))
         }],
         application_context: {
-          brand_name:          'Arise Numero',
+          brand_name:          'XYZ Company',
           shipping_preference: 'GET_FROM_FILE',
           user_action:         'PAY_NOW'
         }
@@ -1064,7 +1028,7 @@ function initProductGallery() {
 
 /* ================================================================
    LINE 840 — 10. PRODUCT TABS
-   Reviews / Shipping / Returns / Crystal Care
+   Reviews / Shipping / Returns
    Full ARIA tab pattern with keyboard navigation.
    ================================================================ */
 function initProductTabs() {
@@ -1160,276 +1124,8 @@ function initQuantityControls() {
 
 
 /* ================================================================
-   LINE 960 — 12. NUMEROLOGY CALCULATOR
-   Life Path, Expression, Soul Urge, Birthday numbers.
-   Pythagorean letter-value system.
-   Results displayed with animation.
-   ================================================================ */
-
-// LINE 967: Pythagorean letter map
-const PYTH = {
-  A:1,B:2,C:3,D:4,E:5,F:6,G:7,H:8,I:9,
-  J:1,K:2,L:3,M:4,N:5,O:6,P:7,Q:8,R:9,
-  S:1,T:2,U:3,V:4,W:5,X:6,Y:7,Z:8
-};
-
-const VOWELS = new Set(['A','E','I','O','U']);
-
-// LINE 977: Reduce a number to single digit (keep 11, 22, 33 as master)
-function reduceNum(n) {
-  while (n > 9 && n !== 11 && n !== 22 && n !== 33) {
-    n = String(n).split('').reduce((s, d) => s + parseInt(d), 0);
-  }
-  return n;
-}
-
-// LINE 984: Calculate Life Path from date string "YYYY-MM-DD"
-function calcLifePath(dob) {
-  const [y, m, d] = dob.split('-').map(Number);
-  const mR = reduceNum(m);
-  const dR = reduceNum(d);
-  const yR = reduceNum(String(y).split('').reduce((s,c) => s + parseInt(c), 0));
-  return reduceNum(mR + dR + yR);
-}
-
-// LINE 992: Calculate Expression (full name, all letters)
-function calcExpression(name) {
-  const sum = name.toUpperCase().replace(/[^A-Z]/g, '').split('').reduce((s, c) => s + (PYTH[c] || 0), 0);
-  return reduceNum(sum);
-}
-
-// LINE 998: Calculate Soul Urge (vowels only)
-function calcSoulUrge(name) {
-  const sum = name.toUpperCase().replace(/[^A-Z]/g, '').split('').filter(c => VOWELS.has(c)).reduce((s, c) => s + (PYTH[c] || 0), 0);
-  return reduceNum(sum);
-}
-
-// LINE 1004: Birthday number (day of birth, reduced)
-function calcBirthday(dob) {
-  const day = parseInt(dob.split('-')[2]);
-  return reduceNum(day);
-}
-
-// LINE 1009: Number meanings
-const NUMBER_MEANINGS = {
-  1:  { title: 'The Leader',     desc: 'Independent, pioneering, and driven. You forge your own path with confidence and determination.' },
-  2:  { title: 'The Peacemaker', desc: 'Diplomatic, empathetic, and cooperative. You excel at bringing harmony and understanding.' },
-  3:  { title: 'The Creator',    desc: 'Expressive, joyful, and imaginative. You inspire others through creativity and communication.' },
-  4:  { title: 'The Builder',    desc: 'Practical, disciplined, and reliable. You create lasting foundations through methodical effort.' },
-  5:  { title: 'The Explorer',   desc: 'Adventurous, versatile, and free-spirited. You thrive on change and new experiences.' },
-  6:  { title: 'The Nurturer',   desc: 'Compassionate, responsible, and caring. You find deep purpose in serving and protecting others.' },
-  7:  { title: 'The Seeker',     desc: 'Analytical, introspective, and spiritual. You are driven by a deep quest for truth and wisdom.' },
-  8:  { title: 'The Achiever',   desc: 'Ambitious, authoritative, and goal-oriented. You are built for material mastery and leadership.' },
-  9:  { title: 'The Humanitarian', desc: 'Compassionate, idealistic, and giving. You are here to serve the greater good of humanity.' },
-  11: { title: 'Master Intuitive', desc: 'Highly sensitive and spiritually aware. You carry a powerful gift for insight and inspiration.' },
-  22: { title: 'Master Builder',   desc: 'The most powerful number. You have the ability to turn visionary dreams into concrete reality.' },
-  33: { title: 'Master Teacher',   desc: 'Pure expression of loving compassion. You are here to uplift and heal humanity through unconditional love.' },
-};
-
-function getMeaning(n) {
-  return NUMBER_MEANINGS[n] || { title: `Number ${n}`, desc: 'Your unique numeric energy carries its own powerful significance.' };
-}
-
-// LINE 1038: Init numerology form
-function initNumerologyCalculator() {
-  const form = document.getElementById('numerology-form');
-  if (!form) return;
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    const nameInput = document.getElementById('num-name');
-    const dobInput  = document.getElementById('num-dob');
-    const privChk   = document.getElementById('num-privacy');
-
-    // LINE 1048: Validation
-    let valid = true;
-    [nameInput, dobInput].forEach(el => {
-      if (!el || !el.value.trim()) {
-        el?.style.setProperty('border-color', 'var(--color-error)');
-        valid = false;
-      } else {
-        el?.style.setProperty('border-color', '');
-      }
-    });
-
-    if (privChk && !privChk.checked) {
-      privChk.focus();
-      showFieldError(privChk, 'Please accept the privacy notice to continue.');
-      valid = false;
-    }
-
-    if (!valid) return;
-
-    const name = nameInput.value.trim();
-    const dob  = dobInput.value;
-
-    // LINE 1064: Calculate all numbers
-    const lifePath   = calcLifePath(dob);
-    const expression = calcExpression(name);
-    const soulUrge   = calcSoulUrge(name);
-    const birthday   = calcBirthday(dob);
-
-    // LINE 1070: Display results
-    const resultsEl = document.getElementById('numerology-results');
-    if (!resultsEl) return;
-
-    document.getElementById('results-name-display').textContent = `Reading for: ${name}`;
-    document.getElementById('life-path-num').textContent  = lifePath;
-    document.getElementById('expression-num').textContent = expression;
-    document.getElementById('soul-urge-num').textContent  = soulUrge;
-    document.getElementById('birthday-num').textContent   = birthday;
-
-    document.getElementById('life-path-desc').textContent  = `${getMeaning(lifePath).title} — ${getMeaning(lifePath).desc}`;
-    document.getElementById('expression-desc').textContent = `${getMeaning(expression).title} — ${getMeaning(expression).desc}`;
-    document.getElementById('soul-urge-desc').textContent  = `${getMeaning(soulUrge).title} — ${getMeaning(soulUrge).desc}`;
-    document.getElementById('birthday-desc').textContent   = `${getMeaning(birthday).title} — ${getMeaning(birthday).desc}`;
-
-    resultsEl.hidden = false;
-    resultsEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
-}
-
-// LINE 1090: Inline field error helper
-function showFieldError(field, msg) {
-  let err = field.parentElement.querySelector('.field-error');
-  if (!err) {
-    err = document.createElement('p');
-    err.className = 'field-error';
-    err.style.cssText = 'color:var(--color-error);font-size:0.8rem;margin-top:4px;';
-    field.parentElement.appendChild(err);
-  }
-  err.textContent = msg;
-  setTimeout(() => err?.remove(), 4000);
-}
-
-
-/* ================================================================
-   LINE 1120 — 13. BOOKING PAGE
-   Auto-detect timezone, package selection, form validation.
-   ================================================================ */
-function initBookingPage() {
-  if (!document.getElementById('booking-form')) return;
-
-  // LINE 1125: Auto-detect user timezone
-  const tzSelect = document.getElementById('book-timezone');
-  if (tzSelect) {
-    try {
-      const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-      // Try to find matching option
-      const option = [...tzSelect.options].find(o => o.value === tz);
-      if (option) {
-        tzSelect.value = tz;
-      }
-    } catch (e) { /* silently ignore */ }
-  }
-
-  // LINE 1138: Set minimum date for session booking (today + 1)
-  const sessionDate = document.getElementById('book-session-date');
-  if (sessionDate) {
-    const tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    sessionDate.min = tomorrow.toISOString().split('T')[0];
-  }
-
-  // LINE 1146: Package card selection
-  initPackageSelect();
-
-  // LINE 1149: Booking form submit
-  const form = document.getElementById('booking-form');
-  if (form) {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      if (validateBookingForm(form)) {
-        handleBookingSubmit(form);
-      }
-    });
-  }
-}
-
-function validateBookingForm(form) {
-  let valid = true;
-  form.querySelectorAll('[required]').forEach(input => {
-    input.style.borderColor = '';
-    if (!input.value.trim() || (input.type === 'checkbox' && !input.checked)) {
-      input.style.borderColor = 'var(--color-error)';
-      if (valid) input.focus();
-      valid = false;
-    }
-  });
-  if (!valid) showAddedToast('Please fill in all required fields.');
-  return valid;
-}
-
-async function handleBookingSubmit(form) {
-  const btn = form.querySelector('[type="submit"]');
-  if (btn) { btn.textContent = '⏳ Sending…'; btn.disabled = true; }
-
-  // Collect selected reading focus areas
-  const focusAreas = [...form.querySelectorAll('input[name="focus"]:checked')]
-    .map(i => i.value).join(', ') || 'Not specified';
-
-  const templateParams = {
-    // ── Fields you selected ──────────────────────────────────
-    client_email:    form.querySelector('#book-email')?.value        || '',
-    birth_name:      form.querySelector('#book-birth-name')?.value   || '',
-    date_of_birth:   form.querySelector('#book-dob')?.value          || '',
-    package_selected: document.getElementById('selected-package-name')?.textContent || 'Not selected',
-    timezone:        form.querySelector('#book-timezone')?.value     || '',
-    session_date:    form.querySelector('#book-session-date')?.value || 'N/A (Written report)',
-    reading_focus:   focusAreas,
-    additional_notes: form.querySelector('#book-notes')?.value       || 'None',
-    // ── Extra context sent automatically ────────────────────
-    submitted_at:    new Date().toLocaleString(),
-    to_name:         'Arise Numero Team',
-  };
-
-  try {
-    // ── PASTE YOUR IDs BELOW ─────────────────────────────────
-    await emailjs.send(
-      'YOUR_EMAILJS_SERVICE_ID',          // ← Paste your Service ID here
-      'YOUR_EMAILJS_BOOKING_TEMPLATE_ID', // ← Paste your Booking Template ID here
-      templateParams
-    );
-    // ── Success ──────────────────────────────────────────────
-    if (btn) {
-      btn.textContent = '✓ Booking Confirmed!';
-      btn.style.background = 'var(--color-success,#2d7a4f)';
-      btn.style.borderColor = 'var(--color-success,#2d7a4f)';
-    }
-    showAddedToast('Booking received! Check your email for confirmation.');
-
-    // Scroll to top of form to show confirmation
-    form.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-    // Insert success message above form
-    const existing = document.getElementById('booking-success-msg');
-    if (!existing) {
-      const msg = document.createElement('div');
-      msg.id = 'booking-success-msg';
-      msg.className = 'form-success';
-      msg.setAttribute('role', 'status');
-      msg.innerHTML = `
-        <strong>✓ Booking Confirmed!</strong><br/>
-        We have received your booking. A confirmation has been sent to
-        <strong>${templateParams.client_email}</strong>.
-        We will be in touch within 24 hours.`;
-      form.parentElement.insertBefore(msg, form);
-    }
-
-    form.reset();
-
-  } catch (err) {
-    console.error('EmailJS booking error:', err);
-    if (btn) { btn.textContent = '🔒 Book & Pay Securely'; btn.disabled = false; }
-    showAddedToast('Something went wrong. Please email us directly at hello@arisenumero.com');
-  }
-}
-
-
-/* ================================================================
    LINE 1210 — 14. SHOP FILTERS & SORT
-   Filters product cards by crystal, price, size, availability.
+   Filters product cards by category, price, size, availability.
    Sort by featured, price, rating, newest.
    ================================================================ */
 function initShopFilters() {
@@ -1553,7 +1249,7 @@ function initContactForm() {
   }
 
   // LINE 1357: Form submit
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
     let valid = true;
 
@@ -1585,7 +1281,7 @@ function initContactForm() {
       order_number: form.querySelector('#contact-order-num')?.value    || 'N/A',
       // ── Extra context sent automatically ─────────────────
       submitted_at: new Date().toLocaleString(),
-      to_name:      'Arise Numero Team',
+      to_name:      'XYZ Company Team',
     };
 
     try {
@@ -1705,24 +1401,6 @@ function initWishlistBtn() {
   });
 }
 
-// LINE 1484: Booking form — show/hide session date based on premium package
-function initSessionDateToggle() {
-  const sessionGroup = document.getElementById('session-time-group');
-  if (!sessionGroup) return;
-
-  // Default: hide for non-live packages
-  sessionGroup.hidden = true;
-
-  document.querySelectorAll('.select-package').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const pkg = btn.dataset.package;
-      sessionGroup.hidden = pkg !== 'premium';
-      const input = sessionGroup.querySelector('input');
-      if (input) input.required = pkg === 'premium';
-    });
-  });
-}
-
 
 /* ================================================================
    LINE 1470 — 18. INIT
@@ -1752,14 +1430,10 @@ document.addEventListener('DOMContentLoaded', () => {
   initProductGallery();   // product.html
   initProductTabs();      // product.html
   initQuantityControls(); // product.html
-  initNumerologyCalculator(); // numerology.html
-  initBookingPage();      // booking.html
-  initSessionDateToggle();// booking.html
   initShopFilters();      // shop.html
   initContactForm();      // contact.html
   initFaqAccordion();     // contact.html
   initWishlistBtn();      // product.html
-  initPackageSelect();    // booking.html (also called inside initBookingPage but safe to double-call)
 
   // LINE 1505: Update cart totals if on cart or checkout
   if (document.getElementById('summary-subtotal') ||

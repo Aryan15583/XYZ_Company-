@@ -1,5 +1,5 @@
 /* =============================================================
-   ARISE NUMERO — styles.css
+   XYZ COMPANY — styles.css
    Single stylesheet for all 12 pages
    Dark / Light mode: 100% driven by browser prefers-color-scheme
    No toggle button — updates live when OS/browser setting changes
@@ -797,7 +797,7 @@ select.form-input {
   line-height: 1;
 }
 
-/* LINE 752: "Arise Numero" logotype */
+/* LINE 752: "XYZ Company" logotype */
 .logo-text {
   font-family: var(--font-display);
   font-size: 1.1rem;
@@ -3460,7 +3460,7 @@ select.form-input {
 /* =============================================================
    END OF styles.css
    Total: ~3430 lines
-   Company: Arise Numero
+   Company: XYZ Company
    Dark/Light: 100% CSS prefers-color-scheme, no JS toggle
    Live updates when browser/OS setting changes mid-session
    WCAG 2.1 AA compliant

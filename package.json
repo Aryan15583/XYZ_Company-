@@ -1,7 +1,7 @@
 {
-  "name": "arise-numero-server",
+  "name": "xyz-company-server",
   "version": "1.0.0",
-  "description": "Backend API + static server for the Arise Numero storefront and admin panel.",
+  "description": "Backend API + static server for the XYZ Company storefront and admin panel.",
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",

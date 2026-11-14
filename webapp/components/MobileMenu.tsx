@@ -14,7 +14,7 @@ type NavLink = { href: string; label: string };
 const CURRENCIES = Object.keys(EXCHANGE_RATES) as CurrencyCode[];
 
 // The phone menu: a panel that slides in from the right with search, the main
-// pages, shop categories, quick links, currency and a reading call-to-action.
+// pages, shop categories, quick links, currency and a help call-to-action.
 // Locks page scrolling while open; closes on Esc, a tap outside, or navigating.
 export function MobileMenu({ open, onClose, links, isActive }: { open: boolean; onClose: () => void; links: NavLink[]; isActive: (href: string) => boolean }) {
   const pathname = usePathname();
@@ -60,7 +60,7 @@ export function MobileMenu({ open, onClose, links, isActive }: { open: boolean; 
           <Link href="/" className="mnav-brand" onClick={onClose}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/assets/brand/logo-badge-160.png" alt="" width={44} height={44} />
-            <span>Arise Numero</span>
+            <span>XYZ Company</span>
           </Link>
           <button type="button" className="mnav-close" onClick={onClose} aria-label="Close menu">
             <Icon name="close" size={22} />
@@ -73,7 +73,7 @@ export function MobileMenu({ open, onClose, links, isActive }: { open: boolean; 
           <input
             id="mnav-search-input"
             type="search"
-            placeholder="Search crystals, rings, rudraksha…"
+            placeholder="Search products…"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             maxLength={80}
@@ -96,7 +96,7 @@ export function MobileMenu({ open, onClose, links, isActive }: { open: boolean; 
         <section className="mnav-section" aria-labelledby="mnav-shop-heading">
           <h2 id="mnav-shop-heading" className="mnav-label">Shop by category</h2>
           <ul className="mnav-chips" role="list">
-            {PRODUCT_TYPES.filter((t) => t.slug !== "bracelets").map((t) => (
+            {PRODUCT_TYPES.map((t) => (
               <li key={t.slug}>
                 <Link href={`/shop?type=${t.slug}`} onClick={onClose}>{t.name}</Link>
               </li>
@@ -141,11 +141,11 @@ export function MobileMenu({ open, onClose, links, isActive }: { open: boolean; 
         </section>
 
         <div className="mnav-cta">
-          <p className="mnav-cta-kicker">Free tool</p>
-          <p className="mnav-cta-title">Discover your Life Path number</p>
+          <p className="mnav-cta-kicker">Need help?</p>
+          <p className="mnav-cta-title">We&apos;re happy to help with any order</p>
           <div className="mnav-cta-actions">
-            <Link href="/numerology" className="btn btn-primary" onClick={onClose}>Free Calculator</Link>
-            <Link href="/booking" className="btn btn-outline btn-outline--light" onClick={onClose}>Book a Reading</Link>
+            <Link href="/shop" className="btn btn-primary" onClick={onClose}>Shop Now</Link>
+            <Link href="/contact" className="btn btn-outline btn-outline--light" onClick={onClose}>Contact Us</Link>
           </div>
         </div>
       </div>

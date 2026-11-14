@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { adminFetchJson } from "@/lib/admin-api";
-import type { BookingDTO } from "@/lib/types";
 import { useAdminCurrency } from "@/components/admin/AdminCurrency";
 
 type DashboardData = {
@@ -14,9 +13,6 @@ type DashboardData = {
   lowStockCount: number;
   outOfStockCount: number;
   lowStockProducts: { id: string; name: string; stock: number }[];
-  totalBookings: number;
-  newBookingsCount: number;
-  recentBookings: BookingDTO[];
   newMessagesCount: number;
   pendingOrdersCount: number;
   activeSubscribers: number;
@@ -93,9 +89,9 @@ export default function AdminDashboardPage() {
           <div className="stat-sub">{data.outOfStockCount} out of stock</div>
         </div>
         <div className="stat-card stat-error">
-          <div className="stat-label">Bookings</div>
-          <div className="stat-value">{data.totalBookings}</div>
-          <div className="stat-sub">{data.newBookingsCount} new</div>
+          <div className="stat-label">New Messages</div>
+          <div className="stat-value">{data.newMessagesCount}</div>
+          <div className="stat-sub"><Link href="/admin/messages">View inbox</Link></div>
         </div>
       </div>
 
@@ -134,32 +130,6 @@ export default function AdminDashboardPage() {
                     <td><strong>{p.name}</strong></td>
                     <td>{p.stock}</td>
                     <td>{p.stock === 0 ? <span className="badge badge-out">Out of Stock</span> : <span className="badge badge-low">Low Stock</span>}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          )}
-        </div>
-      </div>
-
-      <div className="card">
-        <div className="card-header">
-          <span className="card-title">📅 Recent Bookings</span>
-          <Link href="/admin/bookings" className="btn btn-ghost btn-sm">View All</Link>
-        </div>
-        <div className="card-body">
-          {data.recentBookings.length === 0 ? (
-            <div className="empty-state"><div className="empty-icon">📅</div><div className="empty-title">No bookings yet</div></div>
-          ) : (
-            <table>
-              <thead><tr><th>Client</th><th>Package</th><th>Date</th><th>Status</th></tr></thead>
-              <tbody>
-                {data.recentBookings.map((b) => (
-                  <tr key={b.id}>
-                    <td>{b.clientEmail}</td>
-                    <td>{b.packageSelected || "—"}</td>
-                    <td>{new Date(b.submittedAt).toLocaleDateString()}</td>
-                    <td><span className={`badge ${b.status === "new" ? "badge-gold" : "badge-active"}`}>{b.status}</span></td>
                   </tr>
                 ))}
               </tbody>

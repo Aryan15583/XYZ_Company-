@@ -38,10 +38,10 @@ export function CartPageClient() {
       if (restoring) setCouponInput(code.toUpperCase());
       setDiscountPercent(data.discountPercent ?? 0);
       setCouponFeedback({ message: `✓ Coupon applied! ${data.discountPercent}% off your order.`, ok: true });
-      sessionStorage.setItem("ariseNumero_coupon", code.toUpperCase());
+      sessionStorage.setItem("xyzCompany_coupon", code.toUpperCase());
     } else {
       setDiscountPercent(0);
-      sessionStorage.removeItem("ariseNumero_coupon");
+      sessionStorage.removeItem("xyzCompany_coupon");
       setCouponFeedback({ message: `✕ ${data.message || "Invalid coupon code."}`, ok: false });
     }
   }
@@ -65,7 +65,7 @@ export function CartPageClient() {
   const hasItems = items.length > 0;
   useEffect(() => {
     if (!hasItems) return;
-    const saved = sessionStorage.getItem("ariseNumero_coupon");
+    const saved = sessionStorage.getItem("xyzCompany_coupon");
     if (!saved) return;
     fetchCouponCheck(saved)
       .then((data) => showCouponResult(saved, data, true))
@@ -84,8 +84,8 @@ export function CartPageClient() {
           <div className="cart-empty">
             <div className="cart-empty-icon"><Icon name="bag" size={40} /></div>
             <h2>Your cart is empty</h2>
-            <p>Add some beautiful crystal bracelets to get started.</p>
-            <Link href="/shop" className="btn btn-primary" aria-label="Continue shopping for bracelets">
+            <p>Add some products to get started.</p>
+            <Link href="/shop" className="btn btn-primary" aria-label="Continue shopping">
               Continue Shopping
             </Link>
           </div>
@@ -117,7 +117,7 @@ export function CartPageClient() {
                   <img src={item.imageUrl || "/assets/placeholder.svg"} alt="" className="cart-item-img" width={80} height={80} />
                   <div className="cart-item-info">
                     <span className="cart-item-name">{item.name}</span>
-                    <span className="cart-item-meta">Crystal Bracelet</span>
+                    
                   </div>
                 </td>
                 <td className="cart-price">{format(item.priceUsd)}</td>

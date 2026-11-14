@@ -1,4 +1,4 @@
-import type { Product, Order, Booking } from "@prisma/client";
+import type { Product, Order } from "@prisma/client";
 import type { OrderDTO, ProductDTO } from "./types";
 
 export function serializeProduct(p: Product): ProductDTO {
@@ -61,24 +61,5 @@ export function serializeOrder(o: Order): OrderDTO {
     trackingNumber: o.trackingNumber,
     carrier: o.carrier,
     date: o.date.toISOString(),
-  };
-}
-
-export function serializeBooking(b: Booking) {
-  return {
-    id: b.id,
-    firstName: b.firstName,
-    lastName: b.lastName,
-    clientEmail: b.clientEmail,
-    birthName: b.birthName,
-    dateOfBirth: b.dateOfBirth,
-    packageSelected: b.packageSelected,
-    packagePriceUsd: b.packagePriceUsd,
-    timezone: b.timezone,
-    sessionDate: b.sessionDate,
-    readingFocus: b.readingFocus,
-    additionalNotes: b.additionalNotes,
-    status: b.status,
-    submittedAt: b.submittedAt.toISOString(),
   };
 }

@@ -27,7 +27,7 @@ async function main() {
 
   const result = await sendEmail({
     to,
-    subject: "Arise Numero — test email",
+    subject: "XYZ Company — test email",
     html: "<p>If you can read this, admin login codes and order emails will reach this inbox. ✦</p>",
   });
 

@@ -7,7 +7,7 @@ import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "Frequently Asked Questions",
   description:
-    "Answers about Arise Numero orders, shipping and delivery times, payment methods, returns, crystal care and numerology readings.",
+    "Answers about XYZ Company orders, shipping and delivery times, payment methods and returns.",
   path: "/faq",
 });
 
@@ -19,7 +19,7 @@ const GROUPS: { title: string; items: Faq[] }[] = [
     items: [
       {
         q: "Do you ship worldwide?",
-        a: "Yes. We ship handcrafted bracelets to customers worldwide. Delivery times and shipping costs depend on your region.",
+        a: "Yes. We ship to customers worldwide. Delivery times and shipping costs depend on your region.",
         link: { href: "/returns#shipping", label: "See shipping rates and delivery times" },
       },
       {
@@ -59,47 +59,11 @@ const GROUPS: { title: string; items: Faq[] }[] = [
     ],
   },
   {
-    title: "Our crystals",
-    items: [
-      {
-        q: "Are your crystals genuine?",
-        a: "Yes. Every bracelet is made with genuine, ethically sourced gemstones. Because they are natural stones, colour, texture and pattern vary slightly from bead to bead and from the photos — that's a mark of authenticity, not a defect.",
-      },
-      {
-        q: "What size will fit me?",
-        a: "Our bracelets are made on a strong elastic cord and fit wrists of roughly 15–20 cm. On the product page you can choose S (15–16 cm), M (17–18 cm) or L (19–20 cm).",
-      },
-      {
-        q: "How should I care for my bracelet?",
-        a: "Keep it out of prolonged direct sunlight, remove it before swimming, bathing or using chemical cleaners, clean it gently with a soft dry cloth, and store it in its gift box or a soft pouch. Avoid over-stretching the cord.",
-      },
-    ],
-  },
-  {
-    title: "Numerology readings",
-    items: [
-      {
-        q: "What does the free numerology calculator do?",
-        a: "It instantly works out your Life Path, Expression and Soul Urge numbers from your date of birth and name using the Pythagorean system, with a short description of each.",
-        link: { href: "/numerology", label: "Try the free calculator" },
-      },
-      {
-        q: "What is a personalised reading?",
-        a: "A booked reading is a fuller, written interpretation of your numbers prepared for you. Choose a package, tell us your details and preferred time, and we'll be in touch within 24 hours to confirm.",
-        link: { href: "/booking", label: "Book a reading" },
-      },
-      {
-        q: "Is numerology professional advice?",
-        a: "No. Numerology readings are offered for self-insight and entertainment only. They are not legal, financial, medical or psychological advice and shouldn't be the sole basis for any life decision.",
-      },
-    ],
-  },
-  {
     title: "Returns & privacy",
     items: [
       {
         q: "What is your return policy?",
-        a: "You can return non-customised items within 14 days of delivery if they are unworn and in their original packaging. Contact us within the 14 days to start a return; refunds are processed within 5–7 business days of us receiving the item. Return shipping is the buyer's responsibility unless the item arrived defective.",
+        a: "You can return non-customised items within 14 days of delivery if they are unused and in their original packaging. Contact us within the 14 days to start a return; refunds are processed within 5–7 business days of us receiving the item. Return shipping is the buyer's responsibility unless the item arrived defective.",
         link: { href: "/returns", label: "Read the full returns policy" },
       },
       {
@@ -108,7 +72,7 @@ const GROUPS: { title: string; items: Faq[] }[] = [
       },
       {
         q: "How do you use my personal information?",
-        a: "Only to fulfil your order or booking and to reply to your messages. If you join our newsletter you can unsubscribe at any time from the link in any email.",
+        a: "Only to fulfil your order and to reply to your messages. If you join our newsletter you can unsubscribe at any time from the link in any email.",
         link: { href: "/privacy", label: "Read the privacy policy" },
       },
     ],

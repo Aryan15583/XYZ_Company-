@@ -10,7 +10,7 @@ import { Icon } from "@/components/Icon";
 export const metadata = pageMetadata({
   title: "Contact Us",
   description:
-    "Contact Arise Numero. Get in touch for order support, product questions, or numerology reading enquiries. We respond within 24–48 hours.",
+    "Contact XYZ Company. Get in touch for order support or product questions. We respond within 24–48 hours.",
   path: "/contact",
 });
 
@@ -20,20 +20,12 @@ const FAQS = [
     a: "Delivery times vary by region: India (5–10 days), USA/Canada (7–14 days), Europe (10–18 days), Australia (12–20 days). See our full Shipping Policy.",
   },
   {
-    q: "Are the crystals genuine?",
-    a: "Yes. Every bracelet uses certified authentic gemstones. Natural colour and texture variations are expected and are signs of authenticity.",
-  },
-  {
     q: "Can I return my order?",
     a: "We offer a 14-day return window on all non-customised items. See our Returns Policy for full details.",
   },
   {
-    q: "What is numerology? Is it scientific?",
-    a: "Numerology is an ancient belief system that assigns meaning to numbers derived from names and dates. It is not a scientifically validated discipline. Our readings are provided for entertainment and self-insight purposes only.",
-  },
-  {
     q: "How is my personal data used?",
-    a: "Your data is collected only as needed to process your order or reading and is never sold to third parties. We comply with GDPR and CCPA.",
+    a: "Your data is collected only as needed to process your order and is never sold to third parties. We comply with GDPR and CCPA.",
   },
   {
     q: "Which payment methods do you accept?",
@@ -75,7 +67,7 @@ export default async function ContactPage({ searchParams }: { searchParams: Prom
               <ul className="contact-info-list" role="list">
                 <li>
                   <span className="contact-info-icon"><Icon name="mail" size={26} /></span>
-                  <div><strong>Email</strong><a href="mailto:hello@arisenumero.com">hello@arisenumero.com</a></div>
+                  <div><strong>Email</strong><a href="mailto:hello@example.com">hello@example.com</a></div>
                 </li>
                 <li>
                   <span className="contact-info-icon"><Icon name="clock" size={26} /></span>

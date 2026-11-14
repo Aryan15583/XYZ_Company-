@@ -13,6 +13,6 @@
   <rect width="400" height="400" fill="url(#glow-placeholder)" />
   <circle cx="200" cy="150" r="70" fill="#b8975a" opacity="0.18" />
   <text x="200" y="168" font-family="Georgia, serif" font-size="64" fill="#b8975a" text-anchor="middle" opacity="0.9">✦</text>
-  <text x="200" y="330" font-family="Georgia, serif" font-size="26" fill="#f0eafa" text-anchor="middle" opacity="0.92">Arise Numero</text>
-  <text x="200" y="358" font-family="Arial, sans-serif" font-size="12" letter-spacing="3" fill="#f0eafa" text-anchor="middle" opacity="0.55">ARISE NUMERO</text>
+  <text x="200" y="330" font-family="Georgia, serif" font-size="26" fill="#f0eafa" text-anchor="middle" opacity="0.92">XYZ Company</text>
+  <text x="200" y="358" font-family="Arial, sans-serif" font-size="12" letter-spacing="3" fill="#f0eafa" text-anchor="middle" opacity="0.55">XYZ COMPANY</text>
 </svg>

@@ -10,7 +10,6 @@ import type { ProductDTO } from "@/lib/types";
 import { AllCurrencies, CurrencyMenu, useAdminCurrency } from "@/components/admin/AdminCurrency";
 import { SelectAllCell, SelectCell, useBulkDelete } from "@/components/admin/BulkDelete";
 
-const BEAD_SIZES = ["", "4mm", "6mm", "8mm", "10mm", "12mm"];
 const BADGES = ["", "Bestseller", "New", "Sale", "Premium"];
 const PAGE_SIZE = 20;
 
@@ -47,7 +46,7 @@ function emptyForm(defaultCategory: string): FormState {
     id: "",
     name: "",
     category: defaultCategory,
-    productType: "bracelets",
+    productType: "products",
     beadSize: "8mm",
     priceUsd: "",
     originalPriceUsd: "",
@@ -122,7 +121,7 @@ export default function AdminProductsPage() {
       id: p.id,
       name: p.name,
       category: p.category || categories[0]?.slug || "",
-      productType: p.productType || "bracelets",
+      productType: p.productType || "products",
       beadSize: p.beadSize || "",
       priceUsd: String(p.priceUsd),
       originalPriceUsd: p.originalPriceUsd !== null ? String(p.originalPriceUsd) : "",
@@ -217,7 +216,7 @@ export default function AdminProductsPage() {
       <div className="page-header">
         <div>
           <div className="page-title">Products</div>
-          <div className="page-subtitle">Manage your crystal bracelet catalogue</div>
+          <div className="page-subtitle">Manage your product catalogue</div>
         </div>
         <div className="page-actions">
           {del.bar}
@@ -240,7 +239,7 @@ export default function AdminProductsPage() {
                 setPage(1);
               }}
             >
-              <option value="">All Stones</option>
+              <option value="">All Categories</option>
               {categories.map((c) => <option key={c.slug} value={c.slug}>{c.name}</option>)}
             </select>
             <select
@@ -261,7 +260,7 @@ export default function AdminProductsPage() {
         <div className="table-wrap">
           <table>
             <thead>
-              <tr><SelectAllCell bulk={del.bulk} /><th>Image</th><th>Name</th><th>Type / Stone</th><th>Price <CurrencyMenu /></th><th>Stock</th><th>Status</th><th>Featured</th><th>Actions</th></tr>
+              <tr><SelectAllCell bulk={del.bulk} /><th>Image</th><th>Name</th><th>Type / Category</th><th>Price <CurrencyMenu /></th><th>Stock</th><th>Status</th><th>Featured</th><th>Actions</th></tr>
             </thead>
             <tbody>
               {products.length === 0 ? (
@@ -329,18 +328,12 @@ export default function AdminProductsPage() {
                   <span className="form-hint">Decides which shop section it appears in.</span>
                 </div>
                 <div className="form-group">
-                  <label className="form-label">Stone</label>
+                  <label className="form-label">Category</label>
                   <select className="form-input" value={form.category} onChange={(e) => setForm((f) => ({ ...f, category: e.target.value }))}>
                     <option value="">— None —</option>
                     {categories.map((c) => <option key={c.slug} value={c.slug}>{c.name}</option>)}
                   </select>
-                  <span className="form-hint">Manage stones under Admin → Categories.</span>
-                </div>
-                <div className="form-group">
-                  <label className="form-label">Bead Size</label>
-                  <select className="form-input" value={form.beadSize} onChange={(e) => setForm((f) => ({ ...f, beadSize: e.target.value }))}>
-                    {BEAD_SIZES.map((s) => <option key={s} value={s}>{s || "— Not beaded —"}</option>)}
-                  </select>
+                  <span className="form-hint">Manage categories under Admin → Categories.</span>
                 </div>
                 <div className="form-group">
                   <label className="form-label">Price ({form.entryCurrency}) *</label>
@@ -383,8 +376,8 @@ export default function AdminProductsPage() {
                   <input className="form-input" value={form.ratingSummary} readOnly disabled title="Calculated automatically from approved reviews (Admin → Reviews)" />
                 </div>
                 <div className="form-group form-full">
-                  <label className="form-label">Material Description *</label>
-                  <input className="form-input" value={form.material} onChange={(e) => setForm((f) => ({ ...f, material: e.target.value }))} placeholder="e.g. Authentic 8mm Amethyst beads, elastic cord" />
+                  <label className="form-label">Material / Short Spec *</label>
+                  <input className="form-input" value={form.material} onChange={(e) => setForm((f) => ({ ...f, material: e.target.value }))} placeholder="e.g. Stainless steel, 500 ml" />
                 </div>
                 <div className="form-group form-full">
                   <label className="form-label">Full Description</label>

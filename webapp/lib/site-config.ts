@@ -19,8 +19,8 @@ export type SiteConfig = {
 };
 
 export const DEFAULT_SITE_CONFIG: SiteConfig = {
-  storeName: "Arise Numero",
-  supportEmail: "hello@arisenumero.com",
+  storeName: "XYZ Company",
+  supportEmail: "hello@example.com",
   standardShippingUsd: 5.99,
   expressShippingUsd: 14.99,
   freeShippingThresholdUsd: 50,

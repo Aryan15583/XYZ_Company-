@@ -6,7 +6,7 @@ import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
   title: "Unsubscribe",
-  description: "Unsubscribe from the Arise Numero newsletter.",
+  description: "Unsubscribe from the XYZ Company newsletter.",
   path: "/unsubscribe",
   noindex: true,
 });

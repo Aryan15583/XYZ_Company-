@@ -16,7 +16,6 @@ app.use(express.json());
 // ── API routes ───────────────────────────────────────────────────────
 app.use('/api', require('./routes/products'));
 app.use('/api', require('./routes/coupons'));
-app.use('/api', require('./routes/bookings'));
 app.use('/api', require('./routes/orders'));
 app.use('/api', require('./routes/paypal'));
 app.use('/api', require('./routes/admin'));
@@ -39,7 +38,7 @@ app.use('/api', (req, res) => res.status(404).json({ error: 'Not found.' }));
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Arise Numero server running on http://localhost:${PORT}`);
+  console.log(`XYZ Company server running on http://localhost:${PORT}`);
   console.log(`  Storefront:  http://localhost:${PORT}/index.html`);
   console.log(`  API:         http://localhost:${PORT}/api/products`);
 });

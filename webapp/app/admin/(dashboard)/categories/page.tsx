@@ -93,7 +93,7 @@ export default function AdminCategoriesPage() {
       <div className="page-header">
         <div>
           <div className="page-title">Categories</div>
-          <div className="page-subtitle">Manage crystal types shown in the shop filter and product form</div>
+          <div className="page-subtitle">Manage categories shown in the shop filter and product form</div>
         </div>
         <button className="btn btn-primary" onClick={openAdd}>+ Add Category</button>
       </div>
@@ -137,12 +137,12 @@ export default function AdminCategoriesPage() {
               <div className="form-grid" style={{ gridTemplateColumns: "1fr" }}>
                 <div className="form-group">
                   <label className="form-label">Slug *</label>
-                  <input className="form-input" value={slug} disabled={!!editingSlug} onChange={(e) => setSlug(e.target.value)} placeholder="e.g. moonstone" />
+                  <input className="form-input" value={slug} disabled={!!editingSlug} onChange={(e) => setSlug(e.target.value)} placeholder="e.g. kitchen" />
                   <span className="form-hint">Lowercase, hyphens only. Used as the product&apos;s category value.</span>
                 </div>
                 <div className="form-group">
                   <label className="form-label">Name *</label>
-                  <input className="form-input" value={name} onChange={(e) => setName(e.target.value)} placeholder="e.g. Moonstone" />
+                  <input className="form-input" value={name} onChange={(e) => setName(e.target.value)} placeholder="e.g. Kitchen" />
                 </div>
                 <div className="form-group">
                   <label className="form-label">Description</label>

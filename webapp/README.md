@@ -1,11 +1,8 @@
-# Arise Numero — Next.js
+# XYZ Company — Next.js
 
-A full Next.js rewrite of the Arise Numero crystal-bracelet-and-numerology
-storefront: same design, plus a real database, a real API, and a working
-admin panel (none of which the original static site had).
-
-**Start here → [PROGRESS.md](./PROGRESS.md)** — what's built, what's genuinely
-functional vs. needs your own API keys, known issues, and what to do next.
+The XYZ Company online shop: storefront, cart and checkout, a real database
+and API, and an admin panel. The catalogue starts empty — add categories and
+products in the admin panel.
 
 ## Quick start
 
@@ -15,7 +12,7 @@ easiest (see `.env.example`). Then:
 
 ```bash
 npm install
-npx prisma migrate deploy   # creates the tables and loads the catalogue
+npx prisma migrate deploy   # creates the tables
 npm run dev
 ```
 

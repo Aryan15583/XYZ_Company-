@@ -125,10 +125,10 @@ export function ShopClient({
           </fieldset>
 
           <fieldset className="filter-group">
-            <legend className="filter-label">Stone</legend>
+            <legend className="filter-label">Category</legend>
             <label className="filter-option">
               <input type="radio" name="crystal" checked={crystal === "all"} onChange={() => setCrystal("all")} />
-              All Stones
+              All Categories
             </label>
             {stonesInType.map((c) => (
               <label className="filter-option" key={c.slug}>
@@ -187,7 +187,7 @@ export function ShopClient({
             id="shop-search-input"
             type="search"
             className="form-input"
-            placeholder="Search crystals, pendants, rings…"
+            placeholder="Search products…"
             value={query}
             maxLength={80}
             onChange={(e) => setQuery(e.target.value)}

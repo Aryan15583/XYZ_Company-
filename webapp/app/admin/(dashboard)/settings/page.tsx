@@ -200,7 +200,7 @@ export default function AdminSettingsPage() {
         <div className="card-header"><span className="card-title">ℹ️ About</span></div>
         <div className="card-body">
           <p style={{ fontSize: "0.875rem", color: "var(--text-muted)", lineHeight: 1.7 }}>
-            <strong>Arise Numero Admin Panel</strong><br />
+            <strong>XYZ Company Admin Panel</strong><br />
             This page is not linked anywhere on the public site.<br />
             Your session is a secure, HTTP-only, SameSite=Strict cookie that expires after 8 hours, and is
             immediately invalidated if you sign out other sessions.<br />

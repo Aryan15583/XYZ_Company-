@@ -14,9 +14,7 @@ import { MobileMenu } from "./MobileMenu";
 const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "/shop", label: "Shop" },
-  { href: "/numerology", label: "Numerology" },
-  { href: "/booking", label: "Book a Reading" },
-  { href: "/guides", label: "Guides" },
+  { href: "/track-order", label: "Track Order" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
@@ -46,10 +44,10 @@ export function Header({ variant = "default" }: { variant?: "default" | "checkou
     {variant !== "checkout" && <AnnouncementBar />}
     <header className={`site-header ${variant === "checkout" ? "site-header--checkout" : ""}`} role="banner">
       <div className="header-inner container">
-        <Link href="/" className="logo" aria-label="Arise Numero Home">
+        <Link href="/" className="logo" aria-label="XYZ Company Home">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/assets/brand/logo-badge-160.png" alt="" className="logo-badge" width={52} height={52} />
-          <span className="logo-text">Arise Numero</span>
+          <span className="logo-text">XYZ Company</span>
         </Link>
 
         {variant === "checkout" ? (
@@ -132,12 +130,12 @@ export function Header({ variant = "default" }: { variant?: "default" | "checkou
 
       {variant !== "checkout" && searchOpen && (
         <form id="header-search" className="header-search container" role="search" onSubmit={submitSearch}>
-          <label htmlFor="header-search-input" className="sr-only">Search bracelets</label>
+          <label htmlFor="header-search-input" className="sr-only">Search products</label>
           <input
             id="header-search-input"
             type="search"
             className="form-input"
-            placeholder="Search bracelets — amethyst, protection, 8mm…"
+            placeholder="Search products…"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             onKeyDown={(e) => e.key === "Escape" && setSearchOpen(false)}

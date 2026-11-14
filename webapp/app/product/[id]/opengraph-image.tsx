@@ -3,7 +3,7 @@ import { prisma } from "@/lib/db";
 import { SITE_NAME, truncate } from "@/lib/seo";
 import { logoSealDataUrl } from "@/lib/brand-image";
 
-export const alt = `${SITE_NAME} crystal`;
+export const alt = `${SITE_NAME} product`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -16,7 +16,7 @@ export default async function Image({ params }: { params: Promise<{ id: string }
   });
 
   const name = product?.active ? product.name : SITE_NAME;
-  const material = product?.active ? truncate(product.material, 70) : "Authentic crystals";
+  const material = product?.active ? truncate(product.material, 70) : "XYZ Company";
   const price = product?.active ? `$${product.priceUsd.toFixed(2)}` : "";
   const seal = await logoSealDataUrl();
 

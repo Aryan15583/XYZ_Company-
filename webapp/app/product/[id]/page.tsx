@@ -11,8 +11,6 @@ import { ProductDetailClient } from "@/components/ProductDetailClient";
 import { ProductCard } from "@/components/ProductCard";
 import { getProductType } from "@/lib/product-types";
 import { RecentlyViewed } from "@/components/RecentlyViewed";
-import { crystalPath, getCrystalGuide } from "@/lib/guides/crystals";
-import { RUDRAKSHA_PATH } from "@/lib/guides/rudraksha";
 import { SITE_NAME, absoluteUrl, breadcrumbJsonLd, pageMetadata, productPath, truncate } from "@/lib/seo";
 
 // generateMetadata and the page both need the row; cache() makes it one query.
@@ -25,7 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
 
   const type = getProductType(row.productType);
   const title = !type || row.name.toLowerCase().includes(type.singular.toLowerCase()) ? row.name : `${row.name} ${type.singular}`;
-  const description = truncate(row.description) || `${row.name} — ${row.material || "natural crystal"}. Ships worldwide.`;
+  const description = truncate(row.description) || `${row.name} — ${row.material || "XYZ Company"}. Ships worldwide.`;
   return pageMetadata({
     title,
     description,
@@ -43,7 +41,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
   const productType = getProductType(product.productType);
 
   const [relatedRows, categoryRow, reviewStats] = await Promise.all([
-    // Same crystal type first, then fill up with other bestsellers/featured pieces.
+    // Same product type first, then fill up with other bestsellers/featured pieces.
     prisma.product.findMany({
       where: { active: true, id: { not: product.id } },
       orderBy: [{ featured: "desc" }, { sortOrder: "asc" }],
@@ -63,12 +61,6 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
     .sort((a, b) => score(b) - score(a))
     .slice(0, 3)
     .map(serializeProduct);
-
-  const stoneGuide = product.category ? getCrystalGuide(product.category) : null;
-  const guideLink =
-    product.productType === "rudraksha" ? { href: RUDRAKSHA_PATH, label: "Read our Rudraksha guide: what each mukhi means" }
-    : stoneGuide ? { href: crystalPath(stoneGuide.slug), label: `${stoneGuide.name} meaning, benefits & how to care for it` }
-    : undefined;
 
   const url = absoluteUrl(productPath(product.id));
   const imageUrls = [...new Set([product.imageUrl, ...product.images].filter((u): u is string => !!u))].map(absoluteUrl);
@@ -135,7 +127,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
           </ol>
         </nav>
 
-        <ProductDetailClient product={product} guide={guideLink} />
+        <ProductDetailClient product={product} />
 
         <section data-reveal className="section related-products" aria-labelledby="related-heading">
           <div className="container">

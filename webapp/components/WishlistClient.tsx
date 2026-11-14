@@ -33,19 +33,19 @@ export function WishlistClient() {
       <div className="cart-empty">
         <div className="cart-empty-icon"><Icon name="heart" size={40} /></div>
         <h2>Your wishlist is empty</h2>
-        <p>Tap the heart on any bracelet to save it here for later.</p>
-        <Link href="/shop" className="btn btn-primary">Browse Bracelets</Link>
+        <p>Tap the heart on any product to save it here for later.</p>
+        <Link href="/shop" className="btn btn-primary">Browse Products</Link>
       </div>
     );
   }
 
-  if (products === null) return <p className="text-muted" role="status">Loading your saved bracelets…</p>;
+  if (products === null) return <p className="text-muted" role="status">Loading your saved products…</p>;
 
   // Keep the order they were saved in; items that were hidden/removed since just drop out.
   const ordered = ids.map((id) => products.find((p) => p.id === id)).filter((p): p is ProductDTO => !!p);
 
   return (
-    <div className="product-grid" role="list" aria-label="Saved bracelets">
+    <div className="product-grid" role="list" aria-label="Saved products">
       {ordered.map((p) => (
         <ProductCard key={p.id} product={p} />
       ))}

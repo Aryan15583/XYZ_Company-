@@ -1,7 +1,7 @@
 // Cashfree Payment Gateway (PG) integration — covers UPI, GPay, Mastercard/
 // Visa cards, netbanking, and wallets through one hosted checkout, chosen
 // explicitly instead of Razorpay. Inert until CASHFREE_APP_ID and
-// CASHFREE_SECRET_KEY are set in .env — see PROGRESS.md / TODO.md for how
+// CASHFREE_SECRET_KEY are set in .env — see TODO.md for how
 // to get sandbox keys (instant, no KYC) and go live later (KYC required).
 //
 // Docs: https://docs.cashfree.com/reference/pg-new-apis-endpoint (API version

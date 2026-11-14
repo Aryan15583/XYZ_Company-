@@ -6,7 +6,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "Privacy Policy",
   description:
-    "Arise Numero Privacy Policy — how we collect, store, and protect your personal data. GDPR and CCPA compliant.",
+    "XYZ Company Privacy Policy — how we collect, store, and protect your personal data. GDPR and CCPA compliant.",
   path: "/privacy",
 });
 
@@ -47,17 +47,16 @@ export default function PrivacyPage() {
               <p className="legal-meta">Last updated: <time dateTime="2025-01-01">1 January 2025</time></p>
             </header>
 
-            <p>This Privacy Policy explains how Arise Numero (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) collects, uses, stores, and protects your personal data when you visit our website or purchase our products and services. We comply with the EU General Data Protection Regulation (GDPR), the UK GDPR, and the California Consumer Privacy Act (CCPA).</p>
+            <p>This Privacy Policy explains how XYZ Company (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) collects, uses, stores, and protects your personal data when you visit our website or purchase our products and services. We comply with the EU General Data Protection Regulation (GDPR), the UK GDPR, and the California Consumer Privacy Act (CCPA).</p>
 
             <section id="who-we-are"><h2>1. Who We Are</h2>
-              <p><strong>Data Controller:</strong> Arise Numero<br /><strong>Contact:</strong> <a href="mailto:privacy@arisenumero.com">privacy@arisenumero.com</a><br /><strong>Address:</strong> Mumbai, Maharashtra, India</p>
+              <p><strong>Data Controller:</strong> XYZ Company<br /><strong>Contact:</strong> <a href="mailto:privacy@example.com">privacy@example.com</a><br /><strong>Address:</strong> Mumbai, Maharashtra, India</p>
             </section>
 
             <section id="data-collected"><h2>2. Data We Collect</h2>
               <h3>2.1 Data You Provide Directly</h3>
               <ul>
                 <li><strong>Purchase data:</strong> Name, email, shipping address, phone number, order details</li>
-                <li><strong>Numerology data:</strong> Full birth name and date of birth, collected strictly to calculate your numeric blueprint</li>
                 <li><strong>Communication data:</strong> Messages sent via our contact form</li>
                 <li><strong>Marketing preferences:</strong> Whether you opt in to receive promotional emails</li>
               </ul>
@@ -73,7 +72,6 @@ export default function PrivacyPage() {
                 <thead><tr><th>Purpose</th><th>Data Used</th></tr></thead>
                 <tbody>
                   <tr><td>Processing and fulfilling your order</td><td>Name, address, email, phone, order details</td></tr>
-                  <tr><td>Calculating your numerology reading</td><td>Full birth name, date of birth — used solely for this purpose</td></tr>
                   <tr><td>Customer support</td><td>Email, name, order details</td></tr>
                   <tr><td>Sending order confirmations and updates</td><td>Email address</td></tr>
                   <tr><td>Improving our website (analytics)</td><td>Usage data (only with cookie consent)</td></tr>
@@ -111,7 +109,6 @@ export default function PrivacyPage() {
             <section id="data-retention"><h2>7. Data Retention</h2>
               <ul>
                 <li><strong>Order data:</strong> Retained for 7 years for legal and tax compliance</li>
-                <li><strong>Numerology data:</strong> Retained only as long as needed to deliver your reading</li>
                 <li><strong>Contact form data:</strong> 12 months after resolution of your enquiry</li>
               </ul>
             </section>
@@ -124,7 +121,7 @@ export default function PrivacyPage() {
                 <li><strong>Right to data portability:</strong> Receive your data in a structured format</li>
                 <li><strong>Right to withdraw consent:</strong> At any time, where processing is based on consent</li>
               </ul>
-              <p>To exercise any of these rights, contact us at <a href="mailto:privacy@arisenumero.com">privacy@arisenumero.com</a>.</p>
+              <p>To exercise any of these rights, contact us at <a href="mailto:privacy@example.com">privacy@example.com</a>.</p>
             </section>
 
             <section id="ccpa"><h2>9. California Residents — CCPA Rights</h2>
@@ -154,8 +151,8 @@ export default function PrivacyPage() {
 
             <section id="contact-privacy"><h2>13. Contact Us</h2>
               <address>
-                <strong>Arise Numero — Privacy Team</strong><br />
-                Email: <a href="mailto:privacy@arisenumero.com">privacy@arisenumero.com</a><br />
+                <strong>XYZ Company — Privacy Team</strong><br />
+                Email: <a href="mailto:privacy@example.com">privacy@example.com</a><br />
                 Address: Mumbai, Maharashtra, India
               </address>
             </section>

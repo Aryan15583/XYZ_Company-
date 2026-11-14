@@ -1,5 +1,5 @@
 /* =============================================================
-   ARISE NUMERO — globals.css
+   XYZ COMPANY — globals.css
    Ported from the original static site's styles.css.
    Dark / Light mode: 100% driven by browser prefers-color-scheme.
    No toggle button — updates live when OS/browser setting changes.
@@ -3597,7 +3597,7 @@ html { scroll-behavior: smooth; }
   .cart-main, .cart-layout > *, .checkout-layout > * { min-width: 0; }
 }
 
-/* Brand badge in the header (the circular Arise Numero seal). */
+/* Brand badge in the header (the circular XYZ Company seal). */
 .logo-badge { width: 52px; height: 52px; display: block; flex: none; border-radius: 50%; filter: drop-shadow(0 2px 6px rgba(26, 18, 40, 0.18)); transition: transform 0.4s ease; }
 .logo:hover .logo-badge { transform: rotate(-6deg) scale(1.04); }
 .logo { gap: 12px; }
@@ -4058,3 +4058,6 @@ html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) {
   .mnav-panel, .mnav-backdrop, .mnav-links li { transition: none; }
 }
+
+/* About page without a story photo: one centred text column. */
+.about-story-inner--single { grid-template-columns: 1fr; max-width: 760px; }

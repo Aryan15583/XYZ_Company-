@@ -82,25 +82,25 @@ export default async function HomePage() {
           <div className="hero-bg" aria-hidden="true"></div>
           <div className="container hero-split">
             <div className="hero-content">
-              <p className="eyebrow eyebrow--light">Natural crystals · Numerology</p>
+              <p className="eyebrow eyebrow--light">Welcome to XYZ Company</p>
               <h1 id="hero-heading" className="hero-title">
-                Wear the Universe.
+                Quality You Can Trust.
                 <br />
-                <span className="accent">Know Your Numbers.</span>
+                <span className="accent">Delivered to Your Door.</span>
               </h1>
               <p className="hero-subtitle">
-                Authentic crystals, gemstone jewellery &amp; personalised numerology readings, chosen by hand and delivered worldwide.
+                Carefully selected products, secure checkout and friendly support from order to delivery.
               </p>
               <div className="hero-cta-group">
                 <Link href="/shop" className="btn btn-primary btn-lg">
                   Shop the Collection <Icon name="arrowRight" size={18} />
                 </Link>
-                <Link href="/numerology" className="btn btn-outline btn-outline--light btn-lg">
-                  Free Reading
+                <Link href="/contact" className="btn btn-outline btn-outline--light btn-lg">
+                  Contact Us
                 </Link>
               </div>
               <ul className="hero-trust" aria-label="Why shop with us">
-                <li><Icon name="gem" size={16} /> Authentic stones</li>
+                <li><Icon name="check" size={16} /> Quality checked</li>
                 <li><Icon name="globe" size={16} /> Ships worldwide</li>
                 <li><Icon name="returns" size={16} /> 14-day returns</li>
               </ul>
@@ -108,13 +108,13 @@ export default async function HomePage() {
             <div className="hero-visual" aria-hidden="true">
               <div className="hero-frame">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/assets/products/hero-still-life.jpg" alt="" width={1200} height={1350} fetchPriority="high" />
+                <img src="/assets/brand/icon-512.png" alt="" width={512} height={512} fetchPriority="high" style={{ objectFit: "contain", padding: "14%" }} />
               </div>
             </div>
           </div>
         </section>
 
-        <section className="trust-bar" aria-label="Shopping with Arise Numero">
+        <section className="trust-bar" aria-label="Shopping with XYZ Company">
           <div className="container trust-bar-inner">
             <div className="trust-item"><Icon name="lock" /><span>Secure checkout</span></div>
             <div className="trust-item"><Icon name="card" /><span>UPI, cards &amp; cash on delivery</span></div>
@@ -126,12 +126,13 @@ export default async function HomePage() {
           </div>
         </section>
 
+        {typeTiles.length > 0 && (
         <section data-reveal className="section shop-categories" aria-labelledby="categories-heading">
           <div className="container">
             <div className="section-header">
               <p className="eyebrow">The Collection</p>
               <h2 id="categories-heading" className="section-title">Shop by Category</h2>
-              <p className="section-subtitle">Bracelets, pendants, rings, crystal pencils and more — all natural stones</p>
+              <p className="section-subtitle">Find what you&apos;re looking for</p>
             </div>
             <div className="category-tiles" role="list">
               {typeTiles.map((t) => (
@@ -141,7 +142,7 @@ export default async function HomePage() {
                   <span className="category-tile-body">
                     <span className="category-tile-name">{t.name}</span>
                     <span className="category-tile-count">
-                      {t.count} piece{t.count === 1 ? "" : "s"} <Icon name="arrowRight" size={14} />
+                      {t.count} item{t.count === 1 ? "" : "s"} <Icon name="arrowRight" size={14} />
                     </span>
                   </span>
                 </Link>
@@ -149,14 +150,15 @@ export default async function HomePage() {
             </div>
           </div>
         </section>
+        )}
 
         {products.length > 0 && (
           <section data-reveal className="section featured-products" aria-labelledby="featured-heading">
             <div className="container">
               <div className="section-header">
                 <p className="eyebrow">Curated</p>
-              <h2 id="featured-heading" className="section-title">Featured Pieces</h2>
-                <p className="section-subtitle">Each piece is handcrafted with authentic gemstones and natural variations</p>
+              <h2 id="featured-heading" className="section-title">Featured Products</h2>
+                <p className="section-subtitle">Hand-picked favourites from our range</p>
               </div>
               <div className="product-grid" role="list" aria-label="Featured products">
                 {products.map((p) => (
@@ -172,40 +174,18 @@ export default async function HomePage() {
           </section>
         )}
 
-        <section data-reveal className="section numerology-teaser" aria-labelledby="numerology-heading">
-          <div className="container numerology-teaser-inner">
-            <div className="numerology-text">
-              <p className="eyebrow eyebrow--light">Free tool</p>
-              <h2 id="numerology-heading" className="section-title">Discover Your Life Path Number</h2>
-              <p>
-                Enter your date of birth for an instant free reading. Uncover the numeric patterns that shape your
-                personality, relationships, and life purpose.
-              </p>
-              <p className="disclaimer-inline">
-                <em>For self-insight and entertainment purposes only. Not a substitute for professional advice.</em>
-              </p>
-              <Link href="/numerology" className="btn btn-primary btn-lg" aria-label="Try free numerology calculator">
-                Try Free Calculator
-              </Link>
-            </div>
-            <div className="numerology-widget-preview" aria-hidden="true">
-              <div className="number-display">7</div>
-              <p className="number-label">The Seeker</p>
-            </div>
-          </div>
-        </section>
 
         <section data-reveal className="section why-us" aria-labelledby="why-heading">
           <div className="container">
             <div className="section-header">
               <p className="eyebrow">Our promise</p>
-              <h2 id="why-heading" className="section-title">Why Choose Arise Numero</h2>
+              <h2 id="why-heading" className="section-title">Why Choose XYZ Company</h2>
             </div>
             <div className="features-grid" role="list">
               <div className="feature-card" role="listitem">
-                <span className="feature-icon"><Icon name="gem" size={26} /></span>
-                <h3>100% Authentic Crystals</h3>
-                <p>Every piece uses genuine natural gemstones, ethically sourced with natural colour and texture variations.</p>
+                <span className="feature-icon"><Icon name="check" size={26} /></span>
+                <h3>Quality Checked</h3>
+                <p>Every order is checked and packed with care before it leaves us.</p>
               </div>
               <div className="feature-card" role="listitem">
                 <span className="feature-icon"><Icon name="globe" size={26} /></span>
