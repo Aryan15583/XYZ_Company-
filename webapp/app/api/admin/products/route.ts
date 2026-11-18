@@ -81,7 +81,7 @@ export async function POST(req: NextRequest) {
         priceUsd: p.priceUsd,
         originalPriceUsd: p.originalPriceUsd ?? null,
         category: p.category || null,
-        productType: p.productType || "products",
+        productType: p.productType || "bracelets",
         beadSize: p.beadSize || null,
         stock: p.stock,
         lowStockThreshold: p.lowStockThreshold ?? 5,

@@ -12,7 +12,6 @@ import { getStoreRating } from "@/lib/ratings";
 import { starString } from "@/lib/stars";
 import { PRODUCT_TYPES } from "@/lib/product-types";
 import { Icon } from "@/components/Icon";
-import { thumbnailFor } from "@/lib/product-thumbs";
 
 const profileLinks = getSocialLinks().filter((s) => s.label !== "WhatsApp").map((s) => s.href);
 
@@ -60,17 +59,15 @@ export default async function HomePage() {
       take: 3,
       include: { product: { select: { name: true } } },
     }),
-    // One tile per product type that has products, using its first product's photo.
+    // Product counts per type for the "Shop by Category" tiles.
     prisma.product.findMany({
       where: { active: true },
       orderBy: { sortOrder: "asc" },
-      select: { productType: true, imageUrl: true },
+      select: { productType: true },
     }),
   ]);
-  const typeTiles = PRODUCT_TYPES.map((t) => {
-    const rows = typeRows.filter((r) => r.productType === t.slug);
-    return { ...t, count: rows.length, image: rows.find((r) => r.imageUrl)?.imageUrl || "/assets/placeholder.svg" };
-  }).filter((t) => t.count > 0);
+  // Every type gets a tile with its own category photo, even before it has products.
+  const typeTiles = PRODUCT_TYPES.map((t) => ({ ...t, count: typeRows.filter((r) => r.productType === t.slug).length }));
   const products = featured.map(serializeProduct);
 
   return (
@@ -132,17 +129,17 @@ export default async function HomePage() {
             <div className="section-header">
               <p className="eyebrow">The Collection</p>
               <h2 id="categories-heading" className="section-title">Shop by Category</h2>
-              <p className="section-subtitle">Find what you&apos;re looking for</p>
+              <p className="section-subtitle">Natural crystals, crafted into pieces to wear and keep close</p>
             </div>
             <div className="category-tiles" role="list">
               {typeTiles.map((t) => (
                 <Link key={t.slug} href={`/shop?type=${t.slug}`} className="category-tile" role="listitem">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={thumbnailFor(t.image) ?? t.image} alt="" loading="lazy" decoding="async" width={300} height={300} />
+                  <img src={t.image} alt="" loading="lazy" decoding="async" width={300} height={300} />
                   <span className="category-tile-body">
                     <span className="category-tile-name">{t.name}</span>
                     <span className="category-tile-count">
-                      {t.count} item{t.count === 1 ? "" : "s"} <Icon name="arrowRight" size={14} />
+                      {t.count > 0 ? `${t.count} item${t.count === 1 ? "" : "s"}` : "Explore"} <Icon name="arrowRight" size={14} />
                     </span>
                   </span>
                 </Link>

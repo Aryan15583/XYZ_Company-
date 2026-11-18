@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PRODUCT_TYPES } from "@/lib/product-types";
 import { CookieSettingsLink } from "./CookieSettingsLink";
 import { NewsletterForm } from "./NewsletterForm";
 import { getSocialLinks } from "@/lib/social";
@@ -47,6 +48,9 @@ export function Footer({ minimal = false }: { minimal?: boolean }) {
           <h4>Shop</h4>
           <ul role="list">
             <li><Link href="/shop">All Products</Link></li>
+            {PRODUCT_TYPES.slice(0, 4).map((t) => (
+              <li key={t.slug}><Link href={`/shop?type=${t.slug}`}>{t.name}</Link></li>
+            ))}
             <li><Link href="/wishlist">Wishlist</Link></li>
             <li><Link href="/cart">Cart</Link></li>
           </ul>

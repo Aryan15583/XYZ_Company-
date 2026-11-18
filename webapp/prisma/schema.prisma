@@ -31,7 +31,7 @@ model Product {
   originalPriceUsd  Float?   @map("original_price_usd")
   category          String? // the stone, e.g. "amethyst" (Category.slug)
   // What kind of item it is — see lib/product-types.ts (bracelets, pendants, rings…)
-  productType       String   @default("products") @map("product_type")
+  productType       String   @default("bracelets") @map("product_type")
   beadSize          String?  @map("bead_size")
   stock             Int      @default(0)
   lowStockThreshold Int      @default(5) @map("low_stock_threshold")
