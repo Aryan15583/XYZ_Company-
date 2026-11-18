@@ -9,20 +9,20 @@ import "../../admin.css";
 export const metadata = { title: "Invoice", robots: { index: false, follow: false } };
 
 const PRINT_CSS = `
-  .invoice-page { max-width: 780px; margin: 0 auto; padding: 32px 24px; font-family: 'Segoe UI', system-ui, sans-serif; color: #10302c; background: #fff; min-height: 100vh; }
+  .invoice-page { max-width: 780px; margin: 0 auto; padding: 32px 24px; font-family: 'Segoe UI', system-ui, sans-serif; color: #191933; background: #fff; min-height: 100vh; }
   .invoice-page table { width: 100%; border-collapse: collapse; }
-  .invoice-page th { text-align: left; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: #667a75; border-bottom: 2px solid #d5ddd7; padding: 8px 0; }
+  .invoice-page th { text-align: left; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: #6a7f94; border-bottom: 2px solid #d5dbe3; padding: 8px 0; }
   .invoice-page td { padding: 10px 0; border-bottom: 1px solid #eee; vertical-align: top; }
   .invoice-page .right { text-align: right; }
   .invoice-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; margin-bottom: 32px; }
-  .invoice-brand { font-size: 26px; font-weight: 700; color: #c27b5c; }
+  .invoice-brand { font-size: 26px; font-weight: 700; color: #f4b400; }
   .invoice-meta { text-align: right; font-size: 14px; line-height: 1.6; }
   .invoice-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 28px; font-size: 14px; line-height: 1.6; }
-  .invoice-cols h3 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: #667a75; margin: 0 0 6px; }
+  .invoice-cols h3 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: #6a7f94; margin: 0 0 6px; }
   .invoice-totals { margin-left: auto; width: 280px; margin-top: 16px; font-size: 14px; }
   .invoice-totals td { border: 0; padding: 4px 0; }
-  .invoice-totals .grand td { border-top: 2px solid #10302c; padding-top: 8px; font-size: 16px; font-weight: 700; }
-  .invoice-foot { margin-top: 40px; font-size: 12px; color: #667a75; border-top: 1px solid #d5ddd7; padding-top: 12px; }
+  .invoice-totals .grand td { border-top: 2px solid #191933; padding-top: 8px; font-size: 16px; font-weight: 700; }
+  .invoice-foot { margin-top: 40px; font-size: 12px; color: #6a7f94; border-top: 1px solid #d5dbe3; padding-top: 12px; }
   @media print { .no-print { display: none !important; } .invoice-page { padding: 0; } body { background: #fff !important; } }
 `;
 
@@ -60,7 +60,7 @@ export default async function InvoicePage({ params }: { params: Promise<{ id: st
       <div className="invoice-head">
         <div>
           <div className="invoice-brand">✦ {config.storeName}</div>
-          <div style={{ fontSize: 13, color: "#667a75", marginTop: 4 }}>{config.supportEmail}</div>
+          <div style={{ fontSize: 13, color: "#6a7f94", marginTop: 4 }}>{config.supportEmail}</div>
         </div>
         <div className="invoice-meta">
           <strong style={{ fontSize: 20 }}>INVOICE</strong>

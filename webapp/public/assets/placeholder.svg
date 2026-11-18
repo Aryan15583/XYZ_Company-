@@ -1,12 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
   <defs>
     <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#eef1ec"/>
-      <stop offset="1" stop-color="#f7e3d8"/>
+      <stop offset="0" stop-color="#26324f"/>
+      <stop offset="1" stop-color="#2f4f68"/>
     </linearGradient>
   </defs>
   <rect width="400" height="400" fill="url(#g)"/>
-  <path d="M200 110l42 52-42 128-42-128z" fill="none" stroke="#3f7d6e" stroke-width="5" stroke-linejoin="round"/>
-  <path d="M158 162h84M200 110v180" stroke="#3f7d6e" stroke-width="3" opacity=".5"/>
-  <text x="200" y="335" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#10302c">Arcana Crystals</text>
+  <path d="M200 110l42 52-42 128-42-128z" fill="none" stroke="#00a9a5" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M158 162h84M200 110v180" stroke="#00a9a5" stroke-width="3" opacity=".5"/>
+  <text x="200" y="335" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#ffdab9">Arcana Crystals</text>
 </svg>

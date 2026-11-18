@@ -142,15 +142,15 @@ export function adminLoginCodeEmail(opts: {
     subject: "Your Arcana Crystals admin login code",
     html: `
       <div style="font-family:sans-serif;max-width:480px;margin:auto;">
-        <h1 style="color:#c27b5c;">Arcana Crystals</h1>
+        <h1 style="color:#f4b400;">Arcana Crystals</h1>
         <p>Use this one-time code to sign in to the admin panel:</p>
         <p style="font-size:30px;letter-spacing:6px;font-family:monospace;font-weight:700;
-                  background:#f5f1eb;padding:16px 20px;border-radius:10px;text-align:center;">
+                  background:#191933;padding:16px 20px;border-radius:10px;text-align:center;">
           ${escapeHtml(opts.code)}
         </p>
         <p>It expires in ${opts.ttlMinutes} minutes and works <strong>once</strong>.
         Asking for a new code cancels this one.</p>
-        <p style="color:#667a75;font-size:13px;">
+        <p style="color:#6a7f94;font-size:13px;">
           Requested from IP ${escapeHtml(opts.requestIp || "unknown")}.
           If this wasn't you, ignore this email — without the code, nobody can sign in.
           Never share this code with anyone.
@@ -162,10 +162,10 @@ export function adminLoginCodeEmail(opts: {
 
 function emailShell(inner: string): string {
   return `
-    <div style="font-family:sans-serif;max-width:520px;margin:auto;color:#10302c;">
-      <h1 style="color:#c27b5c;">Arcana Crystals</h1>
+    <div style="font-family:sans-serif;max-width:520px;margin:auto;color:#191933;">
+      <h1 style="color:#f4b400;">Arcana Crystals</h1>
       ${inner}
-      <p style="color:#667a75;font-size:12px;margin-top:32px;">Arcana Crystals</p>
+      <p style="color:#6a7f94;font-size:12px;margin-top:32px;">Arcana Crystals</p>
     </div>
   `;
 }
@@ -206,7 +206,7 @@ function itemsTable(itemsJson?: string | null): string {
 
 function trackButton(orderId: string): string {
   const url = `${getSiteUrl()}/track-order?id=${encodeURIComponent(orderId)}`;
-  return `<p><a href="${escapeHtml(url)}" style="display:inline-block;background:#c27b5c;color:#10302c;padding:10px 18px;border-radius:8px;text-decoration:none;font-weight:600;">Track your order</a></p>`;
+  return `<p><a href="${escapeHtml(url)}" style="display:inline-block;background:#f4b400;color:#191933;padding:10px 18px;border-radius:8px;text-decoration:none;font-weight:600;">Track your order</a></p>`;
 }
 
 export function orderConfirmationEmail(
@@ -216,7 +216,7 @@ export function orderConfirmationEmail(
   const bank =
     order.paymentMethod === "bank_transfer"
       ? `<h3 style="margin-bottom:4px;">Pay by bank transfer</h3>
-         <p style="white-space:pre-wrap;background:#f5f1eb;padding:12px 14px;border-radius:8px;">${escapeHtml(
+         <p style="white-space:pre-wrap;background:#191933;padding:12px 14px;border-radius:8px;">${escapeHtml(
            opts.bankInstructions?.trim() || "We'll email you our bank details shortly."
          )}</p>
          <p>Please use <strong>${escapeHtml(order.id)}</strong> as the payment reference. Your order ships once the payment arrives.</p>`
@@ -245,7 +245,7 @@ export function orderStatusEmail(
   status: string,
   message?: string | null
 ): { subject: string; html: string } | null {
-  const note = message?.trim() ? `<p style="background:#f5f1eb;padding:10px 14px;border-radius:8px;">${escapeHtml(message.trim())}</p>` : "";
+  const note = message?.trim() ? `<p style="background:#191933;padding:10px 14px;border-radius:8px;">${escapeHtml(message.trim())}</p>` : "";
   const hi = `<p>Hi ${escapeHtml(order.customerName || "there")},</p>`;
   const id = escapeHtml(order.id);
 
@@ -294,7 +294,7 @@ export function newsletterWelcomeEmail(opts: {
     html: emailShell(`
       <p>Thanks for subscribing! You'll hear from us about new products and offers — never spam.</p>
       ${offer}
-      <p style="font-size:12px;color:#667a75;">Changed your mind? <a href="${escapeHtml(opts.unsubscribeUrl)}">Unsubscribe</a> any time.</p>
+      <p style="font-size:12px;color:#6a7f94;">Changed your mind? <a href="${escapeHtml(opts.unsubscribeUrl)}">Unsubscribe</a> any time.</p>
     `),
   };
 }
@@ -306,8 +306,8 @@ export function backInStockEmail(opts: { productName: string; productUrl: string
     html: emailShell(`
       <p>Good news — <strong>${escapeHtml(opts.productName)}</strong> is back in stock.</p>
       <p>You asked us to let you know. Stock is limited, so it may sell out again soon.</p>
-      <p><a href="${escapeHtml(opts.productUrl)}" style="display:inline-block;background:#c27b5c;color:#10302c;padding:10px 18px;border-radius:8px;text-decoration:none;font-weight:600;">Shop it now</a></p>
-      <p style="font-size:12px;color:#667a75;">This was a one-time alert — we won't email you about this product again.</p>
+      <p><a href="${escapeHtml(opts.productUrl)}" style="display:inline-block;background:#f4b400;color:#191933;padding:10px 18px;border-radius:8px;text-decoration:none;font-weight:600;">Shop it now</a></p>
+      <p style="font-size:12px;color:#6a7f94;">This was a one-time alert — we won't email you about this product again.</p>
     `),
   };
 }

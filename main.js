@@ -450,17 +450,17 @@ function showAddedToast(name) {
     right: 24px;
     z-index: 9999;
     background: var(--bg-surface, #fff);
-    border: 1.5px solid var(--brand-gold, #c27b5c);
+    border: 1.5px solid var(--brand-gold, #f4b400);
     border-radius: 12px;
     padding: 14px 20px;
     box-shadow: 0 8px 32px rgba(0,0,0,0.18);
     font-size: 0.9rem;
-    color: var(--text-primary, #10302c);
+    color: var(--text-primary, #191933);
     max-width: 320px;
     animation: fadeIn 0.25s ease;
     font-family: 'Manrope', sans-serif;
   `;
-  toast.querySelector('a').style.cssText = 'color: var(--brand-gold,#c27b5c); font-weight:600;';
+  toast.querySelector('a').style.cssText = 'color: var(--brand-gold,#f4b400); font-weight:600;';
   document.body.appendChild(toast);
 
   // LINE 400: Auto-remove after 3.5 seconds
@@ -914,20 +914,20 @@ function initPayPalButton() {
         document.body.innerHTML = `
           <div style="min-height:100vh;display:flex;align-items:center;
                       justify-content:center;font-family:'Manrope',sans-serif;
-                      background:var(--bg-page,#f7f6f2);text-align:center;padding:40px;">
+                      background:var(--bg-page,#fdfdfd);text-align:center;padding:40px;">
             <div>
               <div style="font-size:4rem;margin-bottom:16px;">✦</div>
               <h1 style="font-family:'Fraunces',serif;font-size:2.5rem;
-                         color:#10302c;margin-bottom:12px;">Order Confirmed!</h1>
-              <p style="color:#667a75;margin-bottom:8px;">
+                         color:#191933;margin-bottom:12px;">Order Confirmed!</h1>
+              <p style="color:#6a7f94;margin-bottom:8px;">
                 Thank you, <strong>${details.payer.name.given_name}</strong>!
               </p>
-              <p style="color:#667a75;margin-bottom:24px;">
+              <p style="color:#6a7f94;margin-bottom:24px;">
                 Payment ID: <code>${details.id}</code><br/>
                 A confirmation has been sent to <strong>${details.payer.email_address}</strong>.
               </p>
               <a href="index.html"
-                 style="background:#c27b5c;color:#10302c;padding:14px 32px;
+                 style="background:#f4b400;color:#191933;padding:14px 32px;
                         border-radius:8px;font-weight:600;text-decoration:none;">
                 Continue Shopping
               </a>

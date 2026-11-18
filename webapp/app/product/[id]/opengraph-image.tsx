@@ -30,13 +30,13 @@ export default async function Image({ params }: { params: Promise<{ id: string }
           flexDirection: "column",
           justifyContent: "space-between",
           padding: "72px 80px",
-          background: "linear-gradient(135deg, #10302c 0%, #2d1f4a 100%)",
-          color: "#eef5f1",
+          background: "linear-gradient(135deg, #191933 0%, #2d1f4a 100%)",
+          color: "#fdfdfd",
         }}
       >
         <div style={{ display: "flex", alignItems: "center" }}>
           <img src={seal} width={64} height={64} alt="" style={{ marginRight: 20 }} />
-          <div style={{ fontSize: 36, color: "#e2a487", letterSpacing: 2, display: "flex" }}>{SITE_NAME}</div>
+          <div style={{ fontSize: 36, color: "#ffdab9", letterSpacing: 2, display: "flex" }}>{SITE_NAME}</div>
         </div>
 
         <div style={{ display: "flex", flexDirection: "column" }}>
@@ -45,7 +45,7 @@ export default async function Image({ params }: { params: Promise<{ id: string }
         </div>
 
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <div style={{ fontSize: 64, fontWeight: 700, color: "#e2a487", display: "flex" }}>{price}</div>
+          <div style={{ fontSize: 64, fontWeight: 700, color: "#ffdab9", display: "flex" }}>{price}</div>
           <div style={{ fontSize: 28, color: "#a99bc0", display: "flex" }}>Handcrafted · Ships worldwide</div>
         </div>
       </div>
