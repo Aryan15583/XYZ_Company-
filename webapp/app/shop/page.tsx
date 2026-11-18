@@ -12,7 +12,7 @@ import { absoluteUrl, breadcrumbJsonLd, pageMetadata, productPath, truncate } fr
 type Props = { searchParams: Promise<{ cat?: string; q?: string; type?: string }> };
 
 const SHOP_DESCRIPTION =
-  "Shop the full XYZ Company range. Delivered to your door.";
+  "Shop the full Arcana Crystals range. Delivered to your door.";
 
 // Each product type (/shop?type=pendants), stone (/shop?cat=amethyst) and the two
 // combined is its own indexable landing page with its own title and canonical
@@ -34,9 +34,9 @@ function landing(type: ProductTypeInfo | null, category: { slug: string; name: s
     : category ? category.name
     : "Shop All Products";
   const description =
-    type && category ? `Shop ${category.name} ${type.name.toLowerCase()} at XYZ Company. ${category.description || ""} Ships worldwide.`
-    : type ? `${type.description} Shop ${type.name.toLowerCase()} at XYZ Company. Ships worldwide.`
-    : category ? `${category.description ? `${category.description} ` : ""}Shop ${category.name} at XYZ Company. Ships worldwide.`
+    type && category ? `Shop ${category.name} ${type.name.toLowerCase()} at Arcana Crystals. ${category.description || ""} Ships worldwide.`
+    : type ? `${type.description} Shop ${type.name.toLowerCase()} at Arcana Crystals. Ships worldwide.`
+    : category ? `${category.description ? `${category.description} ` : ""}Shop ${category.name} at Arcana Crystals. Ships worldwide.`
     : SHOP_DESCRIPTION;
   return { path, heading, description: truncate(description) };
 }
@@ -110,7 +110,7 @@ export default async function ShopPage({ searchParams }: Props) {
 
         <div className="page-header container">
           <h1 className="page-title">{heading}</h1>
-          <p className="page-subtitle">{productType ? productType.description : "Browse the full XYZ Company range."}</p>
+          <p className="page-subtitle">{productType ? productType.description : "Browse the full Arcana Crystals range."}</p>
         </div>
 
         <ShopClient initialProducts={products} initialCat={cat} initialQuery={q} initialType={productType?.slug} categories={categories} />

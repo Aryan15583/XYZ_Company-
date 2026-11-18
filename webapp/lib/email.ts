@@ -11,7 +11,7 @@ import type { Transporter } from "nodemailer";
 import { Resend } from "resend";
 import { getSiteUrl } from "./seo";
 
-const FROM_ADDRESS = process.env.EMAIL_FROM || "XYZ Company <onboarding@resend.dev>";
+const FROM_ADDRESS = process.env.EMAIL_FROM || "Arcana Crystals <onboarding@resend.dev>";
 const ADMIN_NOTIFY_ADDRESS = process.env.ADMIN_NOTIFY_EMAIL || null;
 
 // Every email template below interpolates user-supplied text (names, contact
@@ -97,7 +97,7 @@ export async function sendEmail(opts: { to: string; subject: string; html: strin
     if (provider === "smtp") {
       const cfg = smtpConfig()!;
       await getSmtpTransport(cfg).sendMail({
-        from: process.env.SMTP_FROM || `XYZ Company <${cfg.user}>`,
+        from: process.env.SMTP_FROM || `Arcana Crystals <${cfg.user}>`,
         to: opts.to,
         subject: opts.subject,
         html: opts.html,
@@ -139,10 +139,10 @@ export function adminLoginCodeEmail(opts: {
   requestIp: string | null;
 }): { subject: string; html: string } {
   return {
-    subject: "Your XYZ Company admin login code",
+    subject: "Your Arcana Crystals admin login code",
     html: `
       <div style="font-family:sans-serif;max-width:480px;margin:auto;">
-        <h1 style="color:#b8975a;">XYZ Company</h1>
+        <h1 style="color:#c27b5c;">Arcana Crystals</h1>
         <p>Use this one-time code to sign in to the admin panel:</p>
         <p style="font-size:30px;letter-spacing:6px;font-family:monospace;font-weight:700;
                   background:#f5f1eb;padding:16px 20px;border-radius:10px;text-align:center;">
@@ -150,7 +150,7 @@ export function adminLoginCodeEmail(opts: {
         </p>
         <p>It expires in ${opts.ttlMinutes} minutes and works <strong>once</strong>.
         Asking for a new code cancels this one.</p>
-        <p style="color:#7a6e8a;font-size:13px;">
+        <p style="color:#667a75;font-size:13px;">
           Requested from IP ${escapeHtml(opts.requestIp || "unknown")}.
           If this wasn't you, ignore this email — without the code, nobody can sign in.
           Never share this code with anyone.
@@ -162,10 +162,10 @@ export function adminLoginCodeEmail(opts: {
 
 function emailShell(inner: string): string {
   return `
-    <div style="font-family:sans-serif;max-width:520px;margin:auto;color:#1a1228;">
-      <h1 style="color:#b8975a;">XYZ Company</h1>
+    <div style="font-family:sans-serif;max-width:520px;margin:auto;color:#10302c;">
+      <h1 style="color:#c27b5c;">Arcana Crystals</h1>
       ${inner}
-      <p style="color:#7a6e8a;font-size:12px;margin-top:32px;">XYZ Company</p>
+      <p style="color:#667a75;font-size:12px;margin-top:32px;">Arcana Crystals</p>
     </div>
   `;
 }
@@ -206,7 +206,7 @@ function itemsTable(itemsJson?: string | null): string {
 
 function trackButton(orderId: string): string {
   const url = `${getSiteUrl()}/track-order?id=${encodeURIComponent(orderId)}`;
-  return `<p><a href="${escapeHtml(url)}" style="display:inline-block;background:#b8975a;color:#1a1228;padding:10px 18px;border-radius:8px;text-decoration:none;font-weight:600;">Track your order</a></p>`;
+  return `<p><a href="${escapeHtml(url)}" style="display:inline-block;background:#c27b5c;color:#10302c;padding:10px 18px;border-radius:8px;text-decoration:none;font-weight:600;">Track your order</a></p>`;
 }
 
 export function orderConfirmationEmail(
@@ -290,11 +290,11 @@ export function newsletterWelcomeEmail(opts: {
       } on your first order.</p>`
     : "";
   return {
-    subject: "Welcome to XYZ Company ✦",
+    subject: "Welcome to Arcana Crystals ✦",
     html: emailShell(`
       <p>Thanks for subscribing! You'll hear from us about new products and offers — never spam.</p>
       ${offer}
-      <p style="font-size:12px;color:#7a6e8a;">Changed your mind? <a href="${escapeHtml(opts.unsubscribeUrl)}">Unsubscribe</a> any time.</p>
+      <p style="font-size:12px;color:#667a75;">Changed your mind? <a href="${escapeHtml(opts.unsubscribeUrl)}">Unsubscribe</a> any time.</p>
     `),
   };
 }
@@ -306,8 +306,8 @@ export function backInStockEmail(opts: { productName: string; productUrl: string
     html: emailShell(`
       <p>Good news — <strong>${escapeHtml(opts.productName)}</strong> is back in stock.</p>
       <p>You asked us to let you know. Stock is limited, so it may sell out again soon.</p>
-      <p><a href="${escapeHtml(opts.productUrl)}" style="display:inline-block;background:#b8975a;color:#1a1228;padding:10px 18px;border-radius:8px;text-decoration:none;font-weight:600;">Shop it now</a></p>
-      <p style="font-size:12px;color:#7a6e8a;">This was a one-time alert — we won't email you about this product again.</p>
+      <p><a href="${escapeHtml(opts.productUrl)}" style="display:inline-block;background:#c27b5c;color:#10302c;padding:10px 18px;border-radius:8px;text-decoration:none;font-weight:600;">Shop it now</a></p>
+      <p style="font-size:12px;color:#667a75;">This was a one-time alert — we won't email you about this product again.</p>
     `),
   };
 }

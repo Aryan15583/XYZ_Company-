@@ -1,6 +1,6 @@
 /**
  * ================================================================
- * XYZ COMPANY — main.js
+ * ARCANA CRYSTALS — main.js
  * Single JavaScript file for all 12 pages
  *
  * TABLE OF CONTENTS
@@ -152,7 +152,7 @@ function initMobileNav() {
    Shows on first visit. Remembers choice in localStorage.
    Manage panel allows per-category control.
    ================================================================ */
-const COOKIE_KEY = 'xyzCompany_cookieConsent';
+const COOKIE_KEY = 'arcanaCrystals_cookieConsent';
 
 function initCookieBanner() {
   const banner  = document.getElementById('cookie-banner');
@@ -281,7 +281,7 @@ function showCookieManageModal(onSave) {
    Manual override via select dropdown.
    Converts all [data-usd] prices across the page instantly.
    ================================================================ */
-const CURRENCY_KEY = 'xyzCompany_currency';
+const CURRENCY_KEY = 'arcanaCrystals_currency';
 
 // LINE 227: Exchange rates relative to USD
 const EXCHANGE_RATES = {
@@ -370,7 +370,7 @@ function convertAllPrices() {
    LINE 310 — 6. CART SYSTEM
    localStorage-based cart. Works across all pages.
    ================================================================ */
-const CART_KEY = 'xyzCompany_cart';
+const CART_KEY = 'arcanaCrystals_cart';
 
 // LINE 315: Load cart from localStorage
 function getCart() {
@@ -450,17 +450,17 @@ function showAddedToast(name) {
     right: 24px;
     z-index: 9999;
     background: var(--bg-surface, #fff);
-    border: 1.5px solid var(--brand-gold, #b8975a);
+    border: 1.5px solid var(--brand-gold, #c27b5c);
     border-radius: 12px;
     padding: 14px 20px;
     box-shadow: 0 8px 32px rgba(0,0,0,0.18);
     font-size: 0.9rem;
-    color: var(--text-primary, #1a1228);
+    color: var(--text-primary, #10302c);
     max-width: 320px;
     animation: fadeIn 0.25s ease;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Manrope', sans-serif;
   `;
-  toast.querySelector('a').style.cssText = 'color: var(--brand-gold,#b8975a); font-weight:600;';
+  toast.querySelector('a').style.cssText = 'color: var(--brand-gold,#c27b5c); font-weight:600;';
   document.body.appendChild(toast);
 
   // LINE 400: Auto-remove after 3.5 seconds
@@ -877,7 +877,7 @@ function initPayPalButton() {
       // PayPal always needs USD for base currency
       return actions.order.create({
         purchase_units: [{
-          description: 'XYZ Company Order',
+          description: 'Arcana Crystals Order',
           amount: {
             currency_code: 'USD',
             value: after.toFixed(2),
@@ -896,7 +896,7 @@ function initPayPalButton() {
           }))
         }],
         application_context: {
-          brand_name:          'XYZ Company',
+          brand_name:          'Arcana Crystals',
           shipping_preference: 'GET_FROM_FILE',
           user_action:         'PAY_NOW'
         }
@@ -913,21 +913,21 @@ function initPayPalButton() {
         // Show confirmation screen
         document.body.innerHTML = `
           <div style="min-height:100vh;display:flex;align-items:center;
-                      justify-content:center;font-family:'DM Sans',sans-serif;
-                      background:var(--bg-page,#faf8f4);text-align:center;padding:40px;">
+                      justify-content:center;font-family:'Manrope',sans-serif;
+                      background:var(--bg-page,#f7f6f2);text-align:center;padding:40px;">
             <div>
               <div style="font-size:4rem;margin-bottom:16px;">✦</div>
-              <h1 style="font-family:'Cormorant Garamond',serif;font-size:2.5rem;
-                         color:#1a1228;margin-bottom:12px;">Order Confirmed!</h1>
-              <p style="color:#7a6e8a;margin-bottom:8px;">
+              <h1 style="font-family:'Fraunces',serif;font-size:2.5rem;
+                         color:#10302c;margin-bottom:12px;">Order Confirmed!</h1>
+              <p style="color:#667a75;margin-bottom:8px;">
                 Thank you, <strong>${details.payer.name.given_name}</strong>!
               </p>
-              <p style="color:#7a6e8a;margin-bottom:24px;">
+              <p style="color:#667a75;margin-bottom:24px;">
                 Payment ID: <code>${details.id}</code><br/>
                 A confirmation has been sent to <strong>${details.payer.email_address}</strong>.
               </p>
               <a href="index.html"
-                 style="background:#b8975a;color:#1a1228;padding:14px 32px;
+                 style="background:#c27b5c;color:#10302c;padding:14px 32px;
                         border-radius:8px;font-weight:600;text-decoration:none;">
                 Continue Shopping
               </a>
@@ -1281,7 +1281,7 @@ function initContactForm() {
       order_number: form.querySelector('#contact-order-num')?.value    || 'N/A',
       // ── Extra context sent automatically ─────────────────
       submitted_at: new Date().toLocaleString(),
-      to_name:      'XYZ Company Team',
+      to_name:      'Arcana Crystals Team',
     };
 
     try {

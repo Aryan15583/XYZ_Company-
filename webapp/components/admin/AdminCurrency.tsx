@@ -8,7 +8,7 @@ import { adminFetchJson } from "@/lib/admin-api";
 // always stored in USD; this only changes how they're displayed. Defaults to
 // INR and is remembered in this browser. The shop's own five currencies use
 // the rates from Admin -> Settings; the rest use live daily rates.
-const KEY = "xyzCompany_adminCurrency";
+const KEY = "arcanaCrystals_adminCurrency";
 const DEFAULT = "INR";
 const STORE_CURRENCIES = Object.keys(EXCHANGE_RATES);
 

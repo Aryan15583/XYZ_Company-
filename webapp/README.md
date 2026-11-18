@@ -1,6 +1,6 @@
-# XYZ Company — Next.js
+# Arcana Crystals — Next.js
 
-The XYZ Company online shop: storefront, cart and checkout, a real database
+The Arcana Crystals online shop: storefront, cart and checkout, a real database
 and API, and an admin panel. The catalogue starts empty — add categories and
 products in the admin panel.
 

@@ -10,7 +10,7 @@ import { Icon } from "@/components/Icon";
 export const metadata = pageMetadata({
   title: "Contact Us",
   description:
-    "Contact XYZ Company. Get in touch for order support or product questions. We respond within 24–48 hours.",
+    "Contact Arcana Crystals. Get in touch for order support or product questions. We respond within 24–48 hours.",
   path: "/contact",
 });
 

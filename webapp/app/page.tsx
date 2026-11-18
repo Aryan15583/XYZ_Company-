@@ -82,7 +82,7 @@ export default async function HomePage() {
           <div className="hero-bg" aria-hidden="true"></div>
           <div className="container hero-split">
             <div className="hero-content">
-              <p className="eyebrow eyebrow--light">Welcome to XYZ Company</p>
+              <p className="eyebrow eyebrow--light">Welcome to Arcana Crystals</p>
               <h1 id="hero-heading" className="hero-title">
                 Quality You Can Trust.
                 <br />
@@ -114,7 +114,7 @@ export default async function HomePage() {
           </div>
         </section>
 
-        <section className="trust-bar" aria-label="Shopping with XYZ Company">
+        <section className="trust-bar" aria-label="Shopping with Arcana Crystals">
           <div className="container trust-bar-inner">
             <div className="trust-item"><Icon name="lock" /><span>Secure checkout</span></div>
             <div className="trust-item"><Icon name="card" /><span>UPI, cards &amp; cash on delivery</span></div>
@@ -179,7 +179,7 @@ export default async function HomePage() {
           <div className="container">
             <div className="section-header">
               <p className="eyebrow">Our promise</p>
-              <h2 id="why-heading" className="section-title">Why Choose XYZ Company</h2>
+              <h2 id="why-heading" className="section-title">Why Choose Arcana Crystals</h2>
             </div>
             <div className="features-grid" role="list">
               <div className="feature-card" role="listitem">

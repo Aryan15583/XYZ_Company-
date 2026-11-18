@@ -1,4 +1,4 @@
-// Idempotent local-development seed. The XYZ Company catalogue starts empty:
+// Idempotent local-development seed. The Arcana Crystals catalogue starts empty:
 // add categories, products and coupons from the admin panel (/admin).
 // Add starter rows to the arrays below if you want a fresh dev database to
 // come pre-filled. Safe to re-run: existing rows are skipped, never overwritten.

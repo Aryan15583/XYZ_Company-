@@ -11,7 +11,7 @@ export function Footer({ minimal = false }: { minimal?: boolean }) {
       <footer className="site-footer site-footer--minimal" role="contentinfo">
         <div className="container">
           <p className="footer-legal-links">
-            &copy; {year} XYZ Company. All rights reserved. &nbsp;|&nbsp;{" "}
+            &copy; {year} Arcana Crystals. All rights reserved. &nbsp;|&nbsp;{" "}
             <Link href="/privacy">Privacy Policy</Link> &nbsp;|&nbsp; <Link href="/terms">Terms of Service</Link>{" "}
             &nbsp;|&nbsp; <Link href="/returns">Returns Policy</Link>
           </p>
@@ -26,16 +26,16 @@ export function Footer({ minimal = false }: { minimal?: boolean }) {
     <footer className="site-footer" role="contentinfo">
       <div className="container footer-inner">
         <div className="footer-brand">
-          <Link href="/" className="logo" aria-label="XYZ Company Home">
+          <Link href="/" className="logo" aria-label="Arcana Crystals Home">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/assets/brand/logo-badge-160.png" alt="" className="logo-badge" width={52} height={52} />
-            <span className="logo-text">XYZ Company</span>
+            <span className="logo-text">Arcana Crystals</span>
           </Link>
           <p>Quality products, delivered to your door.</p>
           {socials.length > 0 && (
             <div className="footer-socials" aria-label="Social media links">
               {socials.map((s) => (
-                <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={`XYZ Company on ${s.label}`}>
+                <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={`Arcana Crystals on ${s.label}`}>
                   {s.label}
                 </a>
               ))}
@@ -69,7 +69,7 @@ export function Footer({ minimal = false }: { minimal?: boolean }) {
       <div className="footer-disclaimer">
         <div className="container">
           <p className="footer-legal-links">
-            &copy; {year} XYZ Company. All rights reserved. &nbsp;|&nbsp; <Link href="/privacy">Privacy Policy</Link>{" "}
+            &copy; {year} Arcana Crystals. All rights reserved. &nbsp;|&nbsp; <Link href="/privacy">Privacy Policy</Link>{" "}
             &nbsp;|&nbsp; <Link href="/terms">Terms of Service</Link> &nbsp;|&nbsp;{" "}
             <Link href="/returns">Returns Policy</Link>
           </p>

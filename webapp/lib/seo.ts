@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
-export const SITE_NAME = "XYZ Company";
+export const SITE_NAME = "Arcana Crystals";
 export const SITE_TAGLINE = "Quality Products, Delivered";
 export const DEFAULT_DESCRIPTION =
-  "Shop quality products from XYZ Company. Secure checkout and delivery to your door.";
+  "Shop quality products from Arcana Crystals. Secure checkout and delivery to your door.";
 
 /** Canonical origin of the site, no trailing slash. Set NEXT_PUBLIC_SITE_URL in production. */
 export function getSiteUrl(): string {
@@ -72,8 +72,8 @@ export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
 const OG_IMAGE = { url: "/opengraph-image", width: 1200, height: 630, alt: `${SITE_NAME} — ${SITE_TAGLINE}` };
 
 /**
- * Per-page metadata: title (the root layout template appends " — XYZ
- * Company"), description, canonical URL, and matching Open Graph/Twitter tags.
+ * Per-page metadata: title (the root layout template appends " — Arcana
+ * Crystals"), description, canonical URL, and matching Open Graph/Twitter tags.
  * Next replaces — not merges — nested openGraph/twitter objects, so each page
  * has to restate them or social previews would lose their title/image.
  */

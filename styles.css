@@ -1,5 +1,5 @@
 /* =============================================================
-   XYZ COMPANY — styles.css
+   ARCANA CRYSTALS — styles.css
    Single stylesheet for all 12 pages
    Dark / Light mode: 100% driven by browser prefers-color-scheme
    No toggle button — updates live when OS/browser setting changes
@@ -55,11 +55,11 @@
 
 /* =============================================================
    LINE 60 — GOOGLE FONTS IMPORT
-   Cinzel Decorative: display/logo
-   Cormorant Garamond: headings
-   DM Sans: body text
+   Fraunces: display/logo
+   Fraunces: headings
+   Manrope: body text
    ============================================================= */
-@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,400&family=Manrope:wght@300..700&display=swap');
 
 
 /* =============================================================
@@ -69,40 +69,40 @@
    ============================================================= */
 :root {
   /* --- Brand Colours --- */
-  --brand-gold:       #b8975a;        /* primary accent — warm gold */
-  --brand-gold-light: #d4b47a;        /* lighter gold for hover */
-  --brand-gold-dark:  #8a6e3e;        /* darker gold for pressed */
-  --brand-deep:       #1a1228;        /* deep indigo-black */
-  --brand-amethyst:   #7c4d99;        /* secondary accent */
+  --brand-gold:       #c27b5c;        /* primary accent — warm gold */
+  --brand-gold-light: #e2a487;        /* lighter gold for hover */
+  --brand-gold-dark:  #9a5a3e;        /* darker gold for pressed */
+  --brand-deep:       #10302c;        /* deep indigo-black */
+  --brand-amethyst:   #3f7d6e;        /* secondary accent */
 
   /* --- Light Mode Surface Colours --- */
-  --bg-page:          #faf8f4;        /* warm off-white page background */
+  --bg-page:          #f7f6f2;        /* warm off-white page background */
   --bg-surface:       #ffffff;        /* cards, panels */
   --bg-surface-2:     #f5f1eb;        /* alternate section background */
-  --bg-surface-3:     #ede8e0;        /* deeper alternate */
-  --bg-header:        rgba(250, 248, 244, 0.95);
-  --bg-footer:        #1a1228;        /* always dark footer */
-  --bg-hero:          #1a1228;        /* hero always dark */
+  --bg-surface-3:     #e3e8e2;        /* deeper alternate */
+  --bg-header:        rgba(247, 246, 242, 0.95);
+  --bg-footer:        #10302c;        /* always dark footer */
+  --bg-hero:          #10302c;        /* hero always dark */
 
   /* --- Light Mode Text Colours --- */
-  --text-primary:     #1a1228;        /* headings */
-  --text-body:        #3d3450;        /* body text */
-  --text-muted:       #7a6e8a;        /* secondary/muted text */
-  --text-inverse:     #faf8f4;        /* text on dark backgrounds */
-  --text-on-gold:     #1a1228;        /* text on gold buttons */
-  --text-link:        #7c4d99;        /* links */
-  --text-link-hover:  #b8975a;        /* link hover */
+  --text-primary:     #10302c;        /* headings */
+  --text-body:        #2f4743;        /* body text */
+  --text-muted:       #667a75;        /* secondary/muted text */
+  --text-inverse:     #f7f6f2;        /* text on dark backgrounds */
+  --text-on-gold:     #10302c;        /* text on gold buttons */
+  --text-link:        #3f7d6e;        /* links */
+  --text-link-hover:  #c27b5c;        /* link hover */
 
   /* --- Light Mode Border & Divider --- */
-  --border-color:     #ddd6cc;
-  --border-light:     #ede8e0;
-  --border-focus:     #b8975a;
+  --border-color:     #d5ddd7;
+  --border-light:     #e3e8e2;
+  --border-focus:     #c27b5c;
 
   /* --- Light Mode Inputs --- */
   --input-bg:         #ffffff;
-  --input-border:     #c8bfb0;
-  --input-text:       #1a1228;
-  --input-placeholder:#9e8f80;
+  --input-border:     #b9c6bf;
+  --input-text:       #10302c;
+  --input-placeholder:#8a9a94;
 
   /* --- Status Colours --- */
   --color-success:    #2d7a4f;
@@ -115,17 +115,17 @@
   --color-info-bg:    #eaf4fd;
 
   /* --- Shadows --- */
-  --shadow-sm:        0 1px 3px rgba(26,18,40,0.08);
-  --shadow-md:        0 4px 16px rgba(26,18,40,0.10);
-  --shadow-lg:        0 8px 32px rgba(26,18,40,0.14);
-  --shadow-xl:        0 16px 48px rgba(26,18,40,0.18);
-  --shadow-card:      0 2px 12px rgba(26,18,40,0.08);
-  --shadow-card-hover:0 8px 32px rgba(26,18,40,0.16);
+  --shadow-sm:        0 1px 3px rgba(16,48,44,0.08);
+  --shadow-md:        0 4px 16px rgba(16,48,44,0.10);
+  --shadow-lg:        0 8px 32px rgba(16,48,44,0.14);
+  --shadow-xl:        0 16px 48px rgba(16,48,44,0.18);
+  --shadow-card:      0 2px 12px rgba(16,48,44,0.08);
+  --shadow-card-hover:0 8px 32px rgba(16,48,44,0.16);
 
   /* --- Typography --- */
-  --font-display:     'Cinzel Decorative', serif;
-  --font-heading:     'Cormorant Garamond', serif;
-  --font-body:        'DM Sans', sans-serif;
+  --font-display:     'Fraunces', Georgia, serif;
+  --font-heading:     'Fraunces', Georgia, serif;
+  --font-body:        'Manrope', system-ui, sans-serif;
 
   /* --- Spacing Scale --- */
   --space-1:  0.25rem;
@@ -175,33 +175,33 @@
 @media (prefers-color-scheme: dark) {
   :root {
     /* --- Dark Mode Surface Colours --- */
-    --bg-page:          #0e0b16;        /* deep dark page */
-    --bg-surface:       #1a1228;        /* cards, panels */
-    --bg-surface-2:     #221932;        /* alternate section */
-    --bg-surface-3:     #2d2340;        /* deeper alternate */
-    --bg-header:        rgba(14, 11, 22, 0.96);
-    --bg-footer:        #070510;        /* footer even darker */
-    --bg-hero:          #0e0b16;
+    --bg-page:          #081614;        /* deep dark page */
+    --bg-surface:       #10302c;        /* cards, panels */
+    --bg-surface-2:     #132a27;        /* alternate section */
+    --bg-surface-3:     #1a3a35;        /* deeper alternate */
+    --bg-header:        rgba(8, 22, 20, 0.96);
+    --bg-footer:        #050f0e;        /* footer even darker */
+    --bg-hero:          #081614;
 
     /* --- Dark Mode Text Colours --- */
-    --text-primary:     #f0eafa;        /* near-white headings */
-    --text-body:        #c8bcd8;        /* soft lavender body */
-    --text-muted:       #8a7a9a;        /* muted text */
-    --text-inverse:     #0e0b16;
-    --text-on-gold:     #0e0b16;
-    --text-link:        #c49fd6;        /* lighter purple for dark bg */
+    --text-primary:     #eef5f1;        /* near-white headings */
+    --text-body:        #bfd2cb;        /* soft lavender body */
+    --text-muted:       #7f9690;        /* muted text */
+    --text-inverse:     #081614;
+    --text-on-gold:     #081614;
+    --text-link:        #8fcfbd;        /* lighter purple for dark bg */
     --text-link-hover:  --brand-gold-light;
 
     /* --- Dark Mode Border --- */
-    --border-color:     #3a2d50;
-    --border-light:     #2d2340;
-    --border-focus:     #b8975a;
+    --border-color:     #24453f;
+    --border-light:     #1a3a35;
+    --border-focus:     #c27b5c;
 
     /* --- Dark Mode Inputs --- */
-    --input-bg:         #1a1228;
-    --input-border:     #3a2d50;
-    --input-text:       #f0eafa;
-    --input-placeholder:#6a5a7a;
+    --input-bg:         #10302c;
+    --input-border:     #24453f;
+    --input-text:       #eef5f1;
+    --input-placeholder:#5d7570;
 
     /* --- Status Colours (adjusted for dark) --- */
     --color-success:    #4caf7d;
@@ -219,7 +219,7 @@
     --shadow-lg:        0 8px 32px rgba(0,0,0,0.6);
     --shadow-xl:        0 16px 48px rgba(0,0,0,0.7);
     --shadow-card:      0 2px 12px rgba(0,0,0,0.4);
-    --shadow-card-hover:0 8px 32px rgba(184,151,90,0.15);
+    --shadow-card-hover:0 8px 32px rgba(194,123,92,0.15);
   }
 }
 
@@ -620,7 +620,7 @@ small, .text-sm { font-size: 0.875rem; }
 .form-input:focus {
   outline: none;
   border-color: var(--border-focus);
-  box-shadow: 0 0 0 3px rgba(184, 151, 90, 0.18);
+  box-shadow: 0 0 0 3px rgba(194, 123, 92, 0.18);
 }
 .form-input:invalid:not(:placeholder-shown) {
   border-color: var(--color-error);
@@ -797,7 +797,7 @@ select.form-input {
   line-height: 1;
 }
 
-/* LINE 752: "XYZ Company" logotype */
+/* LINE 752: "Arcana Crystals" logotype */
 .logo-text {
   font-family: var(--font-display);
   font-size: 1.1rem;
@@ -1078,7 +1078,7 @@ select.form-input {
 .site-footer .logo-symbol { color: var(--brand-gold); }
 .footer-brand p {
   font-size: 0.875rem;
-  color: rgba(240,234,250,0.65);
+  color: rgba(238,245,241,0.65);
   margin-top: var(--space-3);
   max-width: 26ch;
 }
@@ -1090,7 +1090,7 @@ select.form-input {
 }
 .footer-socials a {
   font-size: 0.8rem;
-  color: rgba(240,234,250,0.6);
+  color: rgba(238,245,241,0.6);
   text-decoration: none;
   transition: color var(--transition-fast);
 }
@@ -1109,7 +1109,7 @@ select.form-input {
 .footer-nav ul { display: flex; flex-direction: column; gap: var(--space-2); }
 .footer-nav a {
   font-size: 0.875rem;
-  color: rgba(240,234,250,0.65);
+  color: rgba(238,245,241,0.65);
   text-decoration: none;
   transition: color var(--transition-fast);
 }
@@ -1123,18 +1123,18 @@ select.form-input {
 }
 .footer-disclaimer p {
   font-size: 0.78rem;
-  color: rgba(240,234,250,0.45);
+  color: rgba(238,245,241,0.45);
   line-height: 1.6;
   margin-bottom: var(--space-2);
 }
-.footer-disclaimer strong { color: rgba(240,234,250,0.65); font-weight: 600; }
+.footer-disclaimer strong { color: rgba(238,245,241,0.65); font-weight: 600; }
 
 .footer-legal-links {
   font-size: 0.78rem;
-  color: rgba(240,234,250,0.4);
+  color: rgba(238,245,241,0.4);
 }
 .footer-legal-links a {
-  color: rgba(240,234,250,0.55);
+  color: rgba(238,245,241,0.55);
   text-decoration: none;
 }
 .footer-legal-links a:hover { color: var(--brand-gold); }
@@ -1288,9 +1288,9 @@ select.form-input {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 80% 60% at 60% 40%, rgba(124,77,153,0.18) 0%, transparent 70%),
-    radial-gradient(ellipse 50% 40% at 20% 80%, rgba(184,151,90,0.10) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 50% at 80% 10%, rgba(124,77,153,0.12) 0%, transparent 60%);
+    radial-gradient(ellipse 80% 60% at 60% 40%, rgba(63,125,110,0.18) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 20% 80%, rgba(194,123,92,0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 10%, rgba(63,125,110,0.12) 0%, transparent 60%);
   pointer-events: none;
 }
 
@@ -1300,14 +1300,14 @@ select.form-input {
   position: absolute;
   inset: 0;
   background-image:
-    radial-gradient(circle 1.5px at 15% 25%, rgba(184,151,90,0.6) 0%, transparent 100%),
-    radial-gradient(circle 1px at 45% 15%, rgba(240,234,250,0.4) 0%, transparent 100%),
-    radial-gradient(circle 1px at 75% 35%, rgba(184,151,90,0.4) 0%, transparent 100%),
-    radial-gradient(circle 2px at 85% 70%, rgba(240,234,250,0.3) 0%, transparent 100%),
-    radial-gradient(circle 1px at 30% 65%, rgba(184,151,90,0.3) 0%, transparent 100%),
-    radial-gradient(circle 1.5px at 60% 80%, rgba(240,234,250,0.5) 0%, transparent 100%),
-    radial-gradient(circle 1px at 90% 20%, rgba(184,151,90,0.5) 0%, transparent 100%),
-    radial-gradient(circle 1px at 10% 85%, rgba(240,234,250,0.3) 0%, transparent 100%);
+    radial-gradient(circle 1.5px at 15% 25%, rgba(194,123,92,0.6) 0%, transparent 100%),
+    radial-gradient(circle 1px at 45% 15%, rgba(238,245,241,0.4) 0%, transparent 100%),
+    radial-gradient(circle 1px at 75% 35%, rgba(194,123,92,0.4) 0%, transparent 100%),
+    radial-gradient(circle 2px at 85% 70%, rgba(238,245,241,0.3) 0%, transparent 100%),
+    radial-gradient(circle 1px at 30% 65%, rgba(194,123,92,0.3) 0%, transparent 100%),
+    radial-gradient(circle 1.5px at 60% 80%, rgba(238,245,241,0.5) 0%, transparent 100%),
+    radial-gradient(circle 1px at 90% 20%, rgba(194,123,92,0.5) 0%, transparent 100%),
+    radial-gradient(circle 1px at 10% 85%, rgba(238,245,241,0.3) 0%, transparent 100%);
   pointer-events: none;
 }
 
@@ -1325,8 +1325,8 @@ select.form-input {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--brand-gold);
-  border: 1px solid rgba(184,151,90,0.4);
-  background: rgba(184,151,90,0.08);
+  border: 1px solid rgba(194,123,92,0.4);
+  background: rgba(194,123,92,0.08);
   padding: var(--space-1) var(--space-4);
   border-radius: var(--radius-full);
   margin-bottom: var(--space-5);
@@ -1337,7 +1337,7 @@ select.form-input {
   font-size: clamp(2.5rem, 7vw, 5rem);
   font-weight: 300;
   line-height: 1.08;
-  color: #f0eafa;
+  color: #eef5f1;
   letter-spacing: -0.02em;
   margin-bottom: var(--space-6);
 }
@@ -1345,7 +1345,7 @@ select.form-input {
 
 .hero-subtitle {
   font-size: clamp(1rem, 2vw, 1.2rem);
-  color: rgba(240,234,250,0.7);
+  color: rgba(238,245,241,0.7);
   margin-bottom: var(--space-8);
   max-width: 52ch;
   font-weight: 300;
@@ -1363,7 +1363,7 @@ select.form-input {
   flex-wrap: wrap;
   gap: var(--space-5);
   font-size: 0.8125rem;
-  color: rgba(240,234,250,0.55);
+  color: rgba(238,245,241,0.55);
 }
 .hero-trust span { display: flex; align-items: center; gap: var(--space-2); }
 
@@ -1638,8 +1638,8 @@ select.form-input {
    ============================================================= */
 .numerology-teaser {
   background: var(--bg-deep, var(--brand-deep));
-  background: linear-gradient(135deg, #1a1228 0%, #2d1a3e 100%);
-  color: #f0eafa;
+  background: linear-gradient(135deg, #10302c 0%, #1b4640 100%);
+  color: #eef5f1;
   transition: background var(--transition-slow);
 }
 
@@ -1650,9 +1650,9 @@ select.form-input {
   align-items: center;
 }
 
-.numerology-teaser .section-title { color: #f0eafa; }
-.numerology-teaser p { color: rgba(240,234,250,0.72); }
-.numerology-teaser .disclaimer-inline { font-size: 0.8rem; color: rgba(240,234,250,0.45); font-style: italic; }
+.numerology-teaser .section-title { color: #eef5f1; }
+.numerology-teaser p { color: rgba(238,245,241,0.72); }
+.numerology-teaser .disclaimer-inline { font-size: 0.8rem; color: rgba(238,245,241,0.45); font-style: italic; }
 
 /* LINE 1638: Large number display */
 .number-display {
@@ -1661,13 +1661,13 @@ select.form-input {
   font-weight: 700;
   color: var(--brand-gold);
   line-height: 1;
-  text-shadow: 0 0 40px rgba(184,151,90,0.4);
+  text-shadow: 0 0 40px rgba(194,123,92,0.4);
   user-select: none;
 }
 .number-label {
   font-family: var(--font-heading);
   font-size: 1rem;
-  color: rgba(240,234,250,0.55);
+  color: rgba(238,245,241,0.55);
   text-align: center;
   font-style: italic;
   margin-top: var(--space-2);
@@ -1677,8 +1677,8 @@ select.form-input {
 
 /* LINE 1654: Entertainment disclaimer box */
 .entertainment-disclaimer {
-  background: rgba(184,151,90,0.08);
-  border: 1px solid rgba(184,151,90,0.25);
+  background: rgba(194,123,92,0.08);
+  border: 1px solid rgba(194,123,92,0.25);
   border-radius: var(--radius-md);
   padding: var(--space-4) var(--space-5);
   display: flex;
@@ -1931,7 +1931,7 @@ select.form-input {
 .size-option input:checked + span {
   border-color: var(--brand-gold);
   color: var(--brand-gold);
-  background: rgba(184,151,90,0.08);
+  background: rgba(194,123,92,0.08);
 }
 .size-option:hover span { border-color: var(--brand-gold); }
 
@@ -2468,7 +2468,7 @@ select.form-input {
   cursor: pointer;
   transition: border-color var(--transition-fast), background-color var(--transition-fast);
 }
-.shipping-option:has(input:checked) { border-color: var(--brand-gold); background: rgba(184,151,90,0.05); }
+.shipping-option:has(input:checked) { border-color: var(--brand-gold); background: rgba(194,123,92,0.05); }
 .shipping-option input { accent-color: var(--brand-gold); width: 18px; height: 18px; }
 .shipping-option-info { flex: 1; display: flex; flex-direction: column; gap: 2px; }
 .shipping-name { font-weight: 500; color: var(--text-primary); font-size: 0.9rem; }
@@ -2496,7 +2496,7 @@ select.form-input {
 .payment-tab.active {
   border-color: var(--brand-gold);
   color: var(--brand-gold);
-  background: rgba(184,151,90,0.08);
+  background: rgba(194,123,92,0.08);
 }
 .payment-tab:hover { border-color: var(--brand-gold); }
 
@@ -2513,7 +2513,7 @@ select.form-input {
   min-height: 46px;
   transition: background-color var(--transition-slow), border-color var(--transition-slow);
 }
-.stripe-element:focus-within { border-color: var(--border-focus); box-shadow: 0 0 0 3px rgba(184,151,90,0.18); }
+.stripe-element:focus-within { border-color: var(--border-focus); box-shadow: 0 0 0 3px rgba(194,123,92,0.18); }
 .stripe-placeholder .form-input { border: none; padding: 0; box-shadow: none; background: transparent; }
 
 /* LINE 2462: Consent checkboxes */
@@ -2631,8 +2631,8 @@ select.form-input {
   transition: background-color var(--transition-slow), border-color var(--transition-slow);
 }
 .number-card--primary {
-  background: linear-gradient(135deg, rgba(184,151,90,0.1) 0%, rgba(124,77,153,0.08) 100%);
-  border-color: rgba(184,151,90,0.3);
+  background: linear-gradient(135deg, rgba(194,123,92,0.1) 0%, rgba(63,125,110,0.08) 100%);
+  border-color: rgba(194,123,92,0.3);
 }
 
 .number-big {
@@ -2643,7 +2643,7 @@ select.form-input {
   line-height: 1;
   min-width: 70px;
   text-align: center;
-  text-shadow: 0 0 20px rgba(184,151,90,0.3);
+  text-shadow: 0 0 20px rgba(194,123,92,0.3);
 }
 .number-big--sm { font-size: 2.5rem; min-width: 56px; }
 
@@ -2702,10 +2702,10 @@ select.form-input {
   grid-template-columns: 1fr auto;
   gap: var(--space-12);
   align-items: center;
-  color: #f0eafa;
+  color: #eef5f1;
 }
-.readings-cta-inner .section-title { color: #f0eafa; }
-.readings-cta-inner p { color: rgba(240,234,250,0.72); }
+.readings-cta-inner .section-title { color: #eef5f1; }
+.readings-cta-inner p { color: rgba(238,245,241,0.72); }
 
 .reading-includes {
   list-style: none;
@@ -2714,9 +2714,9 @@ select.form-input {
   gap: var(--space-2);
   margin-block: var(--space-4);
 }
-.reading-includes li { font-size: 0.9rem; color: rgba(240,234,250,0.8); }
+.reading-includes li { font-size: 0.9rem; color: rgba(238,245,241,0.8); }
 
-.reading-price-note { font-size: 0.875rem; color: rgba(240,234,250,0.55); margin-bottom: var(--space-4); }
+.reading-price-note { font-size: 0.875rem; color: rgba(238,245,241,0.55); margin-bottom: var(--space-4); }
 .reading-price { font-family: var(--font-heading); font-size: 1.4rem; color: var(--brand-gold); }
 
 
@@ -2752,7 +2752,7 @@ select.form-input {
 .package-card:hover { box-shadow: var(--shadow-card-hover); }
 .package-card--popular {
   border-color: var(--brand-gold);
-  background: linear-gradient(135deg, rgba(184,151,90,0.05) 0%, transparent 100%);
+  background: linear-gradient(135deg, rgba(194,123,92,0.05) 0%, transparent 100%);
   box-shadow: var(--shadow-md);
 }
 
@@ -2851,8 +2851,8 @@ select.form-input {
 }
 
 .booking-disclaimer-box {
-  background: rgba(184,151,90,0.08);
-  border: 1px solid rgba(184,151,90,0.2);
+  background: rgba(194,123,92,0.08);
+  border: 1px solid rgba(194,123,92,0.2);
   border-radius: var(--radius-md);
   padding: var(--space-4);
   font-size: 0.8rem;
@@ -3244,7 +3244,7 @@ select.form-input {
   cursor: pointer;
   transition: all var(--transition-fast);
 }
-.pagination-btn:hover:not(:disabled) { border-color: var(--brand-gold); color: var(--brand-gold); background: rgba(184,151,90,0.05); }
+.pagination-btn:hover:not(:disabled) { border-color: var(--brand-gold); color: var(--brand-gold); background: rgba(194,123,92,0.05); }
 .pagination-btn.active { background: var(--brand-gold); border-color: var(--brand-gold); color: var(--text-on-gold); }
 .pagination-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
@@ -3460,9 +3460,13 @@ select.form-input {
 /* =============================================================
    END OF styles.css
    Total: ~3430 lines
-   Company: XYZ Company
+   Company: Arcana Crystals
    Dark/Light: 100% CSS prefers-color-scheme, no JS toggle
    Live updates when browser/OS setting changes mid-session
    WCAG 2.1 AA compliant
    Mobile-first responsive
    ============================================================= */
+/* Arcana Crystals: pill buttons, sentence case. */
+.btn { border-radius: 9999px; text-transform: none; letter-spacing: 0.01em; }
+.nav-link { text-transform: none; letter-spacing: 0; }
+.logo-text { text-transform: none; letter-spacing: -0.01em; }

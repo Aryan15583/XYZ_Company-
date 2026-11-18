@@ -1,12 +1,7 @@
 import type { Metadata, Viewport } from "next";
-import "@fontsource/cormorant-garamond/latin-300.css";
-import "@fontsource/cormorant-garamond/latin-400.css";
-import "@fontsource/cormorant-garamond/latin-500.css";
-import "@fontsource/cormorant-garamond/latin-600.css";
-import "@fontsource/cormorant-garamond/latin-400-italic.css";
-import "@fontsource/cinzel-decorative/latin-400.css";
-import "@fontsource/cinzel-decorative/latin-700.css";
-import "@fontsource-variable/dm-sans/opsz.css";
+import "@fontsource-variable/fraunces/opsz.css";
+import "@fontsource-variable/fraunces/opsz-italic.css";
+import "@fontsource-variable/manrope/wght.css";
 import "./globals.css";
 import { Providers } from "@/components/Providers";
 import { CookieBanner } from "@/components/CookieBanner";
@@ -29,7 +24,7 @@ export const metadata: Metadata = {
   description: DEFAULT_DESCRIPTION,
   applicationName: SITE_NAME,
   keywords: [
-    "XYZ Company",
+    "Arcana Crystals",
     "online shop",
   ],
   category: "shopping",
@@ -58,7 +53,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#f5f1eb" },
-    { media: "(prefers-color-scheme: dark)", color: "#1a1228" },
+    { media: "(prefers-color-scheme: dark)", color: "#10302c" },
   ],
 };
 

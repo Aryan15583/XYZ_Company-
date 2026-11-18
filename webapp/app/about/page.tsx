@@ -11,7 +11,7 @@ export const revalidate = 60;
 export const metadata = pageMetadata({
   title: "About Us",
   description:
-    "About XYZ Company — who we are, what we sell and how we look after our customers.",
+    "About Arcana Crystals — who we are, what we sell and how we look after our customers.",
   path: "/about",
 });
 
@@ -31,9 +31,9 @@ export default async function AboutPage() {
         <section className="page-hero" aria-labelledby="about-hero-heading">
           <div className="container">
             <p className="eyebrow">Our Story</p>
-            <h1 id="about-hero-heading" className="page-title">About XYZ Company</h1>
+            <h1 id="about-hero-heading" className="page-title">About Arcana Crystals</h1>
             <p className="page-subtitle" style={{ marginInline: "auto" }}>
-              XYZ Company makes it simple to shop quality products online, with secure checkout and friendly support.
+              Arcana Crystals makes it simple to shop quality products online, with secure checkout and friendly support.
             </p>
           </div>
         </section>
@@ -42,16 +42,16 @@ export default async function AboutPage() {
           <div className="container about-story-inner about-story-inner--single">
             <div className="about-story-text">
               <h2 id="story-heading" className="section-title">Who We Are</h2>
-              {/* TODO: replace this placeholder with XYZ Company's own story. */}
+              {/* TODO: replace this placeholder with Arcana Crystals's own story. */}
               <p>
-                XYZ Company is an online shop focused on quality products and a smooth buying experience. Every
+                Arcana Crystals is an online shop focused on quality products and a smooth buying experience. Every
                 order is checked and packed with care, and our team is here to help before and after you buy.
               </p>
               <p>
                 Have a question about a product or an order? <Link href="/contact">Get in touch</Link> and we&apos;ll
                 get back to you as soon as we can.
               </p>
-              <div className="about-stats" aria-label="XYZ Company by the numbers">
+              <div className="about-stats" aria-label="Arcana Crystals by the numbers">
                 {storeRating && (
                   <div className="stat-item"><span className="stat-num">{storeRating.rating.toFixed(1)}★</span><span className="stat-label">Average Rating</span></div>
                 )}
@@ -118,7 +118,7 @@ export default async function AboutPage() {
         <section className="section about-cta" aria-labelledby="about-cta-heading">
           <div className="container text-center">
             <h2 id="about-cta-heading" className="section-title">Ready to Explore?</h2>
-            <p>Browse the full XYZ Company range.</p>
+            <p>Browse the full Arcana Crystals range.</p>
             <div className="hero-cta-group" style={{ justifyContent: "center" }}>
               <Link href="/shop" className="btn btn-primary btn-lg">Shop the Collection</Link>
               <Link href="/contact" className="btn btn-outline btn-lg">Contact Us</Link>

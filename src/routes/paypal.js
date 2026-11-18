@@ -85,11 +85,11 @@ router.post('/paypal/create-order', async (req, res) => {
       body: JSON.stringify({
         intent: 'CAPTURE',
         purchase_units: [{
-          description: 'XYZ Company Order',
+          description: 'Arcana Crystals Order',
           amount: { currency_code: 'USD', value: total.toFixed(2) },
         }],
         application_context: {
-          brand_name: 'XYZ Company',
+          brand_name: 'Arcana Crystals',
           shipping_preference: 'NO_SHIPPING',
           user_action: 'PAY_NOW',
         },

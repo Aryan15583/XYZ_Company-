@@ -95,7 +95,7 @@ export function AdminSidebar() {
     <aside className={`sidebar ${menuOpen ? "is-open" : ""}`}>
       <div className="sidebar-header">
         <div>
-          <div className="sidebar-logo">✦ XYZ Company</div>
+          <div className="sidebar-logo">✦ Arcana Crystals</div>
           <div className="sidebar-subtitle">Admin Panel</div>
         </div>
         <button

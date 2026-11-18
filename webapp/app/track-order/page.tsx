@@ -5,7 +5,7 @@ import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
   title: "Track Your Order",
-  description: "Check the status of your XYZ Company order using your order number and email.",
+  description: "Check the status of your Arcana Crystals order using your order number and email.",
   path: "/track-order",
   noindex: true,
 });

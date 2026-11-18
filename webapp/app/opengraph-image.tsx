@@ -19,13 +19,13 @@ export default async function Image() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          background: "linear-gradient(135deg, #1a1228 0%, #2d1f4a 100%)",
-          color: "#f0eafa",
+          background: "linear-gradient(135deg, #10302c 0%, #2d1f4a 100%)",
+          color: "#eef5f1",
         }}
       >
         <img src={seal} width={150} height={150} alt="" style={{ marginBottom: 36 }} />
         <div style={{ fontSize: 104, fontWeight: 700, letterSpacing: 2, display: "flex" }}>{SITE_NAME}</div>
-        <div style={{ fontSize: 40, color: "#d4b47a", marginTop: 24, display: "flex" }}>{SITE_TAGLINE}</div>
+        <div style={{ fontSize: 40, color: "#e2a487", marginTop: 24, display: "flex" }}>{SITE_TAGLINE}</div>
         <div style={{ fontSize: 28, color: "#a99bc0", marginTop: 40, display: "flex" }}>
           Quality products · Delivered to your door
         </div>

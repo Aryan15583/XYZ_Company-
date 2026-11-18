@@ -80,9 +80,9 @@ export async function POST(req: NextRequest) {
       body: JSON.stringify({
         intent: "CAPTURE",
         purchase_units: [
-          { description: "XYZ Company Order", amount: { currency_code: "USD", value: total.toFixed(2) } },
+          { description: "Arcana Crystals Order", amount: { currency_code: "USD", value: total.toFixed(2) } },
         ],
-        application_context: { brand_name: "XYZ Company", shipping_preference: "NO_SHIPPING", user_action: "PAY_NOW" },
+        application_context: { brand_name: "Arcana Crystals", shipping_preference: "NO_SHIPPING", user_action: "PAY_NOW" },
       }),
     });
     if (!ppResp.ok) {

@@ -2,7 +2,7 @@
 # Render → New → Blueprint → pick this repo. Fill in the secret values when asked.
 services:
   - type: web
-    name: xyz-company
+    name: arcana-crystals
     runtime: node
     rootDir: webapp
     # "free" sleeps after 15 min idle (first visit then takes ~1 min); use "starter" for a live shop.

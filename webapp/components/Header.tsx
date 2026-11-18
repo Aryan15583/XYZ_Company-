@@ -44,10 +44,10 @@ export function Header({ variant = "default" }: { variant?: "default" | "checkou
     {variant !== "checkout" && <AnnouncementBar />}
     <header className={`site-header ${variant === "checkout" ? "site-header--checkout" : ""}`} role="banner">
       <div className="header-inner container">
-        <Link href="/" className="logo" aria-label="XYZ Company Home">
+        <Link href="/" className="logo" aria-label="Arcana Crystals Home">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/assets/brand/logo-badge-160.png" alt="" className="logo-badge" width={52} height={52} />
-          <span className="logo-text">XYZ Company</span>
+          <span className="logo-text">Arcana Crystals</span>
         </Link>
 
         {variant === "checkout" ? (

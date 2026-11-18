@@ -4,7 +4,7 @@ import { createContext, useContext, useEffect, useState, useCallback, useRef, us
 import { CurrencyCode, EXCHANGE_RATES as DEFAULT_RATES, COUNTRY_CURRENCY } from "@/lib/currency";
 import { getPublicConfig } from "@/lib/public-config";
 
-const CURRENCY_KEY = "xyzCompany_currency";
+const CURRENCY_KEY = "arcanaCrystals_currency";
 
 type RatesTable = Record<CurrencyCode, number>;
 

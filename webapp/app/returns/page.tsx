@@ -6,7 +6,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "Returns & Shipping Policy",
   description:
-    "XYZ Company Returns and Shipping Policy — 14-day returns, international shipping rates, customs information and delivery times worldwide.",
+    "Arcana Crystals Returns and Shipping Policy — 14-day returns, international shipping rates, customs information and delivery times worldwide.",
   path: "/returns",
 });
 
@@ -109,7 +109,7 @@ export default function ReturnsPage() {
 
             <section id="contact-returns"><h2>9. Contact</h2>
               <address>
-                <strong>XYZ Company — Returns &amp; Shipping</strong><br />
+                <strong>Arcana Crystals — Returns &amp; Shipping</strong><br />
                 Email: <a href="mailto:returns@example.com">returns@example.com</a><br />
                 General enquiries: <a href="mailto:hello@example.com">hello@example.com</a>
               </address>

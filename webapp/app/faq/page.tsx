@@ -7,7 +7,7 @@ import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "Frequently Asked Questions",
   description:
-    "Answers about XYZ Company orders, shipping and delivery times, payment methods and returns.",
+    "Answers about Arcana Crystals orders, shipping and delivery times, payment methods and returns.",
   path: "/faq",
 });
 

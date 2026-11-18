@@ -6,7 +6,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "Terms of Service",
   description:
-    "XYZ Company Terms of Service — the rules and conditions governing use of our website and purchase of products.",
+    "Arcana Crystals Terms of Service — the rules and conditions governing use of our website and purchase of products.",
   path: "/terms",
 });
 
@@ -44,14 +44,14 @@ export default function TermsPage() {
               <p className="legal-meta">Last updated: <time dateTime="2025-01-01">1 January 2025</time></p>
             </header>
 
-            <p>Please read these Terms of Service carefully before using the XYZ Company website or placing an order. By accessing our website or purchasing our products or services, you agree to be bound by these Terms.</p>
+            <p>Please read these Terms of Service carefully before using the Arcana Crystals website or placing an order. By accessing our website or purchasing our products or services, you agree to be bound by these Terms.</p>
 
             <section id="acceptance"><h2>1. Acceptance of Terms</h2>
               <p>By using our website, you confirm that you are at least 18 years of age (or the legal age of majority in your jurisdiction) and agree to these Terms and our <Link href="/privacy">Privacy Policy</Link>.</p>
             </section>
 
             <section id="products"><h2>2. Products &amp; Services</h2>
-              <p>XYZ Company sells products through this website. Product images are representative; actual colour and appearance may vary slightly from the images shown.</p>
+              <p>Arcana Crystals sells products through this website. Product images are representative; actual colour and appearance may vary slightly from the images shown.</p>
             </section>
 
 
@@ -72,11 +72,11 @@ export default function TermsPage() {
             </section>
 
             <section id="ip"><h2>7. Intellectual Property</h2>
-              <p>All content on this website is the intellectual property of XYZ Company and is protected by applicable intellectual property laws.</p>
+              <p>All content on this website is the intellectual property of Arcana Crystals and is protected by applicable intellectual property laws.</p>
             </section>
 
             <section id="liability"><h2>8. Limitation of Liability</h2>
-              <p>To the fullest extent permitted by applicable law, XYZ Company&apos;s total liability for any claim shall not exceed the amount you paid for the specific product or service giving rise to the claim.</p>
+              <p>To the fullest extent permitted by applicable law, Arcana Crystals&apos;s total liability for any claim shall not exceed the amount you paid for the specific product or service giving rise to the claim.</p>
             </section>
 
             <section id="governing"><h2>9. Governing Law</h2>
@@ -85,7 +85,7 @@ export default function TermsPage() {
 
             <section id="contact-terms"><h2>10. Contact</h2>
               <address>
-                <strong>XYZ Company</strong><br />
+                <strong>Arcana Crystals</strong><br />
                 Email: <a href="mailto:hello@example.com">hello@example.com</a><br />
                 Address: Mumbai, Maharashtra, India
               </address>

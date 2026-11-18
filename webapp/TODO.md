@@ -289,5 +289,5 @@ All built and working; nothing to configure except the announcement text.
   "Recently viewed" products, related products from the same type first,
   and a real 2× hover zoom on product photos.
 - **Add to Home screen:** the site has a web app manifest and app icons, so it can be
-  installed on phones with the XYZ Company icon.
+  installed on phones with the Arcana Crystals icon.
 
