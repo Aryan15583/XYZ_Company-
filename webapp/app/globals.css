@@ -2,14 +2,15 @@
    ARCANA CRYSTALS — globals.css
    Emerald + copper palette, Fraunces / Manrope type.
    Celestial Harmony palette, dark-first: the dark theme always applies
-   (the old prefers-color-scheme blocks are now @media all).
+   Dark is the default; <html data-theme="light"> switches to light mode.
+   Dark-only rules are nested under :root[data-theme="dark"].
    ============================================================= */
 
 /* Fonts are self-hosted (imported in app/layout.tsx via @fontsource) — no
    render-blocking request to Google, and they work behind strict networks. */
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
   /* --- Brand Colours --- */
   --brand-gold:       #f4b400;
   --brand-gold-light: #ffdab9;
@@ -29,12 +30,12 @@
   /* --- Light Mode Text Colours --- */
   --text-primary:     #191933;
   --text-body:        #2f4f68;
-  --text-muted:       #6a7f94;
+  --text-muted:       #5b6f84;
   --text-secondary:   var(--text-body);
   --text-inverse:     #fdfdfd;
   --text-on-gold:     #191933;
-  --text-link:        #00a9a5;
-  --text-link-hover:  #f4b400;
+  --text-link:        #00807d;
+  --text-link-hover:  #b87333;
 
   /* --- Light Mode Border & Divider --- */
   --border-color:     #d5dbe3;
@@ -110,8 +111,9 @@
   --z-cookie:  600;
 }
 
-@media all {
-  :root {
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  & {
     --bg-page:          #191933;
     --bg-surface:       #1f2342;
     --bg-surface-2:     #26324f;
@@ -746,7 +748,6 @@ select.form-input {
   line-height: 1;
 }
 
-.theme-toggle { display: none !important; }
 
 .mobile-menu-btn {
   display: none;
@@ -3289,7 +3290,7 @@ select.form-input {
   font-size: 0.75rem; font-weight: 600; color: #2e7d4f;
   background: color-mix(in srgb, #2e7d4f 12%, transparent); padding: 2px 8px; border-radius: 999px;
 }
-@media all { .review-verified { color: #7fd3a2; } }
+:root[data-theme="dark"] { .review-verified { color: #7fd3a2; } }
 
 /* ── Announcement bar ─────────────────────────────────────────────── */
 .announcement-bar {
@@ -3384,7 +3385,7 @@ body { font-feature-settings: "kern", "liga"; -webkit-font-smoothing: antialiase
   content: ""; width: 28px; height: 1px; background: currentColor; opacity: 0.6;
 }
 .eyebrow--light { color: var(--brand-gold-light); }
-@media all { .eyebrow { color: var(--brand-gold-light); } }
+:root[data-theme="dark"] { .eyebrow { color: var(--brand-gold-light); } }
 .icon { flex: none; vertical-align: middle; }
 
 /* ── Buttons: squarer, spaced capitals, gold that glows a little ─ */
@@ -3410,7 +3411,7 @@ body { font-feature-settings: "kern", "liga"; -webkit-font-smoothing: antialiase
 .btn-outline:hover { background: var(--brand-gold); color: #191933; }
 .btn-outline--light { color: #ffe9d6; border-color: rgba(255, 218, 185, 0.7); }
 .btn-outline--light:hover { background: rgba(255, 218, 185, 0.14); color: #fff; border-color: var(--brand-gold-light); }
-@media all { .btn-outline { color: var(--brand-gold-light); } }
+:root[data-theme="dark"] { .btn-outline { color: var(--brand-gold-light); } }
 
 /* ── Announcement bar: deep, quiet, gold type ─────────────────── */
 .announcement-bar { background: #191933; color: #ffdab9; font-weight: 500; letter-spacing: 0.04em; }
@@ -3492,7 +3493,7 @@ body { font-feature-settings: "kern", "liga"; -webkit-font-smoothing: antialiase
   display: inline-grid; place-items: center; width: 64px; height: 64px; margin: 0 auto var(--space-5, 1.25rem);
   border-radius: 50%; border: 1px solid var(--brand-gold); color: var(--brand-gold-dark); font-size: 0;
 }
-@media all { .feature-icon { color: var(--brand-gold-light); } }
+:root[data-theme="dark"] { .feature-icon { color: var(--brand-gold-light); } }
 .feature-card h3 { font-size: 1.4rem; font-weight: 500; }
 .feature-card p { line-height: 1.7; }
 
@@ -3649,7 +3650,7 @@ html { scroll-behavior: smooth; }
   z-index: 1;
 }
 .product-card.is-tilting::after { opacity: 1; }
-@media all { .product-card::after { background: radial-gradient(circle at var(--glare-x, 50%) var(--glare-y, 0%), rgba(255, 218, 185, 0.14), transparent 55%); } }
+:root[data-theme="dark"] { .product-card::after { background: radial-gradient(circle at var(--glare-x, 50%) var(--glare-y, 0%), rgba(255, 218, 185, 0.14), transparent 55%); } }
 
 /* Buttons give a small press when tapped or clicked. */
 .btn:active:not(:disabled) { transform: scale(0.97); transition-duration: 0.08s; }
@@ -3945,7 +3946,7 @@ html { scroll-behavior: smooth; }
 
 /* Links into the guides from other pages */
 .number-guide-link, .product-guide-link, .page-guide-link { display: inline-block; margin-top: var(--space-3); font-weight: 600; font-size: 0.92rem; color: var(--brand-gold-dark); text-decoration: underline; text-underline-offset: 3px; }
-@media all {
+:root[data-theme="dark"] {
   .guide-callout a, .guide-article a, .guide-facts a, .guide-inline-promo a, .mukhi-link, .guide-tagline, .guide-panel-sub,
   .number-guide-link, .product-guide-link, .page-guide-link { color: var(--brand-gold-light); }
 }
@@ -4085,7 +4086,7 @@ html { scroll-behavior: smooth; }
 }
 .eyebrow::before, .section-header .eyebrow::after { content: none; }
 .eyebrow--light { background: rgba(0, 169, 165, 0.12); color: var(--brand-amethyst); }
-@media all { .eyebrow, .eyebrow--light { color: #5fd3cf; background: rgba(0, 169, 165, 0.12); } }
+:root[data-theme="dark"] { .eyebrow, .eyebrow--light { color: #5fd3cf; background: rgba(0, 169, 165, 0.12); } }
 
 /* Logo: lowercase-friendly serif wordmark */
 .logo-text { font-family: var(--font-heading); font-weight: 600; letter-spacing: -0.01em; text-transform: none; font-size: 1.35rem; }
@@ -4099,7 +4100,7 @@ html { scroll-behavior: smooth; }
 .btn-primary:hover { background: var(--brand-gold); border-color: var(--brand-gold); color: #fff; box-shadow: 0 10px 24px -10px rgba(244, 180, 0, 0.7); }
 .btn-outline { border-color: var(--brand-deep); color: var(--brand-deep); }
 .btn-outline:hover { background: var(--brand-deep); color: #fff; }
-@media all {
+:root[data-theme="dark"] {
   .btn-primary { background: var(--brand-gold); border-color: var(--brand-gold); color: #12122a; }
   .btn-primary:hover { background: var(--brand-gold-light); border-color: var(--brand-gold-light); color: #12122a; }
   .btn-outline { border-color: var(--brand-gold-light); color: var(--brand-gold-light); }
@@ -4115,7 +4116,7 @@ html { scroll-behavior: smooth; }
 .trust-item { font-size: 0.9rem; font-weight: 600; }
 .site-footer h4 { font-family: var(--font-heading); font-size: 1.15rem; font-weight: 600; }
 .trust-bar { background: var(--arcana-mist); border-bottom: 0; }
-@media all { .trust-bar { background: var(--bg-surface-2); } }
+:root[data-theme="dark"] { .trust-bar { background: var(--bg-surface-2); } }
 
 /* Hero: light mineral wash with an arched frame (dark stays emerald) */
 .hero { background: linear-gradient(160deg, var(--arcana-mist) 0%, #fdfdfd 45%, var(--arcana-blush) 100%); }
@@ -4131,7 +4132,7 @@ html { scroll-behavior: smooth; }
 .hero-frame { aspect-ratio: 4 / 5; border-radius: 999px 999px var(--radius-card) var(--radius-card); background: var(--brand-deep); overflow: hidden; box-shadow: 0 40px 80px -40px rgba(25, 25, 51, 0.6); }
 .hero-frame::before { content: none; }
 .hero-frame img { box-shadow: none; }
-@media all {
+:root[data-theme="dark"] {
   .hero { background: linear-gradient(160deg, #12122a 0%, #191933 100%); }
   .hero-title { color: #fdfdfd; }
   .hero-title .accent { color: var(--brand-gold-light); }
@@ -4150,7 +4151,7 @@ html { scroll-behavior: smooth; }
 .gallery-main, .gallery-thumb, .filter-section, .shop-sidebar, .shop-toolbar, .cart-summary, .specs-list { border-radius: 16px; }
 .feature-card { background: var(--bg-surface); border-radius: var(--radius-card); border: 1px solid var(--border-light); }
 .feature-icon { border: 0; background: rgba(0, 169, 165, 0.12); color: var(--brand-amethyst); border-radius: 18px; }
-@media all { .feature-icon { background: rgba(0, 169, 165, 0.12); color: #5fd3cf; } }
+:root[data-theme="dark"] { .feature-icon { background: rgba(0, 169, 165, 0.12); color: #5fd3cf; } }
 .form-input, select.form-input, textarea.form-input { border-radius: 12px; }
 .hero-frame { display: grid; place-items: center; }
 .hero-frame img { width: 78%; height: auto; padding: 0 !important; animation: none; }
@@ -4178,12 +4179,44 @@ html { scroll-behavior: smooth; }
 .hero-title { color: #fdfdfd; }
 .hero-title .accent { color: #f4b400; }
 .hero-frame { background: #2f4f68; border: 1px solid rgba(184, 115, 51, 0.6); }
-.eyebrow, .eyebrow--light { color: #ffdab9; background: rgba(255, 218, 185, 0.10); }
 .feature-icon, .hero-trust .icon, .trust-item .icon, .product-trust .icon { color: #00a9a5; }
 .feature-icon { background: rgba(0, 169, 165, 0.12); }
-.section-title, .page-title, .product-detail-title { color: #fdfdfd; }
 .site-footer h4 { color: #ffdab9; }
-.nav-link.active, .nav-link[aria-current="page"] { color: #f4b400; }
 .product-badge, .badge-bestseller { background: #b87333; color: #fdfdfd; }
-.btn-outline, .hero .btn-outline--light { color: #fdfdfd; border-color: #6a7f94; }
-.btn-outline:hover, .hero .btn-outline--light:hover { background: #fdfdfd; color: #191933; border-color: #fdfdfd; }
+
+/* Hero stays a night sky in both themes. */
+.hero .eyebrow, .hero .eyebrow--light { color: #ffdab9; background: rgba(255, 218, 185, 0.10); }
+.hero-subtitle { color: rgba(253, 253, 253, 0.8); }
+.hero-trust { color: rgba(253, 253, 253, 0.72); }
+.hero .btn-outline--light { color: #fdfdfd; border-color: #6a7f94; }
+.hero .btn-outline--light:hover { background: #fdfdfd; color: #191933; border-color: #fdfdfd; }
+
+/* Light theme */
+.btn-primary { background: #f4b400; border-color: #f4b400; color: #191933; box-shadow: 0 8px 20px -10px rgba(244, 180, 0, 0.7); }
+.btn-primary:hover { background: #ffc94d; border-color: #ffc94d; color: #191933; }
+.btn-outline { color: #191933; border-color: #191933; }
+.btn-outline:hover { background: #191933; color: #fdfdfd; }
+.eyebrow { color: #2f4f68; background: rgba(0, 169, 165, 0.12); }
+.section-title, .page-title, .product-detail-title { color: #191933; }
+.nav-link.active, .nav-link[aria-current="page"] { color: #b87333; }
+.feature-icon, .trust-item .icon, .product-trust .icon { color: #00807d; }
+.trust-bar { background: #eef1f5; }
+
+/* Dark theme */
+:root[data-theme="dark"] {
+  .eyebrow { color: #ffdab9; background: rgba(255, 218, 185, 0.10); }
+  .section-title, .page-title, .product-detail-title { color: #fdfdfd; }
+  .btn-outline { color: #fdfdfd; border-color: #6a7f94; }
+  .btn-outline:hover { background: #fdfdfd; color: #191933; border-color: #fdfdfd; }
+  .nav-link.active, .nav-link[aria-current="page"] { color: #f4b400; }
+  .feature-icon, .trust-item .icon, .product-trust .icon { color: #00a9a5; }
+  .trust-bar { background: var(--bg-surface-2); }
+}
+
+/* Theme toggle button in the header */
+.theme-toggle { display: inline-grid; place-items: center; width: 40px; height: 40px; border-radius: 9999px; border: 1px solid transparent; background: transparent; color: var(--text-primary); cursor: pointer; }
+.theme-toggle:hover { background: var(--bg-surface-2); border-color: var(--border-color); }
+.theme-toggle:focus-visible { outline: 2px solid var(--brand-gold); outline-offset: 2px; }
+.theme-toggle .icon-sun { display: none; }
+:root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+:root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }

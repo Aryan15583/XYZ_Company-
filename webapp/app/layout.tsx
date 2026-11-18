@@ -4,6 +4,7 @@ import "@fontsource-variable/fraunces/opsz-italic.css";
 import "@fontsource-variable/manrope/wght.css";
 import "./globals.css";
 import { Providers } from "@/components/Providers";
+import { THEME_KEY } from "@/lib/theme";
 import { CookieBanner } from "@/components/CookieBanner";
 import { Analytics } from "@/components/Analytics";
 import { ScrollReveal } from "@/components/ScrollReveal";
@@ -56,9 +57,15 @@ export const viewport: Viewport = {
   ],
 };
 
+const THEME_SCRIPT = `try{var t=localStorage.getItem("${THEME_KEY}");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}`;
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" data-theme="auto" data-scroll-behavior="smooth">
+    <html lang="en" data-theme="dark" data-scroll-behavior="smooth" suppressHydrationWarning>
+      <head>
+        {/* Apply the visitor's saved theme before first paint (dark is the default). */}
+        <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
+      </head>
       <body>
         <Providers>
           <a href="#main-content" className="skip-link">Skip to content</a>

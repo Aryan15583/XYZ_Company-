@@ -10,6 +10,7 @@ import type { CurrencyCode } from "@/lib/currency";
 import { AnnouncementBar } from "./AnnouncementBar";
 import { Icon } from "./Icon";
 import { MobileMenu } from "./MobileMenu";
+import { ThemeToggle } from "./ThemeToggle";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
@@ -79,6 +80,7 @@ export function Header({ variant = "default" }: { variant?: "default" | "checkou
             </Link>
           ) : (
             <>
+              <ThemeToggle />
               <div className="currency-selector">
                 <select
                   aria-label="Currency selection"
