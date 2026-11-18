@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="auto">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -50,6 +50,7 @@
       }
     })();
   </script>
+  <script>try{var t=localStorage.getItem("arcanaCrystals_theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 </head>
 <body>
 
@@ -69,6 +70,7 @@
         <span aria-hidden="true">🔒</span> Secure Checkout
       </div>
       <div class="header-actions">
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch between light and dark mode" title="Light / dark mode"><span class="icon-sun" aria-hidden="true">☀</span><span class="icon-moon" aria-hidden="true">☾</span></button>
         
         <a href="cart.html" class="btn btn-ghost btn-sm" aria-label="Return to cart">← Back to Cart</a>
       </div>

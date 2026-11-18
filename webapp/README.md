@@ -1,8 +1,9 @@
 # Arcana Crystals — Next.js
 
 The Arcana Crystals online shop: storefront, cart and checkout, a real database
-and API, and an admin panel. The catalogue starts empty — add categories and
-products in the admin panel.
+and API, and an admin panel. It starts with 49 crystal
+products (8 priced bracelets, the rest "price on request") — set prices and
+stock in the admin panel.
 
 ## Quick start
 

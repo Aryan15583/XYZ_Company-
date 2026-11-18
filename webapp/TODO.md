@@ -81,8 +81,10 @@ contact message, and review.
 
 ## 5. Product content
 
-- [ ] **Add your catalogue.** It starts empty. Create categories (Admin →
-      Categories), then products (Admin → Products) with real photos: Edit →
+- [ ] **Price the catalogue.** 41 of the 49 starter products are "price on
+      request" (price 0, stock 0). Set prices and stock in Admin → Products.
+- [ ] **Swap in real photos.** Product images are computer renders. Upload
+      real photos in Admin → Products → Edit →
       **Product Images** → "Upload image" (up to 4 per product; the first is the
       main photo). Square photos look best; big phone photos are shrunk to
       1600px JPEG in the browser before upload (4 MB limit). Uploads are stored

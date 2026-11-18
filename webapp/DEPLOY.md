@@ -29,7 +29,7 @@ Everything below is done in your browser; nothing to install. Total time ≈ 30 
 > **`DIRECT_URL`**. Paste only the part inside the quotes.
 
 You don't create any tables yourself: the first deploy builds the database
-automatically. The catalogue starts empty.
+automatically, including the 49 starter products and the stone categories.
 
 ## 2. Put the site on Vercel (10 min)
 
@@ -63,7 +63,7 @@ automatically. The catalogue starts empty.
 5. Click **Deploy**. (If the project was created without deploying, use
    Deployments → **Create Deployment** → branch `main`, or push any commit to `main`.) The build runs `prisma migrate deploy` (creates the tables on the
    first run) and then builds the site. ~2–3 minutes.
-6. Open the `.vercel.app` link: the shop should load (empty until you add products). Check
+6. Open the `.vercel.app` link: the shop should show the starter products. Check
    `https://<your-project>.vercel.app/api/health` → `{"ok":true,"db":"up",…}`.
 
 **Which branch?** Vercel deploys your default branch (`main`) as production. Merge the

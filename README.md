@@ -12,8 +12,9 @@ site and repurposed as a products-only store (no bookings or numerology).
 - **`src/`** — the older Express + SQLite backend for the static version
   (see [SETUP.md](SETUP.md)).
 
-The catalogue starts empty: add categories and products in the admin panel
-(`/admin`).
+The database starts with 49 crystal products and 20 stone categories (loaded
+by a migration). The 8 bracelets are priced; the rest show "price on request"
+until you set a price and stock in the admin panel (`/admin`).
 
 ## Still to fill in
 

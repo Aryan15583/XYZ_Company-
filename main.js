@@ -32,20 +32,13 @@
    Updates live if user changes their OS/browser setting mid-session.
    ================================================================ */
 function initTheme() {
-  const mq = window.matchMedia('(prefers-color-scheme: dark)');
-
-  function applyTheme(isDark) {
-    // LINE 38: Set data-theme on <html> for any CSS that needs it
-    document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
-  }
-
-  // LINE 42: Apply on load
-  applyTheme(mq.matches);
-
-  // LINE 45: Listen for live changes — updates instantly when
-  // the user changes their browser or OS appearance setting
-  mq.addEventListener('change', (e) => {
-    applyTheme(e.matches);
+  // Dark is the default; the header button switches and the choice is saved.
+  const btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+  btn.addEventListener('click', () => {
+    const next = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('arcanaCrystals_theme', next); } catch (e) { /* storage blocked */ }
   });
 }
 

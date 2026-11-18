@@ -1,7 +1,7 @@
 /* =============================================================
    ARCANA CRYSTALS — styles.css
    Single stylesheet for all 12 pages
-   Dark / Light mode: 100% driven by browser prefers-color-scheme
+   Dark / Light mode: dark by default, header toggle switches (saved)
    No toggle button — updates live when OS/browser setting changes
    
    TABLE OF CONTENTS
@@ -68,7 +68,7 @@
    Dark mode overrides follow at LINE 160.
    ============================================================= */
 :root {
-  color-scheme: dark;
+  color-scheme: light;
   /* --- Brand Colours --- */
   --brand-gold:       #f4b400;        /* primary accent — warm gold */
   --brand-gold-light: #ffdab9;        /* lighter gold for hover */
@@ -79,7 +79,7 @@
   /* --- Light Mode Surface Colours --- */
   --bg-page:          #fdfdfd;        /* warm off-white page background */
   --bg-surface:       #ffffff;        /* cards, panels */
-  --bg-surface-2:     #191933;        /* alternate section background */
+  --bg-surface-2:     #eef1f5;        /* alternate section background */
   --bg-surface-3:     #dfe4ea;        /* deeper alternate */
   --bg-header:        rgba(253, 253, 253, 0.95);
   --bg-footer:        #191933;        /* always dark footer */
@@ -88,11 +88,11 @@
   /* --- Light Mode Text Colours --- */
   --text-primary:     #191933;        /* headings */
   --text-body:        #2f4f68;        /* body text */
-  --text-muted:       #6a7f94;        /* secondary/muted text */
+  --text-muted:       #5b6f84;        /* secondary/muted text */
   --text-inverse:     #fdfdfd;        /* text on dark backgrounds */
   --text-on-gold:     #191933;        /* text on gold buttons */
-  --text-link:        #00a9a5;        /* links */
-  --text-link-hover:  #f4b400;        /* link hover */
+  --text-link:        #00807d;        /* links */
+  --text-link-hover:  #b87333;        /* link hover */
 
   /* --- Light Mode Border & Divider --- */
   --border-color:     #d5dbe3;
@@ -173,8 +173,8 @@
    Activated automatically when browser/OS is set to dark.
    No JavaScript required. Updates live when setting changes.
    ============================================================= */
-@media all {
-  :root {
+  :root[data-theme="dark"] {
+    color-scheme: dark;
     /* --- Dark Mode Surface Colours --- */
     --bg-page:          #191933;        /* Deep Space Indigo */
     --bg-surface:       #1f2342;        /* cards, panels */
@@ -222,7 +222,6 @@
     --shadow-card:      0 2px 12px rgba(0,0,0,0.4);
     --shadow-card-hover:0 8px 32px rgba(244,180,0,0.15);
   }
-}
 
 
 /* =============================================================
@@ -893,8 +892,12 @@ select.form-input {
   line-height: 1;
 }
 
-/* LINE 826: Hide theme toggle button everywhere — no manual toggle */
-.theme-toggle { display: none !important; }
+/* Theme toggle: sun shows in dark mode, moon in light mode */
+.theme-toggle { display: inline-grid; place-items: center; width: 40px; height: 40px; border-radius: 9999px; border: 1px solid transparent; background: transparent; color: var(--text-primary); cursor: pointer; font-size: 1.1rem; }
+.theme-toggle:hover { background: var(--bg-surface-2); border-color: var(--border-color); }
+.theme-toggle .icon-sun { display: none; }
+:root[data-theme="dark"] .theme-toggle .icon-sun { display: inline; }
+:root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
 
 /* LINE 829: Mobile menu button */
 .mobile-menu-btn {
@@ -3462,7 +3465,7 @@ select.form-input {
    END OF styles.css
    Total: ~3430 lines
    Company: Arcana Crystals
-   Dark/Light: 100% CSS prefers-color-scheme, no JS toggle
+   Dark/Light: html[data-theme], set by the header toggle
    Live updates when browser/OS setting changes mid-session
    WCAG 2.1 AA compliant
    Mobile-first responsive
