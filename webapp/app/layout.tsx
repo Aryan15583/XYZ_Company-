@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import "@fontsource-variable/fraunces/opsz.css";
 import "@fontsource-variable/fraunces/opsz-italic.css";
 import "@fontsource-variable/manrope/wght.css";
@@ -62,11 +63,9 @@ const THEME_SCRIPT = `try{var t=localStorage.getItem("${THEME_KEY}");if(t==="lig
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" data-theme="dark" data-scroll-behavior="smooth" suppressHydrationWarning>
-      <head>
-        {/* Apply the visitor's saved theme before first paint (dark is the default). */}
-        <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
-      </head>
       <body>
+        {/* Apply the visitor's saved theme before the page hydrates (dark is the default). */}
+        <Script id="theme-init" strategy="beforeInteractive">{THEME_SCRIPT}</Script>
         <Providers>
           <a href="#main-content" className="skip-link">Skip to content</a>
           <CookieBanner />
