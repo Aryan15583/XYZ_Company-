@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "local": "node scripts/local.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
@@ -29,6 +30,8 @@
     "zod": "^4.6.4"
   },
   "devDependencies": {
+    "@electric-sql/pglite": "^0.5.17",
+    "@electric-sql/pglite-socket": "^0.2.20",
     "@types/node": "^20",
     "@types/nodemailer": "^8.0.2",
     "@types/react": "^19",
