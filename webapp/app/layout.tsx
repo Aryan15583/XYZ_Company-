@@ -54,7 +54,8 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   themeColor: [
-    { color: "#191933" },
+    { media: "(prefers-color-scheme: light)", color: "#fdfdfd" },
+    { media: "(prefers-color-scheme: dark)", color: "#191933" },
   ],
 };
 
@@ -62,9 +63,9 @@ const THEME_SCRIPT = `try{var t=localStorage.getItem("${THEME_KEY}");if(t==="lig
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" data-theme="dark" data-scroll-behavior="smooth" suppressHydrationWarning>
+    <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
       <body>
-        {/* Apply the visitor's saved theme before the page hydrates (dark is the default). */}
+        {/* Apply a theme the visitor picked; otherwise CSS follows the device setting. */}
         <Script id="theme-init" strategy="beforeInteractive">{THEME_SCRIPT}</Script>
         <Providers>
           <a href="#main-content" className="skip-link">Skip to content</a>

@@ -1,7 +1,7 @@
 /* =============================================================
    ARCANA CRYSTALS — styles.css
    Single stylesheet for all 12 pages
-   Dark / Light mode: dark by default, header toggle switches (saved)
+   Dark / Light mode: follows the device until the header toggle picks one
    No toggle button — updates live when OS/browser setting changes
    
    TABLE OF CONTENTS
@@ -222,6 +222,57 @@
     --shadow-card:      0 2px 12px rgba(0,0,0,0.4);
     --shadow-card-hover:0 8px 32px rgba(244,180,0,0.15);
   }
+@media (prefers-color-scheme: dark) {
+:root:not([data-theme="light"]) {
+    color-scheme: dark;
+    /* --- Dark Mode Surface Colours --- */
+    --bg-page:          #191933;        /* Deep Space Indigo */
+    --bg-surface:       #1f2342;        /* cards, panels */
+    --bg-surface-2:     #26324f;        /* alternate section */
+    --bg-surface-3:     #2f4f68;        /* Midnight Navy */
+    --bg-header:        rgba(18, 18, 42, 0.96);
+    --bg-footer:        #0d0d20;        /* footer even darker */
+    --bg-hero:          #12122a;
+
+    /* --- Dark Mode Text Colours --- */
+    --text-primary:     #fdfdfd;        /* near-white headings */
+    --text-body:        #c5d0db;        /* light slate body */
+    --text-muted:       #8fa1b3;        /* muted text */
+    --text-inverse:     #12122a;
+    --text-on-gold:     #12122a;
+    --text-link:        #00a9a5;        /* Celestial Teal */
+    --text-link-hover:  #ffdab9;
+
+    /* --- Dark Mode Border --- */
+    --border-color:     #3d4d66;
+    --border-light:     #2a3a55;
+    --border-focus:     #f4b400;
+
+    /* --- Dark Mode Inputs --- */
+    --input-bg:         #191933;
+    --input-border:     #3d4d66;
+    --input-text:       #fdfdfd;
+    --input-placeholder:#6a7f94;
+
+    /* --- Status Colours (adjusted for dark) --- */
+    --color-success:    #4caf7d;
+    --color-success-bg: #0d2b1c;
+    --color-error:      #e57373;
+    --color-error-bg:   #2b0d0d;
+    --color-warning:    #ffb74d;
+    --color-warning-bg: #2b1a00;
+    --color-info:       #64b5f6;
+    --color-info-bg:    #0d1f2b;
+
+    /* --- Dark Shadows (more glow-like) --- */
+    --shadow-sm:        0 1px 3px rgba(0,0,0,0.4);
+    --shadow-md:        0 4px 16px rgba(0,0,0,0.5);
+    --shadow-lg:        0 8px 32px rgba(0,0,0,0.6);
+    --shadow-xl:        0 16px 48px rgba(0,0,0,0.7);
+    --shadow-card:      0 2px 12px rgba(0,0,0,0.4);
+    --shadow-card-hover:0 8px 32px rgba(244,180,0,0.15);
+  }
+}
 
 
 /* =============================================================
@@ -897,7 +948,13 @@ select.form-input {
 .theme-toggle:hover { background: var(--bg-surface-2); border-color: var(--border-color); }
 .theme-toggle .icon-sun { display: none; }
 :root[data-theme="dark"] .theme-toggle .icon-sun { display: inline; }
+@media (prefers-color-scheme: dark) {
+:root:not([data-theme="light"]) .theme-toggle .icon-sun { display: inline; }
+}
 :root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+@media (prefers-color-scheme: dark) {
+:root:not([data-theme="light"]) .theme-toggle .icon-moon { display: none; }
+}
 
 /* LINE 829: Mobile menu button */
 .mobile-menu-btn {

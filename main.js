@@ -32,13 +32,22 @@
    Updates live if user changes their OS/browser setting mid-session.
    ================================================================ */
 function initTheme() {
-  // Dark is the default; the header button switches and the choice is saved.
+  // Follows the device setting until the visitor clicks the header button.
+  // Picking the theme the device already uses clears the choice again.
   const btn = document.getElementById('theme-toggle');
   if (!btn) return;
   btn.addEventListener('click', () => {
-    const next = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-    document.documentElement.setAttribute('data-theme', next);
-    try { localStorage.setItem('arcanaCrystals_theme', next); } catch (e) { /* storage blocked */ }
+    const root = document.documentElement;
+    const deviceDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const current = root.getAttribute('data-theme') || (deviceDark ? 'dark' : 'light');
+    const next = current === 'dark' ? 'light' : 'dark';
+    const matchesDevice = (next === 'dark') === deviceDark;
+    try {
+      if (matchesDevice) localStorage.removeItem('arcanaCrystals_theme');
+      else localStorage.setItem('arcanaCrystals_theme', next);
+    } catch (e) { /* storage blocked */ }
+    if (matchesDevice) root.removeAttribute('data-theme');
+    else root.setAttribute('data-theme', next);
   });
 }
 

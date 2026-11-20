@@ -1,22 +1,28 @@
 "use client";
 
 import { Icon } from "./Icon";
-
 import { THEME_KEY } from "@/lib/theme";
 
-// Switches between the dark (default) and light theme by setting
-// <html data-theme>. Both icons are rendered and CSS shows the right one, so
-// server and client markup always match.
+// The site follows the device's light/dark setting until the visitor clicks
+// this button. Clicking picks the opposite of what is showing and saves it;
+// picking the same theme the device uses clears the choice, so the site goes
+// back to following the device. Both icons are rendered and CSS shows the
+// right one, so server and client markup always match.
 export function ThemeToggle() {
   function toggle() {
     const root = document.documentElement;
-    const next = root.dataset.theme === "light" ? "dark" : "light";
-    root.dataset.theme = next;
+    const deviceDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const current = root.dataset.theme ?? (deviceDark ? "dark" : "light");
+    const next = current === "dark" ? "light" : "dark";
+    const matchesDevice = (next === "dark") === deviceDark;
     try {
-      localStorage.setItem(THEME_KEY, next);
+      if (matchesDevice) localStorage.removeItem(THEME_KEY);
+      else localStorage.setItem(THEME_KEY, next);
     } catch {
       // Private mode / blocked storage: the switch still works for this page.
     }
+    if (matchesDevice) delete root.dataset.theme;
+    else root.dataset.theme = next;
   }
 
   return (
