@@ -16,12 +16,12 @@ import { isPriced } from "@/lib/pricing";
 import { getProductType } from "@/lib/product-types";
 import { Icon } from "./Icon";
 
-export function ProductDetailClient({ product }: { product: ProductDTO }) {
+export function ProductDetailClient({ product, guide }: { product: ProductDTO; guide?: { href: string; label: string } }) {
   const { addToCart } = useCart();
   const { format } = useCurrency();
   const [activeImg, setActiveImg] = useState(product.imageUrl || product.images[0] || "/assets/placeholder.svg");
   const [qty, setQty] = useState(1);
-  const [activeTab, setActiveTab] = useState<"reviews" | "shipping" | "returns">("reviews");
+  const [activeTab, setActiveTab] = useState<"reviews" | "shipping" | "returns" | "care">("reviews");
   const [added, setAdded] = useState(false);
   const [freeShippingThreshold, setFreeShippingThreshold] = useState(50);
   const [zoomOrigin, setZoomOrigin] = useState<string | null>(null);
@@ -198,6 +198,9 @@ export function ProductDetailClient({ product }: { product: ProductDTO }) {
             <div className="product-description">
               <h2>About This {type?.singular ?? "Product"}</h2>
               <p>{product.description}</p>
+              {guide && (
+                <Link href={guide.href} className="product-guide-link">{guide.label} →</Link>
+              )}
             </div>
           </div>
         </div>
@@ -211,6 +214,9 @@ export function ProductDetailClient({ product }: { product: ProductDTO }) {
           </button>
           <button className={`tab-btn ${activeTab === "returns" ? "active" : ""}`} role="tab" aria-selected={activeTab === "returns"} onClick={() => setActiveTab("returns")}>
             Returns
+          </button>
+          <button className={`tab-btn ${activeTab === "care" ? "active" : ""}`} role="tab" aria-selected={activeTab === "care"} onClick={() => setActiveTab("care")}>
+            Crystal Care
           </button>
         </div>
 
@@ -261,6 +267,20 @@ export function ProductDetailClient({ product }: { product: ProductDTO }) {
               <li>Return shipping costs are the buyer&apos;s responsibility unless the item is defective</li>
             </ul>
             <p><Link href="/returns">View full returns policy →</Link></p>
+          </div>
+        )}
+
+        {activeTab === "care" && (
+          <div className="tab-panel">
+            <h3>Crystal Care Guide</h3>
+            <ul className="info-list">
+              <li>Avoid long exposure to direct sunlight, which can fade natural colours</li>
+              <li>Remove before swimming, bathing or using chemical cleaners</li>
+              <li>Clean gently with a soft, dry cloth</li>
+              <li>Store in a soft pouch or box so harder stones don&apos;t scratch it</li>
+              <li>Cleanse it now and then with moonlight, smoke or a Selenite plate</li>
+            </ul>
+            {guide && <p><Link href={guide.href}>{guide.label} →</Link></p>}
           </div>
         )}
 

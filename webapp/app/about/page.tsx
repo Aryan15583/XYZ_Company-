@@ -11,7 +11,7 @@ export const revalidate = 60;
 export const metadata = pageMetadata({
   title: "About Us",
   description:
-    "About Arcana Crystals — who we are, what we sell and how we look after our customers.",
+    "About Arcana Crystals: natural crystals and gemstone jewellery, chosen by hand, described honestly and delivered with care.",
   path: "/about",
 });
 
@@ -31,25 +31,35 @@ export default async function AboutPage() {
         <section className="page-hero" aria-labelledby="about-hero-heading">
           <div className="container">
             <p className="eyebrow">Our Story</p>
-            <h1 id="about-hero-heading" className="page-title">About Arcana Crystals</h1>
+            <h1 id="about-hero-heading" className="page-title">Crystals, Chosen with Care</h1>
             <p className="page-subtitle" style={{ marginInline: "auto" }}>
-              Arcana Crystals makes it simple to shop quality products online, with secure checkout and friendly support.
+              Arcana Crystals brings you natural crystals and gemstone jewellery, from everyday bracelets to sacred Rudraksha, chosen by hand and described honestly.
             </p>
           </div>
         </section>
 
         <section className="section about-story" aria-labelledby="story-heading">
-          <div className="container about-story-inner about-story-inner--single">
+          <div className="container about-story-inner">
+            <div className="about-story-img">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/assets/products/about-workbench.jpg" alt="An amethyst and rose quartz bracelet surrounded by loose crystal beads" width={600} height={600} loading="lazy" />
+            </div>
             <div className="about-story-text">
-              <h2 id="story-heading" className="section-title">Who We Are</h2>
-              {/* TODO: replace this placeholder with Arcana Crystals's own story. */}
+              <h2 id="story-heading" className="section-title">Why Arcana</h2>
+              {/* Edit this story to tell your own: how you started and what crystals mean to you. */}
               <p>
-                Arcana Crystals is an online shop focused on quality products and a smooth buying experience. Every
-                order is checked and packed with care, and our team is here to help before and after you buy.
+                <em>Arcana</em> means &ldquo;hidden things&rdquo;, and that is what drew us to crystals: the quiet
+                beauty of stones formed over millions of years, and the meaning people have found in them for just as
+                long.
               </p>
               <p>
-                Have a question about a product or an order? <Link href="/contact">Get in touch</Link> and we&apos;ll
-                get back to you as soon as we can.
+                We bring that beauty into everyday life with bracelets, pendants, rings, crystal points and Rudraksha,
+                each made with genuine natural stones. No two pieces are exactly alike, and we think that&apos;s the
+                point.
+              </p>
+              <p>
+                Not sure where to start? Our <Link href="/guides">crystal guides</Link> explain what each stone is
+                known for, or <Link href="/contact">ask us</Link> and we&apos;ll help you choose.
               </p>
               <div className="about-stats" aria-label="Arcana Crystals by the numbers">
                 {storeRating && (
@@ -65,19 +75,19 @@ export default async function AboutPage() {
             <h2 id="values-heading" className="section-title text-center">What We Stand For</h2>
             <div className="values-grid" role="list">
               <div className="value-card" role="listitem">
-                <div className="value-icon"><Icon name="check" size={26} /></div>
-                <h3>Quality</h3>
-                <p>We only list products we would be happy to buy ourselves, and check every order before it ships.</p>
+                <div className="value-icon"><Icon name="gem" size={26} /></div>
+                <h3>Genuine Stones</h3>
+                <p>Every piece uses real, natural crystal. Colour and markings vary from stone to stone, and we celebrate that rather than hide it.</p>
               </div>
               <div className="value-card" role="listitem">
                 <div className="value-icon"><Icon name="leaf" size={26} /></div>
-                <h3>Responsible Business</h3>
-                <p>We work with suppliers who share our standards for fair and responsible practices.</p>
+                <h3>Responsible Sourcing</h3>
+                <p>We work with suppliers who share our standards for fair labour and responsible mining.</p>
               </div>
               <div className="value-card" role="listitem">
                 <div className="value-icon"><Icon name="search" size={26} /></div>
                 <h3>Transparency</h3>
-                <p>Clear prices, honest product descriptions and no hidden fees.</p>
+                <p>Crystal meanings are shared as tradition, never as medical claims. Clear prices, honest descriptions and no hidden fees.</p>
               </div>
               <div className="value-card" role="listitem">
                 <div className="value-icon"><Icon name="globe" size={26} /></div>
@@ -118,10 +128,10 @@ export default async function AboutPage() {
         <section className="section about-cta" aria-labelledby="about-cta-heading">
           <div className="container text-center">
             <h2 id="about-cta-heading" className="section-title">Ready to Explore?</h2>
-            <p>Browse the full Arcana Crystals range.</p>
+            <p>Browse our crystals and gemstone jewellery, or read what each stone is known for.</p>
             <div className="hero-cta-group" style={{ justifyContent: "center" }}>
               <Link href="/shop" className="btn btn-primary btn-lg">Shop the Collection</Link>
-              <Link href="/contact" className="btn btn-outline btn-lg">Contact Us</Link>
+              <Link href="/guides" className="btn btn-outline btn-lg">Crystal Guides</Link>
             </div>
           </div>
         </section>

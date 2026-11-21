@@ -54,6 +54,7 @@ export default function ReturnsPage() {
                   <li>Not customised or personalised</li>
                 </ul>
               </div>
+              <p><strong>Natural variations</strong> in crystal colour, texture or pattern are characteristics of authentic stones and do not count as defects.</p>
             </section>
 
             <section id="how-to-return"><h2>2. How to Return</h2>

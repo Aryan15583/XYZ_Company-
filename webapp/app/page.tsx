@@ -11,6 +11,13 @@ import { getSocialLinks } from "@/lib/social";
 import { getStoreRating } from "@/lib/ratings";
 import { starString } from "@/lib/stars";
 import { PRODUCT_TYPES } from "@/lib/product-types";
+import { CRYSTAL_GUIDES, crystalPath } from "@/lib/guides/crystals";
+import { getStoneImages } from "@/lib/guides/data";
+import { thumbnailFor } from "@/lib/product-thumbs";
+
+const FEATURED_GUIDES = ["amethyst", "rose-quartz", "citrine", "tiger-eye", "lapis-lazuli", "black-obsidian"]
+  .map((slug) => CRYSTAL_GUIDES.find((c) => c.slug === slug))
+  .filter((c) => c !== undefined);
 import { Icon } from "@/components/Icon";
 
 const profileLinks = getSocialLinks().filter((s) => s.label !== "WhatsApp").map((s) => s.href);
@@ -45,7 +52,7 @@ const siteJsonLd = {
 };
 
 export default async function HomePage() {
-  const [featured, storeRating, testimonials, typeRows] = await Promise.all([
+  const [featured, storeRating, testimonials, typeRows, stoneImages] = await Promise.all([
     prisma.product.findMany({
       where: { active: true, featured: true },
       orderBy: { sortOrder: "asc" },
@@ -65,6 +72,7 @@ export default async function HomePage() {
       orderBy: { sortOrder: "asc" },
       select: { productType: true },
     }),
+    getStoneImages(),
   ]);
   // Every type gets a tile with its own category photo, even before it has products.
   const typeTiles = PRODUCT_TYPES.map((t) => ({ ...t, count: typeRows.filter((r) => r.productType === t.slug).length }));
@@ -79,25 +87,25 @@ export default async function HomePage() {
           <div className="hero-bg" aria-hidden="true"></div>
           <div className="container hero-split">
             <div className="hero-content">
-              <p className="eyebrow eyebrow--light">Welcome to Arcana Crystals</p>
+              <p className="eyebrow eyebrow--light">Natural crystals · Gemstone jewellery</p>
               <h1 id="hero-heading" className="hero-title">
-                Quality You Can Trust.
+                Carry a Little Magic.
                 <br />
-                <span className="accent">Delivered to Your Door.</span>
+                <span className="accent">Wear Your Stone.</span>
               </h1>
               <p className="hero-subtitle">
-                Carefully selected products, secure checkout and friendly support from order to delivery.
+                Natural crystals and gemstone jewellery, from calming Amethyst to grounding Black Obsidian, chosen by hand and delivered to your door.
               </p>
               <div className="hero-cta-group">
                 <Link href="/shop" className="btn btn-primary btn-lg">
                   Shop the Collection <Icon name="arrowRight" size={18} />
                 </Link>
-                <Link href="/contact" className="btn btn-outline btn-outline--light btn-lg">
-                  Contact Us
+                <Link href="/guides" className="btn btn-outline btn-outline--light btn-lg">
+                  Find Your Crystal
                 </Link>
               </div>
               <ul className="hero-trust" aria-label="Why shop with us">
-                <li><Icon name="check" size={16} /> Quality checked</li>
+                <li><Icon name="gem" size={16} /> Natural stones</li>
                 <li><Icon name="globe" size={16} /> Ships worldwide</li>
                 <li><Icon name="returns" size={16} /> 14-day returns</li>
               </ul>
@@ -105,7 +113,7 @@ export default async function HomePage() {
             <div className="hero-visual" aria-hidden="true">
               <div className="hero-frame">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/assets/brand/icon-512.png" alt="" width={512} height={512} fetchPriority="high" style={{ objectFit: "contain", padding: "14%" }} />
+                <img className="hero-photo" src="/assets/products/hero-still-life.jpg" alt="Amethyst and clear quartz points beside an amethyst bead bracelet and loose crystal beads" width={1200} height={1350} fetchPriority="high" />
               </div>
             </div>
           </div>
@@ -154,8 +162,8 @@ export default async function HomePage() {
             <div className="container">
               <div className="section-header">
                 <p className="eyebrow">Curated</p>
-              <h2 id="featured-heading" className="section-title">Featured Products</h2>
-                <p className="section-subtitle">Hand-picked favourites from our range</p>
+              <h2 id="featured-heading" className="section-title">Featured Pieces</h2>
+                <p className="section-subtitle">Every piece is natural, so colour and markings vary slightly, making each one unique</p>
               </div>
               <div className="product-grid" role="list" aria-label="Featured products">
                 {products.map((p) => (
@@ -172,6 +180,42 @@ export default async function HomePage() {
         )}
 
 
+        <section data-reveal className="section guide-cleanse" aria-labelledby="find-crystal-heading">
+          <div className="container">
+            <div className="section-header">
+              <p className="eyebrow">Crystal guides</p>
+              <h2 id="find-crystal-heading" className="section-title">Find the Crystal That&apos;s Right for You</h2>
+              <p className="section-subtitle">What each stone is traditionally known for, who it suits, and how to care for it.</p>
+            </div>
+            <ul className="guide-crystal-grid" role="list">
+              {FEATURED_GUIDES.map((c) => {
+                const img = stoneImages[c.slug];
+                return (
+                  <li key={c.slug}>
+                    <Link href={crystalPath(c.slug)} className="guide-crystal-tile">
+                      <span className="guide-crystal-tile-img">
+                        {img ? (
+                          // eslint-disable-next-line @next/next/no-img-element
+                          <img src={thumbnailFor(img) ?? img} alt="" loading="lazy" decoding="async" width={300} height={300} />
+                        ) : (
+                          <Icon name="gem" size={40} />
+                        )}
+                      </span>
+                      <span className="guide-crystal-tile-body">
+                        <strong>{c.name}</strong>
+                        <span>{c.tagline}</span>
+                      </span>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+            <div className="section-cta">
+              <Link href="/guides" className="btn btn-outline btn-lg">All Crystal Guides</Link>
+            </div>
+          </div>
+        </section>
+
         <section data-reveal className="section why-us" aria-labelledby="why-heading">
           <div className="container">
             <div className="section-header">
@@ -180,19 +224,19 @@ export default async function HomePage() {
             </div>
             <div className="features-grid" role="list">
               <div className="feature-card" role="listitem">
-                <span className="feature-icon"><Icon name="check" size={26} /></span>
-                <h3>Quality Checked</h3>
-                <p>Every order is checked and packed with care before it leaves us.</p>
+                <span className="feature-icon"><Icon name="gem" size={26} /></span>
+                <h3>Genuine Natural Stones</h3>
+                <p>Every piece is made with real crystals, never dyed glass or plastic, and natural variations are part of its character.</p>
               </div>
               <div className="feature-card" role="listitem">
                 <span className="feature-icon"><Icon name="globe" size={26} /></span>
-                <h3>Ships to 50+ Countries</h3>
-                <p>International shipping with full customs/duties transparency. Tracked parcels to your door.</p>
+                <h3>Ships Worldwide</h3>
+                <p>Carefully packed and tracked, so your crystals arrive safely wherever you are.</p>
               </div>
               <div className="feature-card" role="listitem">
                 <span className="feature-icon"><Icon name="returns" size={26} /></span>
                 <h3>14-Day Return Policy</h3>
-                <p>Compliant with EU Distance Selling Directive. No-questions return window on non-customised orders.</p>
+                <p>Not the right stone for you? Return non-customised pieces within 14 days of delivery.</p>
               </div>
               <div className="feature-card" role="listitem">
                 <span className="feature-icon"><Icon name="lock" size={26} /></span>

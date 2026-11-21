@@ -9,6 +9,8 @@ import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/JsonLd";
 import { ProductDetailClient } from "@/components/ProductDetailClient";
 import { ProductCard } from "@/components/ProductCard";
+import { crystalPath, getCrystalGuide } from "@/lib/guides/crystals";
+import { RUDRAKSHA_PATH } from "@/lib/guides/rudraksha";
 import { getProductType } from "@/lib/product-types";
 import { RecentlyViewed } from "@/components/RecentlyViewed";
 import { SITE_NAME, absoluteUrl, breadcrumbJsonLd, pageMetadata, productPath, truncate } from "@/lib/seo";
@@ -39,6 +41,11 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
   if (!row || !row.active) notFound();
   const product = serializeProduct(row);
   const productType = getProductType(product.productType);
+  const stoneGuide = product.category ? getCrystalGuide(product.category) : null;
+  const guideLink =
+    product.productType === "rudraksha" ? { href: RUDRAKSHA_PATH, label: "Read our Rudraksha guide: what each mukhi means" }
+    : stoneGuide ? { href: crystalPath(stoneGuide.slug), label: `${stoneGuide.name} meaning, benefits & how to care for it` }
+    : undefined;
 
   const [relatedRows, categoryRow, reviewStats] = await Promise.all([
     // Same product type first, then fill up with other bestsellers/featured pieces.
@@ -127,7 +134,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
           </ol>
         </nav>
 
-        <ProductDetailClient product={product} />
+        <ProductDetailClient product={product} guide={guideLink} />
 
         <section data-reveal className="section related-products" aria-labelledby="related-heading">
           <div className="container">

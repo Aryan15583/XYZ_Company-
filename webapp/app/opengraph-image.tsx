@@ -27,7 +27,7 @@ export default async function Image() {
         <div style={{ fontSize: 104, fontWeight: 700, letterSpacing: 2, display: "flex" }}>{SITE_NAME}</div>
         <div style={{ fontSize: 40, color: "#ffdab9", marginTop: 24, display: "flex" }}>{SITE_TAGLINE}</div>
         <div style={{ fontSize: 28, color: "#a99bc0", marginTop: 40, display: "flex" }}>
-          Quality products · Delivered to your door
+          Natural crystals · Gemstone jewellery · Ships worldwide
         </div>
       </div>
     ),

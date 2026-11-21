@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const SITE_NAME = "Arcana Crystals";
-export const SITE_TAGLINE = "Quality Products, Delivered";
+export const SITE_TAGLINE = "Natural Crystals & Gemstone Jewellery";
 export const DEFAULT_DESCRIPTION =
-  "Shop quality products from Arcana Crystals. Secure checkout and delivery to your door.";
+  "Natural crystals and gemstone jewellery: bracelets, pendants, rings, crystal points, Rudraksha and more, with free guides to what each stone means. Ships worldwide.";
 
 /** Canonical origin of the site, no trailing slash. Set NEXT_PUBLIC_SITE_URL in production. */
 export function getSiteUrl(): string {

@@ -7,7 +7,7 @@ import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "Frequently Asked Questions",
   description:
-    "Answers about Arcana Crystals orders, shipping and delivery times, payment methods and returns.",
+    "Answers about Arcana Crystals orders, shipping and delivery times, payment methods, returns, crystal care and crystal meanings.",
   path: "/faq",
 });
 
@@ -55,6 +55,32 @@ const GROUPS: { title: string; items: Faq[] }[] = [
       {
         q: "How do coupon codes work?",
         a: "Enter your code in the cart before checking out. Some codes have an expiry date, a limited number of uses, or a minimum order amount — the cart tells you if a code can't be applied and why.",
+      },
+    ],
+  },
+  {
+    title: "Our crystals",
+    items: [
+      {
+        q: "Are your crystals genuine?",
+        a: "Yes. Every piece is made with genuine natural stone, never dyed glass or plastic. Because they are natural, colour, texture and markings vary slightly from piece to piece and from the photos. That is a sign of authenticity, not a defect.",
+      },
+      {
+        q: "Which crystal should I choose?",
+        a: "Start with what you'd like to focus on: calm (Amethyst), love (Rose Quartz), confidence (Tiger Eye), abundance (Citrine) or grounding (Black Obsidian). Our crystal guides explain what each stone is traditionally known for, and you're always welcome to ask us.",
+        link: { href: "/guides", label: "Browse the crystal guides" },
+      },
+      {
+        q: "What size bracelet will fit me?",
+        a: "Our bead bracelets are strung on strong elastic cord and fit most wrists of roughly 15 to 20 cm. If you need a different size, contact us before ordering.",
+      },
+      {
+        q: "How should I care for my crystals?",
+        a: "Keep them out of long, direct sunlight, which can fade some stones, and remove jewellery before swimming, bathing or using cleaning products. Wipe with a soft dry cloth, and cleanse them now and then with moonlight, smoke or a Selenite plate. Each crystal guide has care tips for that stone.",
+      },
+      {
+        q: "Do crystals have healing powers?",
+        a: "We share the meanings crystals have traditionally been given, for interest and self-care. They are not medical claims and are not a substitute for professional advice or treatment.",
       },
     ],
   },

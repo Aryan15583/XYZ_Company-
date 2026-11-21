@@ -51,7 +51,7 @@ export default function TermsPage() {
             </section>
 
             <section id="products"><h2>2. Products &amp; Services</h2>
-              <p>Arcana Crystals sells products through this website. Product images are representative; actual colour and appearance may vary slightly from the images shown.</p>
+              <p>Arcana Crystals sells natural crystals and gemstone jewellery through this website. Product images are representative. Because natural stones are used, colour, texture and pattern may vary from the images shown; these are characteristics of authentic crystals, not defects. Crystal meanings in our guides are traditional beliefs shared for interest and are not medical or professional advice.</p>
             </section>
 
 

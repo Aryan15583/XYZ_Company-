@@ -6,13 +6,15 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/JsonLd";
 import { ShopClient } from "@/components/ShopClient";
+import { crystalPath, getCrystalGuide } from "@/lib/guides/crystals";
+import { RUDRAKSHA_PATH } from "@/lib/guides/rudraksha";
 import { getProductType, type ProductTypeInfo } from "@/lib/product-types";
 import { absoluteUrl, breadcrumbJsonLd, pageMetadata, productPath, truncate } from "@/lib/seo";
 
 type Props = { searchParams: Promise<{ cat?: string; q?: string; type?: string }> };
 
 const SHOP_DESCRIPTION =
-  "Shop the full Arcana Crystals range. Delivered to your door.";
+  "Shop natural crystals at Arcana Crystals: bracelets, pendants, rings, crystal points, anklets, Rudraksha, bowls and plates. Ships worldwide.";
 
 // Each product type (/shop?type=pendants), stone (/shop?cat=amethyst) and the two
 // combined is its own indexable landing page with its own title and canonical
@@ -31,7 +33,7 @@ function landing(type: ProductTypeInfo | null, category: { slug: string; name: s
   const heading =
     type && category ? `${category.name} ${type.name}`
     : type ? type.name
-    : category ? category.name
+    : category ? `${category.name} Crystals`
     : "Shop All Products";
   const description =
     type && category ? `Shop ${category.name} ${type.name.toLowerCase()} at Arcana Crystals. ${category.description || ""} Ships worldwide.`
@@ -110,7 +112,13 @@ export default async function ShopPage({ searchParams }: Props) {
 
         <div className="page-header container">
           <h1 className="page-title">{heading}</h1>
-          <p className="page-subtitle">{productType ? productType.description : "Browse the full Arcana Crystals range."}</p>
+          <p className="page-subtitle">{productType ? productType.description : "Natural crystals and gemstone jewellery. Every piece is unique, with natural variations in colour and markings."}</p>
+          {(() => {
+            const g = category ? getCrystalGuide(category.slug) : null;
+            if (g) return <Link href={crystalPath(g.slug)} className="page-guide-link">{g.name} meaning, benefits &amp; care →</Link>;
+            if (productType?.slug === "rudraksha") return <Link href={RUDRAKSHA_PATH} className="page-guide-link">What each Rudraksha mukhi means →</Link>;
+            return null;
+          })()}
         </div>
 
         <ShopClient initialProducts={products} initialCat={cat} initialQuery={q} initialType={productType?.slug} categories={categories} />

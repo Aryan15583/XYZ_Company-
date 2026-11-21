@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { PRODUCT_TYPES } from "@/lib/product-types";
+import { crystalPath } from "@/lib/guides/crystals";
+import { RUDRAKSHA_PATH } from "@/lib/guides/rudraksha";
 import { CookieSettingsLink } from "./CookieSettingsLink";
 import { NewsletterForm } from "./NewsletterForm";
 import { getSocialLinks } from "@/lib/social";
@@ -32,7 +34,7 @@ export function Footer({ minimal = false }: { minimal?: boolean }) {
             <img src="/assets/brand/logo-badge-160.png" alt="" className="logo-badge" width={52} height={52} />
             <span className="logo-text">Arcana Crystals</span>
           </Link>
-          <p>Quality products, delivered to your door.</p>
+          <p>Natural crystals and gemstone jewellery, chosen by hand and delivered worldwide.</p>
           {socials.length > 0 && (
             <div className="footer-socials" aria-label="Social media links">
               {socials.map((s) => (
@@ -53,6 +55,17 @@ export function Footer({ minimal = false }: { minimal?: boolean }) {
             ))}
             <li><Link href="/wishlist">Wishlist</Link></li>
             <li><Link href="/cart">Cart</Link></li>
+          </ul>
+        </nav>
+        <nav className="footer-nav" aria-label="Crystal guides navigation">
+          <h4>Crystal Guides</h4>
+          <ul role="list">
+            <li><Link href="/guides#crystals">Crystal Meanings</Link></li>
+            <li><Link href={crystalPath("amethyst")}>Amethyst</Link></li>
+            <li><Link href={crystalPath("rose-quartz")}>Rose Quartz</Link></li>
+            <li><Link href={crystalPath("tiger-eye")}>Tiger Eye</Link></li>
+            <li><Link href={crystalPath("selenite")}>Selenite &amp; Cleansing</Link></li>
+            <li><Link href={RUDRAKSHA_PATH}>Rudraksha Guide</Link></li>
           </ul>
         </nav>
         <nav className="footer-nav" aria-label="Legal and help navigation">

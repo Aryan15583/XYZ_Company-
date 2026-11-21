@@ -15,6 +15,7 @@ import { ThemeToggle } from "./ThemeToggle";
 const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "/shop", label: "Shop" },
+  { href: "/guides", label: "Crystal Guides" },
   { href: "/track-order", label: "Track Order" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
