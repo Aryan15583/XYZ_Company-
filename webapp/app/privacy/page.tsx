@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { pageMetadata } from "@/lib/seo";
+import { GSTIN, LEGAL_NAME, PRODUCT_IMAGE_NOTE, registrationLine } from "@/lib/business";
 
 export const metadata = pageMetadata({
   title: "Privacy Policy",
@@ -50,7 +51,9 @@ export default function PrivacyPage() {
             <p>This Privacy Policy explains how Arvina Crystal (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) collects, uses, stores, and protects your personal data when you visit our website or purchase our products and services. We comply with the EU General Data Protection Regulation (GDPR), the UK GDPR, and the California Consumer Privacy Act (CCPA).</p>
 
             <section id="who-we-are"><h2>1. Who We Are</h2>
-              <p><strong>Data Controller:</strong> Arvina Crystal<br /><strong>Contact:</strong> <a href="mailto:info.arvinacrystal@gmail.com">info.arvinacrystal@gmail.com</a><br /><strong>Address:</strong> Mumbai, Maharashtra, India</p>
+              <p>{registrationLine()}</p>
+              <p><strong>Data Controller:</strong> {LEGAL_NAME}, trading as Arvina Crystal{GSTIN ? <> (GSTIN: {GSTIN})</> : null}<br /><strong>Contact:</strong> <a href="mailto:info.arvinacrystal@gmail.com">info.arvinacrystal@gmail.com</a><br /><strong>Address:</strong> Mumbai, Maharashtra, India</p>
+              <p>{PRODUCT_IMAGE_NOTE}</p>
             </section>
 
             <section id="data-collected"><h2>2. Data We Collect</h2>
@@ -152,6 +155,7 @@ export default function PrivacyPage() {
             <section id="contact-privacy"><h2>13. Contact Us</h2>
               <address>
                 <strong>Arvina Crystal — Privacy Team</strong><br />
+                {LEGAL_NAME}{GSTIN ? <> · GSTIN: {GSTIN}</> : null}<br />
                 Email: <a href="mailto:info.arvinacrystal@gmail.com">info.arvinacrystal@gmail.com</a><br />
                 Address: Mumbai, Maharashtra, India
               </address>

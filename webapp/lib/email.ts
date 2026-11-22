@@ -6,6 +6,7 @@
 // If both are set, SMTP wins. If neither is, we log instead of sending so the
 // rest of the app (orders, contact) keeps working with zero setup.
 
+import { PRODUCT_IMAGE_NOTE, registrationLine } from "./business";
 import nodemailer from "nodemailer";
 import type { Transporter } from "nodemailer";
 import { Resend } from "resend";
@@ -165,7 +166,7 @@ function emailShell(inner: string): string {
     <div style="font-family:sans-serif;max-width:520px;margin:auto;color:#191933;">
       <h1 style="color:#f4b400;">Arvina Crystal</h1>
       ${inner}
-      <p style="color:#6a7f94;font-size:12px;margin-top:32px;">Arvina Crystal</p>
+      <p style="color:#6a7f94;font-size:12px;margin-top:32px;">${escapeHtml(registrationLine())}</p>
     </div>
   `;
 }
@@ -216,7 +217,7 @@ export function orderConfirmationEmail(
   const bank =
     order.paymentMethod === "bank_transfer"
       ? `<h3 style="margin-bottom:4px;">Pay by bank transfer</h3>
-         <p style="white-space:pre-wrap;background:#191933;padding:12px 14px;border-radius:8px;">${escapeHtml(
+         <p style="white-space:pre-wrap;background:#eef1f5;padding:12px 14px;border-radius:8px;">${escapeHtml(
            opts.bankInstructions?.trim() || "We'll email you our bank details shortly."
          )}</p>
          <p>Please use <strong>${escapeHtml(order.id)}</strong> as the payment reference. Your order ships once the payment arrives.</p>`
@@ -235,6 +236,7 @@ export function orderConfirmationEmail(
       ${bank}${cod}
       ${trackButton(order.id)}
       <p>We'll email you again as soon as your order ships.</p>
+      <p style="color:#6a7f94;font-size:12px;">${escapeHtml(PRODUCT_IMAGE_NOTE)}</p>
     `),
   };
 }

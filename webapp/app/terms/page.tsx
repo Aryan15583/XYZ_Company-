@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { pageMetadata } from "@/lib/seo";
+import { GSTIN, LEGAL_NAME, PRODUCT_IMAGE_NOTE, registrationLine } from "@/lib/business";
 
 export const metadata = pageMetadata({
   title: "Terms of Service",
@@ -51,7 +52,9 @@ export default function TermsPage() {
             </section>
 
             <section id="products"><h2>2. Products &amp; Services</h2>
-              <p>Arvina Crystal sells natural crystals and gemstone jewellery through this website. Product images are representative. Because natural stones are used, colour, texture and pattern may vary from the images shown; these are characteristics of authentic crystals, not defects. Crystal meanings in our guides are traditional beliefs shared for interest and are not medical or professional advice.</p>
+              <p>Arvina Crystal sells natural crystals and gemstone jewellery through this website. {registrationLine()}</p>
+              <p>{PRODUCT_IMAGE_NOTE}</p>
+              <p>Crystal meanings in our guides are traditional beliefs shared for interest and are not medical or professional advice.</p>
             </section>
 
 
@@ -86,6 +89,7 @@ export default function TermsPage() {
             <section id="contact-terms"><h2>10. Contact</h2>
               <address>
                 <strong>Arvina Crystal</strong><br />
+                {LEGAL_NAME}{GSTIN ? <> · GSTIN: {GSTIN}</> : null}<br />
                 Email: <a href="mailto:info.arvinacrystal@gmail.com">info.arvinacrystal@gmail.com</a><br />
                 Address: Mumbai, Maharashtra, India
               </address>

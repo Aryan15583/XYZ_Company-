@@ -1,3 +1,4 @@
+import { GSTIN, LEGAL_NAME, PRODUCT_IMAGE_NOTE, registrationLine } from "@/lib/business";
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/db";
 import { requireAdminPage } from "@/lib/admin-page-auth";
@@ -60,7 +61,12 @@ export default async function InvoicePage({ params }: { params: Promise<{ id: st
       <div className="invoice-head">
         <div>
           <div className="invoice-brand">✦ {config.storeName}</div>
-          <div style={{ fontSize: 13, color: "#6a7f94", marginTop: 4 }}>{config.supportEmail}</div>
+          <div style={{ fontSize: 13, color: "#6a7f94", marginTop: 4 }}>
+            A brand of {LEGAL_NAME}
+            {GSTIN ? <><br />GSTIN: {GSTIN}</> : null}
+            <br />
+            {config.supportEmail}
+          </div>
         </div>
         <div className="invoice-meta">
           <strong style={{ fontSize: 20 }}>INVOICE</strong>
@@ -152,6 +158,10 @@ export default async function InvoicePage({ params }: { params: Promise<{ id: st
       <div className="invoice-foot">
         Payment method: {order.paymentMethod || "—"}
         {order.trackingNumber ? ` · Tracking: ${order.carrier ? `${order.carrier} ` : ""}${order.trackingNumber}` : ""}
+        <br />
+        {registrationLine()}
+        <br />
+        {PRODUCT_IMAGE_NOTE}
         <br />
         Thank you for shopping with {config.storeName}.
       </div>

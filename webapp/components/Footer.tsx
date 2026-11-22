@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { PRODUCT_TYPES } from "@/lib/product-types";
+import { GSTIN, LEGAL_NAME } from "@/lib/business";
 import { crystalPath } from "@/lib/guides/crystals";
 import { RUDRAKSHA_PATH } from "@/lib/guides/rudraksha";
 import { CookieSettingsLink } from "./CookieSettingsLink";
@@ -86,7 +87,7 @@ export function Footer({ minimal = false }: { minimal?: boolean }) {
       <div className="footer-disclaimer">
         <div className="container">
           <p className="footer-legal-links">
-            &copy; {year} Arvina Crystal. All rights reserved. &nbsp;|&nbsp; <Link href="/privacy">Privacy Policy</Link>{" "}
+            &copy; {year} Arvina Crystal, a brand of {LEGAL_NAME}{GSTIN ? ` (GSTIN ${GSTIN})` : ""}. All rights reserved. &nbsp;|&nbsp; <Link href="/privacy">Privacy Policy</Link>{" "}
             &nbsp;|&nbsp; <Link href="/terms">Terms of Service</Link> &nbsp;|&nbsp;{" "}
             <Link href="/returns">Returns Policy</Link>
           </p>

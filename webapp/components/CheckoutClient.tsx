@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { PRODUCT_IMAGE_NOTE, registrationLine } from "@/lib/business";
 import Script from "next/script";
 import { useCart } from "./CartContext";
 import { useCurrency } from "./CurrencyContext";
@@ -213,6 +214,9 @@ export function CheckoutClient() {
             </p>
           </div>
         )}
+        <p className="text-muted" style={{ fontSize: "0.85rem", maxWidth: 620, marginInline: "auto", marginTop: 16 }}>
+          {PRODUCT_IMAGE_NOTE} {registrationLine()}
+        </p>
         <div style={{ marginTop: 24, display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
           <Link href={`/track-order?id=${encodeURIComponent(confirmation.id)}`} className="btn btn-outline btn-lg">Track this order</Link>
           <Link href="/shop" className="btn btn-primary btn-lg">Continue Shopping</Link>
