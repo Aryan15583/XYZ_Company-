@@ -15,6 +15,22 @@ import { CRYSTAL_GUIDES, crystalPath } from "@/lib/guides/crystals";
 import { getStoneImages } from "@/lib/guides/data";
 import { thumbnailFor } from "@/lib/product-thumbs";
 
+// Gem colours for the "Shop by stone" chips (CSS draws a polished sphere).
+const STONE_CHIPS = [
+  { slug: "amethyst", name: "Amethyst", color: "#7b4fa3" },
+  { slug: "rose-quartz", name: "Rose Quartz", color: "#e3a2b4" },
+  { slug: "citrine", name: "Citrine", color: "#e2ae3c" },
+  { slug: "tiger-eye", name: "Tiger Eye", color: "#a66d24" },
+  { slug: "lapis-lazuli", name: "Lapis Lazuli", color: "#2c4fa6" },
+  { slug: "black-obsidian", name: "Black Obsidian", color: "#24242c" },
+  { slug: "green-aventurine", name: "Green Aventurine", color: "#3e9a68" },
+  { slug: "clear-quartz", name: "Clear Quartz", color: "#dfe7ee" },
+  { slug: "moonstone", name: "Moonstone", color: "#c9d3e3" },
+  { slug: "red-jasper", name: "Red Jasper", color: "#a3412f" },
+  { slug: "turquoise", name: "Turquoise", color: "#38b1ab" },
+  { slug: "pyrite", name: "Pyrite", color: "#b49a4c" },
+];
+
 const FEATURED_GUIDES = ["amethyst", "rose-quartz", "citrine", "tiger-eye", "lapis-lazuli", "black-obsidian"]
   .map((slug) => CRYSTAL_GUIDES.find((c) => c.slug === slug))
   .filter((c) => c !== undefined);
@@ -157,6 +173,25 @@ export default async function HomePage() {
         </section>
         )}
 
+        <section data-reveal className="section stone-strip" aria-labelledby="stones-heading">
+          <div className="container">
+            <div className="section-header">
+              <p className="eyebrow">Shop by stone</p>
+              <h2 id="stones-heading" className="section-title">Every Stone Tells a Story</h2>
+            </div>
+            <ul className="stone-chips" role="list">
+              {STONE_CHIPS.map((s) => (
+                <li key={s.slug}>
+                  <Link href={`/shop?cat=${s.slug}`} className="stone-chip">
+                    <span className="stone-chip-gem" style={{ "--gem": s.color } as React.CSSProperties} aria-hidden="true" />
+                    <span className="stone-chip-name">{s.name}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
         {products.length > 0 && (
           <section data-reveal className="section featured-products" aria-labelledby="featured-heading">
             <div className="container">
@@ -268,6 +303,20 @@ export default async function HomePage() {
             </div>
           </section>
         )}
+
+        <section className="cta-band" aria-labelledby="cta-band-heading">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img className="cta-band-img" src="/assets/products/about-workbench.jpg" alt="" loading="lazy" width={1200} height={1200} />
+          <div className="container cta-band-inner">
+            <p className="eyebrow eyebrow--light">Not sure where to begin?</p>
+            <h2 id="cta-band-heading" className="cta-band-title">Let the Right Crystal Find You</h2>
+            <p className="cta-band-text">Read what each stone is known for, or ask us. We&apos;re happy to help you choose a piece that feels right.</p>
+            <div className="hero-cta-group">
+              <Link href="/guides" className="btn btn-primary btn-lg">Explore Crystal Guides</Link>
+              <Link href="/contact" className="btn btn-outline btn-outline--light btn-lg">Ask Us</Link>
+            </div>
+          </div>
+        </section>
       </main>
       <Footer />
     </>

@@ -4339,3 +4339,190 @@ html { scroll-behavior: smooth; }
 
 /* Hero photo fills the arch (the logo version was inset). */
 .hero-frame img.hero-photo { width: 100%; height: 100%; object-fit: cover; }
+
+/* =============================================================
+   POLISH — atmosphere, ornaments and richer layouts.
+   Theme-specific values are tokens (light here, dark below), so every
+   rule works in both modes on desktop and mobile.
+   ============================================================= */
+:root {
+  --orn: #b87333;                                   /* Eclipse Copper ornaments */
+  --orn-soft: rgba(184, 115, 51, 0.35);
+  --section-wash-a: rgba(0, 169, 165, 0.07);        /* teal glow */
+  --section-wash-b: rgba(244, 180, 0, 0.08);        /* gold glow */
+  --card-bg: #ffffff;
+  --card-border: #e3e8ef;
+  --card-shadow: 0 18px 40px -26px rgba(25, 25, 51, 0.35);
+  --card-shadow-hover: 0 26px 50px -24px rgba(25, 25, 51, 0.45);
+  --chip-bg: #ffffff;
+}
+:root[data-theme="dark"] {
+  --orn: #f4b400;
+  --orn-soft: rgba(244, 180, 0, 0.3);
+  --section-wash-a: rgba(0, 169, 165, 0.1);
+  --section-wash-b: rgba(244, 180, 0, 0.06);
+  --card-bg: #1f2342;
+  --card-border: rgba(106, 127, 148, 0.28);
+  --card-shadow: 0 20px 44px -26px rgba(0, 0, 0, 0.8);
+  --card-shadow-hover: 0 28px 56px -22px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(244, 180, 0, 0.25);
+  --chip-bg: #1f2342;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --orn: #f4b400;
+    --orn-soft: rgba(244, 180, 0, 0.3);
+    --section-wash-a: rgba(0, 169, 165, 0.1);
+    --section-wash-b: rgba(244, 180, 0, 0.06);
+    --card-bg: #1f2342;
+    --card-border: rgba(106, 127, 148, 0.28);
+    --card-shadow: 0 20px 44px -26px rgba(0, 0, 0, 0.8);
+    --card-shadow-hover: 0 28px 56px -22px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(244, 180, 0, 0.25);
+    --chip-bg: #1f2342;
+  }
+}
+
+/* Soft colour washes so sections aren't flat blocks */
+.shop-categories, .featured-products, .stone-strip, .why-us, .guide-cleanse { position: relative; isolation: isolate; }
+.shop-categories::before, .featured-products::before, .why-us::before, .guide-cleanse::before, .stone-strip::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(ellipse 55% 45% at 8% 10%, var(--section-wash-a), transparent 70%),
+    radial-gradient(ellipse 50% 40% at 95% 90%, var(--section-wash-b), transparent 70%);
+}
+.featured-products::before, .stone-strip::before {
+  background:
+    radial-gradient(ellipse 50% 45% at 92% 8%, var(--section-wash-a), transparent 70%),
+    radial-gradient(ellipse 55% 40% at 5% 95%, var(--section-wash-b), transparent 70%);
+}
+
+/* Ornament under every section title: line · diamond · line */
+.section-header .section-title::after {
+  content: "✦"; display: block; width: 150px; margin: 10px auto 0;
+  font-family: var(--font-body); font-size: 13px; line-height: 16px; text-align: center; color: var(--orn);
+  background:
+    linear-gradient(var(--orn), var(--orn)) left center / 60px 1px no-repeat,
+    linear-gradient(var(--orn), var(--orn)) right center / 60px 1px no-repeat;
+  opacity: 0.9;
+}
+.section-header { margin-bottom: var(--space-10); }
+
+/* Category tiles: a bento grid (big Bracelets tile), gold ring on hover */
+.category-tiles { grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: minmax(210px, auto); gap: var(--space-4); }
+.category-tile { aspect-ratio: auto; min-height: 210px; box-shadow: var(--card-shadow); transition: transform 0.4s cubic-bezier(.2,.7,.2,1), box-shadow 0.4s ease; }
+.category-tile::before { content: ""; position: absolute; inset: 0; z-index: 2; border-radius: inherit; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08); pointer-events: none; transition: box-shadow 0.4s ease; }
+.category-tile:hover { transform: translateY(-4px); box-shadow: var(--card-shadow-hover); }
+.category-tile:hover::before { box-shadow: inset 0 0 0 2px var(--orn-soft); }
+.category-tiles > :nth-child(1) { grid-column: span 2; grid-row: span 2; }
+.category-tiles > :nth-child(2) { grid-column: span 2; }
+.category-tiles > :nth-child(7) { grid-column: span 2; }
+.category-tiles > :nth-child(1) .category-tile-name { font-size: 2rem; }
+@media (max-width: 900px) {
+  .category-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: minmax(170px, auto); gap: var(--space-3); }
+  .category-tile { min-height: 170px; }
+  .category-tiles > :nth-child(1) { grid-column: span 2; grid-row: span 1; min-height: 230px; }
+  .category-tiles > :nth-child(2), .category-tiles > :nth-child(7) { grid-column: span 1; }
+  .category-tiles > :nth-child(1) .category-tile-name { font-size: 1.6rem; }
+}
+
+/* Shop by stone: polished gem spheres */
+.stone-chips { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: var(--space-4); }
+.stone-chip {
+  display: flex; flex-direction: column; align-items: center; gap: 10px; padding: var(--space-5) var(--space-2);
+  border-radius: 20px; background: var(--chip-bg); border: 1px solid var(--card-border); box-shadow: var(--card-shadow);
+  text-decoration: none; color: var(--text-primary); transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.stone-chip:hover { transform: translateY(-4px); box-shadow: var(--card-shadow-hover); border-color: var(--orn-soft); color: var(--text-primary); }
+.stone-chip-gem {
+  width: 64px; height: 64px; border-radius: 50%;
+  background:
+    radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.85) 0 7%, rgba(255, 255, 255, 0.25) 16%, transparent 34%),
+    radial-gradient(circle at 70% 78%, rgba(0, 0, 0, 0.35), transparent 55%),
+    var(--gem);
+  box-shadow: inset 0 -6px 12px rgba(0, 0, 0, 0.25), 0 10px 18px -8px rgba(0, 0, 0, 0.5);
+  transition: transform 0.4s cubic-bezier(.2,.7,.2,1);
+}
+.stone-chip:hover .stone-chip-gem { transform: scale(1.08) rotate(-8deg); }
+.stone-chip-name { font-family: var(--font-heading); font-weight: 600; font-size: 1rem; text-align: center; line-height: 1.2; }
+@media (max-width: 900px) { .stone-chips { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (max-width: 600px) {
+  .stone-chips { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: var(--space-3); padding-bottom: 6px; margin-inline: calc(-1 * var(--space-4)); padding-inline: var(--space-4); scrollbar-width: none; }
+  .stone-chips::-webkit-scrollbar { display: none; }
+  .stone-chips li { flex: 0 0 104px; scroll-snap-align: start; }
+  .stone-chip { padding: var(--space-4) var(--space-2); }
+  .stone-chip-gem { width: 52px; height: 52px; }
+  .stone-chip-name { font-size: 0.85rem; }
+}
+
+/* Product cards: lifted, rounded, gold ring on hover */
+.product-card { background: var(--card-bg); border: 1px solid var(--card-border); box-shadow: var(--card-shadow); transition: transform 0.4s cubic-bezier(.2,.7,.2,1), box-shadow 0.4s ease; }
+.product-card:hover { transform: translateY(-5px); box-shadow: var(--card-shadow-hover); }
+.product-card .add-to-cart { border-radius: 9999px; }
+.product-price { color: var(--text-primary); }
+/* Phones: two products per row instead of one long column */
+@media (max-width: 480px) {
+  .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3); }
+  .product-card .product-info { padding: var(--space-3); }
+  .product-card .product-name { font-size: 1rem; line-height: 1.25; }
+  .product-card .product-material, .product-card .product-rating { display: none; }
+  .product-card .product-price { font-size: 1.05rem; }
+  .product-card .product-price-row { flex-direction: column; align-items: stretch; gap: var(--space-2); }
+  .product-card .add-to-cart { width: 100%; padding-inline: 0; font-size: 0.8rem; }
+}
+
+/* Crystal guide tiles: even 3-up grid (6 tiles), 2-up on phones */
+.guide-crystal-tile { border-radius: 18px; background: var(--card-bg); border-color: var(--card-border); box-shadow: var(--card-shadow); }
+.guide-crystal-tile:hover { transform: translateY(-4px); box-shadow: var(--card-shadow-hover); border-color: var(--orn-soft); }
+.guide-cleanse .guide-crystal-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 600px) {
+  .guide-crystal-grid, .guide-cleanse .guide-crystal-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3); }
+  .guide-crystal-tile-body { padding: var(--space-3); }
+  .guide-crystal-tile-body strong { font-size: 1.05rem; }
+  .guide-crystal-tile-body span { font-size: 0.8rem; }
+}
+
+/* Why choose us: gradient-top cards, icon in a glowing circle */
+.feature-card { position: relative; overflow: hidden; background: var(--card-bg); border: 1px solid var(--card-border); box-shadow: var(--card-shadow); padding: var(--space-8) var(--space-5); transition: transform 0.4s ease, box-shadow 0.4s ease; }
+.feature-card::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 3px; background: linear-gradient(90deg, #00a9a5, #f4b400, #b87333); }
+.feature-card:hover { transform: translateY(-4px); box-shadow: var(--card-shadow-hover); }
+.feature-icon { width: 68px; height: 68px; border-radius: 50%; background: radial-gradient(circle at 30% 30%, rgba(244, 180, 0, 0.25), rgba(0, 169, 165, 0.12)); box-shadow: 0 0 0 6px rgba(0, 169, 165, 0.06); }
+@media (max-width: 600px) {
+  .features-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3); }
+  .feature-card { padding: var(--space-5) var(--space-3); }
+  .feature-card h3 { font-size: 1.05rem; }
+  .feature-card p { font-size: 0.8rem; }
+  .feature-icon { width: 52px; height: 52px; }
+}
+
+/* Trust bar: tidy 2 × 2 grid on phones */
+@media (max-width: 600px) {
+  .trust-bar-inner { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3); padding-block: var(--space-4); }
+  .trust-item { font-size: 0.78rem; align-items: flex-start; min-width: 0; }
+  .trust-item span { white-space: normal; overflow-wrap: anywhere; }
+}
+
+/* Closing call-to-action band with photo */
+.cta-band { position: relative; overflow: hidden; isolation: isolate; padding-block: clamp(4rem, 9vw, 7rem); text-align: center; color: #fdfdfd; }
+.cta-band-img { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; }
+.cta-band::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(135deg, rgba(18, 18, 42, 0.92), rgba(25, 25, 51, 0.78) 50%, rgba(47, 79, 104, 0.85)); }
+.cta-band-inner { display: flex; flex-direction: column; align-items: center; gap: var(--space-4); }
+.cta-band .eyebrow { color: #ffdab9; background: rgba(255, 218, 185, 0.12); }
+.cta-band-title { font-family: var(--font-heading); font-weight: 600; font-size: clamp(2rem, 1.4rem + 2.4vw, 3.2rem); line-height: 1.1; color: #fdfdfd; letter-spacing: -0.02em; }
+.cta-band-text { max-width: 52ch; color: rgba(253, 253, 253, 0.82); font-size: 1.05rem; }
+.cta-band .hero-cta-group { justify-content: center; margin-top: var(--space-2); }
+.cta-band .btn-outline--light { color: #fdfdfd; border-color: rgba(253, 253, 253, 0.6); background: transparent; }
+.cta-band .btn-outline--light:hover { background: #fdfdfd; color: #191933; border-color: #fdfdfd; }
+@media (max-width: 600px) { .cta-band .hero-cta-group { flex-direction: column; align-items: stretch; width: 100%; max-width: 320px; } .cta-band .hero-cta-group .btn { width: 100%; max-width: none; } }
+
+/* Hero: twinkling stars and a gold shimmer on the accent line */
+@keyframes arvina-twinkle { 0%, 100% { opacity: 0.55; } 50% { opacity: 1; } }
+.hero-bg::before { animation: arvina-twinkle 5s ease-in-out infinite; }
+.hero-title .accent { background: linear-gradient(90deg, #f4b400, #ffdab9 45%, #f4b400 90%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+@media (max-width: 600px) { .hero-frame { max-height: 38vh; } }
+
+/* Footer: a thin gold rule on top */
+.site-footer { border-top: 1px solid transparent; border-image: linear-gradient(90deg, transparent, var(--orn), transparent) 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg::before { animation: none; }
+  .category-tile, .stone-chip, .product-card, .feature-card, .guide-crystal-tile { transition: none; }
+}
