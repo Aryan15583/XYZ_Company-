@@ -17,7 +17,7 @@ import { prisma } from "./db";
 import { adminLoginCodeEmail, isEmailConfigured, sendEmail } from "./email";
 import { logAudit } from "./audit";
 
-const DEFAULT_ADMIN_LOGIN_EMAIL = "admin@example.com";
+const DEFAULT_ADMIN_LOGIN_EMAIL = "info.arvinacrystal@gmail.com";
 
 const CODE_LENGTH = 8;
 // 31 symbols, no 0/O/1/I/L lookalikes. 31^8 is roughly 8.5e11 combinations.

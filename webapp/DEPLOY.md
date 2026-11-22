@@ -44,10 +44,10 @@ automatically, including the 49 starter products and the stone categories.
    | `DIRECT_URL` | Neon direct string |
    | `JWT_SECRET` | a long random string (64+ characters) — e.g. "generate password" in a password manager |
    | `NEXT_PUBLIC_SITE_URL` | `https://<your-project>.vercel.app` for now (change to your domain in step 4) |
-   | `ADMIN_LOGIN_EMAIL` | `admin@example.com` |
+   | `ADMIN_LOGIN_EMAIL` | `info.arvinacrystal@gmail.com` |
    | `SMTP_HOST` | `smtp.gmail.com` |
    | `SMTP_PORT` | `465` |
-   | `SMTP_USER` | `admin@example.com` |
+   | `SMTP_USER` | `info.arvinacrystal@gmail.com` |
    | `SMTP_PASS` | the 16-character Gmail **App Password** (TODO.md §3) — needed for admin login |
    | `ADMIN_NOTIFY_EMAIL` | where new-order alerts go (can be the same Gmail) |
 
@@ -59,7 +59,7 @@ automatically, including the 49 starter products and the stone categories.
    Vercel may suggest **Prisma Postgres** and **Resend** integrations — skip both
    (you already use Neon and Gmail; Prisma Postgres would replace `DATABASE_URL`).
    With a Gmail App Password in `SMTP_PASS`, the other `SMTP_*` / `ADMIN_*` email
-   settings are optional — they default to Gmail and admin@example.com.
+   settings are optional — they default to Gmail and info.arvinacrystal@gmail.com.
 5. Click **Deploy**. (If the project was created without deploying, use
    Deployments → **Create Deployment** → branch `main`, or push any commit to `main`.) The build runs `prisma migrate deploy` (creates the tables on the
    first run) and then builds the site. ~2–3 minutes.

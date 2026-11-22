@@ -43,14 +43,14 @@ than a card directly.
 ## 3. Real email — **required** for admin login in production
 
 The admin panel has no PIN or password. You sign in with a one-time code that
-is emailed to **admin@example.com** (change it with `ADMIN_LOGIN_EMAIL`).
+is emailed to **info.arvinacrystal@gmail.com** (change it with `ADMIN_LOGIN_EMAIL`).
 Order/contact emails use the same sender. Until email is configured,
 locally the code is printed in the terminal running `npm run dev`, and in
 production **admin login is disabled** (by design — no backdoor).
 
 **Easiest: send through the Gmail account itself (about 2 minutes).**
 
-1. Sign in to admin@example.com and turn on **2-Step Verification**:
+1. Sign in to info.arvinacrystal@gmail.com and turn on **2-Step Verification**:
    https://myaccount.google.com/security
 2. Create an **App Password**: https://myaccount.google.com/apppasswords
    (Google shows a 16-character code — this is *not* your normal password.)
@@ -62,7 +62,7 @@ production **admin login is disabled** (by design — no backdoor).
 
 **Alternative: Resend** (https://resend.com) — set `RESEND_API_KEY` instead.
 Its free `onboarding@resend.dev` sender can only deliver to the address the
-Resend account was created with, so sign up with admin@example.com, or
+Resend account was created with, so sign up with info.arvinacrystal@gmail.com, or
 verify your own domain and set `EMAIL_FROM`. If both `SMTP_*` and
 `RESEND_API_KEY` are set, SMTP is used.
 
@@ -72,7 +72,7 @@ contact message, and review.
 ## 4. Security basics before going live
 
 - [ ] Set a real, random `JWT_SECRET` in production (`node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`) — the one in `.env` right now is a placeholder. **The app now refuses to start in production with a placeholder secret**, so this isn't optional — it'll fail fast and tell you.
-- [ ] Turn on 2-Step Verification for admin@example.com — whoever can read that inbox can sign in to the admin panel, so its security *is* the admin security.
+- [ ] Turn on 2-Step Verification for info.arvinacrystal@gmail.com — whoever can read that inbox can sign in to the admin panel, so its security *is* the admin security.
 - [ ] Delete the test data from this session's testing: one order for
       "Backend Test", the Cashfree/COD test orders from earlier sessions, a
       test review, and now also an audit log full of test
@@ -164,7 +164,7 @@ Not urgent, but keep these in mind:
       unlike "Sign Out All Other Sessions," it invalidates *every* session
       immediately, including your own, and you'll need to log in again with
       your PIN.
-- [ ] If admin@example.com is ever compromised, change `ADMIN_LOGIN_EMAIL`
+- [ ] If info.arvinacrystal@gmail.com is ever compromised, change `ADMIN_LOGIN_EMAIL`
       to a safe address and restart, then use "Sign Out All Other Sessions".
 - [ ] Check Admin → Audit Log occasionally, especially after enabling public
       internet access to `/admin/login` — failed-login clusters from

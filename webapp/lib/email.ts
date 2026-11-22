@@ -47,7 +47,7 @@ function smtpConfig() {
   // Setting only SMTP_PASS (a Gmail App Password) is enough: host and account
   // default to Gmail and the admin address.
   const host = process.env.SMTP_HOST?.trim() || "smtp.gmail.com";
-  const user = process.env.SMTP_USER?.trim() || process.env.ADMIN_LOGIN_EMAIL?.trim() || "admin@example.com";
+  const user = process.env.SMTP_USER?.trim() || process.env.ADMIN_LOGIN_EMAIL?.trim() || "info.arvinacrystal@gmail.com";
   const port = parseInt(process.env.SMTP_PORT || "465", 10) || 465;
   return { host, user, pass, port };
 }

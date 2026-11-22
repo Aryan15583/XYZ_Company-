@@ -18,7 +18,8 @@ until you set a price and stock in the admin panel (`/admin`).
 
 ## Still to fill in
 
-- Admin login email: set `ADMIN_LOGIN_EMAIL` (placeholder `admin@example.com`).
+- Admin login email is `info.arvinacrystal@gmail.com` (`ADMIN_LOGIN_EMAIL`). Its Gmail
+  App Password goes in `SMTP_PASS` so login codes can be emailed.
 - Contact details and business address on the contact, terms, privacy and
   returns pages (currently `hello@example.com` and the Mumbai address
   carried over from the original site).
