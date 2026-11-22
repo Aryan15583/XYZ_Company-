@@ -20,9 +20,9 @@ until you set a price and stock in the admin panel (`/admin`).
 
 - Admin login email is `info.arvinacrystal@gmail.com` (`ADMIN_LOGIN_EMAIL`). Its Gmail
   App Password goes in `SMTP_PASS` so login codes can be emailed.
-- Contact details and business address on the contact, terms, privacy and
-  returns pages (currently `hello@example.com` and the Mumbai address
-  carried over from the original site).
+- Business address and phone on the contact, terms, privacy and returns
+  pages (the Mumbai address is carried over from the original site). The
+  customer email everywhere is `info.arvinacrystal@gmail.com`.
 - Site URL `NEXT_PUBLIC_SITE_URL` (placeholder `example.com`).
 - Product types in `webapp/lib/product-types.ts` (one generic "Products"
   type for now).

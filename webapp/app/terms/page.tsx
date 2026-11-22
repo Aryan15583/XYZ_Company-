@@ -86,7 +86,7 @@ export default function TermsPage() {
             <section id="contact-terms"><h2>10. Contact</h2>
               <address>
                 <strong>Arvina Crystal</strong><br />
-                Email: <a href="mailto:hello@example.com">hello@example.com</a><br />
+                Email: <a href="mailto:info.arvinacrystal@gmail.com">info.arvinacrystal@gmail.com</a><br />
                 Address: Mumbai, Maharashtra, India
               </address>
             </section>

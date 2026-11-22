@@ -50,7 +50,7 @@ export default function PrivacyPage() {
             <p>This Privacy Policy explains how Arvina Crystal (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) collects, uses, stores, and protects your personal data when you visit our website or purchase our products and services. We comply with the EU General Data Protection Regulation (GDPR), the UK GDPR, and the California Consumer Privacy Act (CCPA).</p>
 
             <section id="who-we-are"><h2>1. Who We Are</h2>
-              <p><strong>Data Controller:</strong> Arvina Crystal<br /><strong>Contact:</strong> <a href="mailto:privacy@example.com">privacy@example.com</a><br /><strong>Address:</strong> Mumbai, Maharashtra, India</p>
+              <p><strong>Data Controller:</strong> Arvina Crystal<br /><strong>Contact:</strong> <a href="mailto:info.arvinacrystal@gmail.com">info.arvinacrystal@gmail.com</a><br /><strong>Address:</strong> Mumbai, Maharashtra, India</p>
             </section>
 
             <section id="data-collected"><h2>2. Data We Collect</h2>
@@ -121,7 +121,7 @@ export default function PrivacyPage() {
                 <li><strong>Right to data portability:</strong> Receive your data in a structured format</li>
                 <li><strong>Right to withdraw consent:</strong> At any time, where processing is based on consent</li>
               </ul>
-              <p>To exercise any of these rights, contact us at <a href="mailto:privacy@example.com">privacy@example.com</a>.</p>
+              <p>To exercise any of these rights, contact us at <a href="mailto:info.arvinacrystal@gmail.com">info.arvinacrystal@gmail.com</a>.</p>
             </section>
 
             <section id="ccpa"><h2>9. California Residents — CCPA Rights</h2>
@@ -152,7 +152,7 @@ export default function PrivacyPage() {
             <section id="contact-privacy"><h2>13. Contact Us</h2>
               <address>
                 <strong>Arvina Crystal — Privacy Team</strong><br />
-                Email: <a href="mailto:privacy@example.com">privacy@example.com</a><br />
+                Email: <a href="mailto:info.arvinacrystal@gmail.com">info.arvinacrystal@gmail.com</a><br />
                 Address: Mumbai, Maharashtra, India
               </address>
             </section>
