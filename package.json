@@ -1,7 +1,7 @@
 {
-  "name": "arcana-crystals-server",
+  "name": "arvina-crystal-server",
   "version": "1.0.0",
-  "description": "Backend API + static server for the Arcana Crystals storefront and admin panel.",
+  "description": "Backend API + static server for the Arvina Crystal storefront and admin panel.",
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",

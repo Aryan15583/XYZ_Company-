@@ -20,7 +20,7 @@ type TrackedOrder = {
   events: { status: string; note: string | null; at: string }[];
 };
 
-export const LAST_ORDER_KEY = "arcanaCrystals_lastOrder";
+export const LAST_ORDER_KEY = "arvinaCrystal_lastOrder";
 
 const STATUS_LABEL: Record<string, string> = {
   pending: "Order placed",

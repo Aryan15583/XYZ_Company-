@@ -38,7 +38,7 @@ app.use('/api', (req, res) => res.status(404).json({ error: 'Not found.' }));
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Arcana Crystals server running on http://localhost:${PORT}`);
+  console.log(`Arvina Crystal server running on http://localhost:${PORT}`);
   console.log(`  Storefront:  http://localhost:${PORT}/index.html`);
   console.log(`  API:         http://localhost:${PORT}/api/products`);
 });

@@ -1,6 +1,6 @@
-# Arcana Crystals
+# Arvina Crystal
 
-Online shop for Arcana Crystals. The structure is copied from the Arise Numero
+Online shop for Arvina Crystal. The structure is copied from the Arise Numero
 site and repurposed as a products-only store (no bookings or numerology).
 
 - **`webapp/`** — the real site: Next.js + Postgres, with shop, cart, checkout

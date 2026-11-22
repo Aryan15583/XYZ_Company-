@@ -119,7 +119,7 @@ export default async function HomePage() {
           </div>
         </section>
 
-        <section className="trust-bar" aria-label="Shopping with Arcana Crystals">
+        <section className="trust-bar" aria-label="Shopping with Arvina Crystal">
           <div className="container trust-bar-inner">
             <div className="trust-item"><Icon name="lock" /><span>Secure checkout</span></div>
             <div className="trust-item"><Icon name="card" /><span>UPI, cards &amp; cash on delivery</span></div>
@@ -220,7 +220,7 @@ export default async function HomePage() {
           <div className="container">
             <div className="section-header">
               <p className="eyebrow">Our promise</p>
-              <h2 id="why-heading" className="section-title">Why Choose Arcana Crystals</h2>
+              <h2 id="why-heading" className="section-title">Why Choose Arvina Crystal</h2>
             </div>
             <div className="features-grid" role="list">
               <div className="feature-card" role="listitem">

@@ -1,4 +1,4 @@
-# Arcana Crystals — Setup & Deployment Guide
+# Arvina Crystal — Setup & Deployment Guide
 
 This turns the site from a browser-only prototype into a real client → server →
 database app. One Node process serves both the storefront/admin HTML **and**

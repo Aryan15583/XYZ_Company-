@@ -1,6 +1,6 @@
 /**
  * ================================================================
- * ARCANA CRYSTALS — main.js
+ * ARVINA CRYSTAL — main.js
  * Single JavaScript file for all 12 pages
  *
  * TABLE OF CONTENTS
@@ -43,8 +43,8 @@ function initTheme() {
     const next = current === 'dark' ? 'light' : 'dark';
     const matchesDevice = (next === 'dark') === deviceDark;
     try {
-      if (matchesDevice) localStorage.removeItem('arcanaCrystals_theme');
-      else localStorage.setItem('arcanaCrystals_theme', next);
+      if (matchesDevice) localStorage.removeItem('arvinaCrystal_theme');
+      else localStorage.setItem('arvinaCrystal_theme', next);
     } catch (e) { /* storage blocked */ }
     if (matchesDevice) root.removeAttribute('data-theme');
     else root.setAttribute('data-theme', next);
@@ -154,7 +154,7 @@ function initMobileNav() {
    Shows on first visit. Remembers choice in localStorage.
    Manage panel allows per-category control.
    ================================================================ */
-const COOKIE_KEY = 'arcanaCrystals_cookieConsent';
+const COOKIE_KEY = 'arvinaCrystal_cookieConsent';
 
 function initCookieBanner() {
   const banner  = document.getElementById('cookie-banner');
@@ -283,7 +283,7 @@ function showCookieManageModal(onSave) {
    Manual override via select dropdown.
    Converts all [data-usd] prices across the page instantly.
    ================================================================ */
-const CURRENCY_KEY = 'arcanaCrystals_currency';
+const CURRENCY_KEY = 'arvinaCrystal_currency';
 
 // LINE 227: Exchange rates relative to USD
 const EXCHANGE_RATES = {
@@ -372,7 +372,7 @@ function convertAllPrices() {
    LINE 310 — 6. CART SYSTEM
    localStorage-based cart. Works across all pages.
    ================================================================ */
-const CART_KEY = 'arcanaCrystals_cart';
+const CART_KEY = 'arvinaCrystal_cart';
 
 // LINE 315: Load cart from localStorage
 function getCart() {
@@ -879,7 +879,7 @@ function initPayPalButton() {
       // PayPal always needs USD for base currency
       return actions.order.create({
         purchase_units: [{
-          description: 'Arcana Crystals Order',
+          description: 'Arvina Crystal Order',
           amount: {
             currency_code: 'USD',
             value: after.toFixed(2),
@@ -898,7 +898,7 @@ function initPayPalButton() {
           }))
         }],
         application_context: {
-          brand_name:          'Arcana Crystals',
+          brand_name:          'Arvina Crystal',
           shipping_preference: 'GET_FROM_FILE',
           user_action:         'PAY_NOW'
         }
@@ -1283,7 +1283,7 @@ function initContactForm() {
       order_number: form.querySelector('#contact-order-num')?.value    || 'N/A',
       // ── Extra context sent automatically ─────────────────
       submitted_at: new Date().toLocaleString(),
-      to_name:      'Arcana Crystals Team',
+      to_name:      'Arvina Crystal Team',
     };
 
     try {

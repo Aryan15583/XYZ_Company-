@@ -6,7 +6,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "Secure Checkout",
   description:
-    "Complete your Arcana Crystals order securely.",
+    "Complete your Arvina Crystal order securely.",
   path: "/checkout",
   noindex: true,
 });

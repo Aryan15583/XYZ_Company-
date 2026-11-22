@@ -8,5 +8,5 @@
   <rect width="400" height="400" fill="url(#g)"/>
   <path d="M200 110l42 52-42 128-42-128z" fill="none" stroke="#00a9a5" stroke-width="5" stroke-linejoin="round"/>
   <path d="M158 162h84M200 110v180" stroke="#00a9a5" stroke-width="3" opacity=".5"/>
-  <text x="200" y="335" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#ffdab9">Arcana Crystals</text>
+  <text x="200" y="335" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#ffdab9">Arvina Crystal</text>
 </svg>

@@ -85,11 +85,11 @@ router.post('/paypal/create-order', async (req, res) => {
       body: JSON.stringify({
         intent: 'CAPTURE',
         purchase_units: [{
-          description: 'Arcana Crystals Order',
+          description: 'Arvina Crystal Order',
           amount: { currency_code: 'USD', value: total.toFixed(2) },
         }],
         application_context: {
-          brand_name: 'Arcana Crystals',
+          brand_name: 'Arvina Crystal',
           shipping_preference: 'NO_SHIPPING',
           user_action: 'PAY_NOW',
         },

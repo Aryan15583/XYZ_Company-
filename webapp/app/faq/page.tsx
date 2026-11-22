@@ -7,7 +7,7 @@ import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "Frequently Asked Questions",
   description:
-    "Answers about Arcana Crystals orders, shipping and delivery times, payment methods, returns, crystal care and crystal meanings.",
+    "Answers about Arvina Crystal orders, shipping and delivery times, payment methods, returns, crystal care and crystal meanings.",
   path: "/faq",
 });
 

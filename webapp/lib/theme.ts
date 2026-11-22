@@ -1,1 +1,1 @@
-export const THEME_KEY = "arcanaCrystals_theme";
+export const THEME_KEY = "arvinaCrystal_theme";

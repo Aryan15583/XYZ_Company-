@@ -1,5 +1,5 @@
 /* =============================================================
-   ARCANA CRYSTALS — globals.css
+   ARVINA CRYSTAL — globals.css
    Celestial Harmony palette, Fraunces / Manrope type.
    Theme follows the device (prefers-color-scheme) until the visitor picks
    one with the header toggle, which sets <html data-theme="light|dark">.
@@ -3659,7 +3659,7 @@ html { scroll-behavior: smooth; }
   .cart-main, .cart-layout > *, .checkout-layout > * { min-width: 0; }
 }
 
-/* Brand badge in the header (the circular Arcana Crystals seal). */
+/* Brand badge in the header (the circular Arvina Crystal seal). */
 .logo-badge { width: 52px; height: 52px; display: block; flex: none; border-radius: 50%; filter: drop-shadow(0 2px 6px rgba(25, 25, 51, 0.18)); transition: transform 0.4s ease; }
 .logo:hover .logo-badge { transform: rotate(-6deg) scale(1.04); }
 .logo { gap: 12px; }
@@ -4134,15 +4134,15 @@ html { scroll-behavior: smooth; }
 .about-story-inner--single { grid-template-columns: 1fr; max-width: 760px; }
 
 /* =============================================================
-   ARCANA CRYSTALS IDENTITY
+   ARVINA CRYSTAL IDENTITY
    Soft, rounded and airy: pill buttons, sentence-case labels,
    a light mineral hero with an arched frame. Layered last so it
    wins over the inherited styles above.
    ============================================================= */
 :root {
   --radius-card: 20px;
-  --arcana-mist: #eef1f5;
-  --arcana-blush: #ffe9d6;
+  --brand-mist: #eef1f5;
+  --brand-blush: #ffe9d6;
 }
 
 /* Type: Fraunces headings, no shouty capitals */
@@ -4195,14 +4195,14 @@ html { scroll-behavior: smooth; }
 }
 .trust-item { font-size: 0.9rem; font-weight: 600; }
 .site-footer h4 { font-family: var(--font-heading); font-size: 1.15rem; font-weight: 600; }
-.trust-bar { background: var(--arcana-mist); border-bottom: 0; }
+.trust-bar { background: var(--brand-mist); border-bottom: 0; }
 :root[data-theme="dark"] { .trust-bar { background: var(--bg-surface-2); } }
 @media (prefers-color-scheme: dark) {
 :root:not([data-theme="light"]) { .trust-bar { background: var(--bg-surface-2); } }
 }
 
 /* Hero: light mineral wash with an arched frame (dark stays emerald) */
-.hero { background: linear-gradient(160deg, var(--arcana-mist) 0%, #fdfdfd 45%, var(--arcana-blush) 100%); }
+.hero { background: linear-gradient(160deg, var(--brand-mist) 0%, #fdfdfd 45%, var(--brand-blush) 100%); }
 .hero-bg { background: radial-gradient(circle at 85% 20%, rgba(244, 180, 0, 0.18), transparent 45%), radial-gradient(circle at 10% 90%, rgba(0, 169, 165, 0.16), transparent 45%); }
 .hero-bg::before { content: none; }
 .hero-title { color: var(--text-primary); }

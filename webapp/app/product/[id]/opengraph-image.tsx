@@ -16,7 +16,7 @@ export default async function Image({ params }: { params: Promise<{ id: string }
   });
 
   const name = product?.active ? product.name : SITE_NAME;
-  const material = product?.active ? truncate(product.material, 70) : "Arcana Crystals";
+  const material = product?.active ? truncate(product.material, 70) : "Arvina Crystal";
   const price = product?.active ? `$${product.priceUsd.toFixed(2)}` : "";
   const seal = await logoSealDataUrl();
 

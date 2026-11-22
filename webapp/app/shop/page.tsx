@@ -14,7 +14,7 @@ import { absoluteUrl, breadcrumbJsonLd, pageMetadata, productPath, truncate } fr
 type Props = { searchParams: Promise<{ cat?: string; q?: string; type?: string }> };
 
 const SHOP_DESCRIPTION =
-  "Shop natural crystals at Arcana Crystals: bracelets, pendants, rings, crystal points, anklets, Rudraksha, bowls and plates. Ships worldwide.";
+  "Shop natural crystals at Arvina Crystal: bracelets, pendants, rings, crystal points, anklets, Rudraksha, bowls and plates. Ships worldwide.";
 
 // Each product type (/shop?type=pendants), stone (/shop?cat=amethyst) and the two
 // combined is its own indexable landing page with its own title and canonical
@@ -36,9 +36,9 @@ function landing(type: ProductTypeInfo | null, category: { slug: string; name: s
     : category ? `${category.name} Crystals`
     : "Shop All Products";
   const description =
-    type && category ? `Shop ${category.name} ${type.name.toLowerCase()} at Arcana Crystals. ${category.description || ""} Ships worldwide.`
-    : type ? `${type.description} Shop ${type.name.toLowerCase()} at Arcana Crystals. Ships worldwide.`
-    : category ? `${category.description ? `${category.description} ` : ""}Shop ${category.name} at Arcana Crystals. Ships worldwide.`
+    type && category ? `Shop ${category.name} ${type.name.toLowerCase()} at Arvina Crystal. ${category.description || ""} Ships worldwide.`
+    : type ? `${type.description} Shop ${type.name.toLowerCase()} at Arvina Crystal. Ships worldwide.`
+    : category ? `${category.description ? `${category.description} ` : ""}Shop ${category.name} at Arvina Crystal. Ships worldwide.`
     : SHOP_DESCRIPTION;
   return { path, heading, description: truncate(description) };
 }

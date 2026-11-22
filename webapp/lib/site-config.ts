@@ -19,7 +19,7 @@ export type SiteConfig = {
 };
 
 export const DEFAULT_SITE_CONFIG: SiteConfig = {
-  storeName: "Arcana Crystals",
+  storeName: "Arvina Crystal",
   supportEmail: "hello@example.com",
   standardShippingUsd: 5.99,
   expressShippingUsd: 14.99,

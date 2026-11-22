@@ -1,5 +1,5 @@
 /* =============================================================
-   ARCANA CRYSTALS — styles.css
+   ARVINA CRYSTAL — styles.css
    Single stylesheet for all 12 pages
    Dark / Light mode: follows the device until the header toggle picks one
    No toggle button — updates live when OS/browser setting changes
@@ -848,7 +848,7 @@ select.form-input {
   line-height: 1;
 }
 
-/* LINE 752: "Arcana Crystals" logotype */
+/* LINE 752: "Arvina Crystal" logotype */
 .logo-text {
   font-family: var(--font-display);
   font-size: 1.1rem;
@@ -3521,13 +3521,16 @@ select.form-input {
 /* =============================================================
    END OF styles.css
    Total: ~3430 lines
-   Company: Arcana Crystals
+   Company: Arvina Crystal
    Dark/Light: html[data-theme], set by the header toggle
    Live updates when browser/OS setting changes mid-session
    WCAG 2.1 AA compliant
    Mobile-first responsive
    ============================================================= */
-/* Arcana Crystals: pill buttons, sentence case. */
+/* Arvina Crystal: pill buttons, sentence case. */
 .btn { border-radius: 9999px; text-transform: none; letter-spacing: 0.01em; }
 .nav-link { text-transform: none; letter-spacing: 0; }
 .logo-text { text-transform: none; letter-spacing: -0.01em; }
+
+/* Arvina Crystal logo badge next to the wordmark */
+.logo-badge { width: 44px; height: 44px; border-radius: 50%; flex: none; }

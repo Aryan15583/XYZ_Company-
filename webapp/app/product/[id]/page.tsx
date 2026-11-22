@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
 
   const type = getProductType(row.productType);
   const title = !type || row.name.toLowerCase().includes(type.singular.toLowerCase()) ? row.name : `${row.name} ${type.singular}`;
-  const description = truncate(row.description) || `${row.name} — ${row.material || "Arcana Crystals"}. Ships worldwide.`;
+  const description = truncate(row.description) || `${row.name} — ${row.material || "Arvina Crystal"}. Ships worldwide.`;
   return pageMetadata({
     title,
     description,

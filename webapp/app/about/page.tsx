@@ -11,7 +11,7 @@ export const revalidate = 60;
 export const metadata = pageMetadata({
   title: "About Us",
   description:
-    "About Arcana Crystals: natural crystals and gemstone jewellery, chosen by hand, described honestly and delivered with care.",
+    "About Arvina Crystal: natural crystals and gemstone jewellery, chosen by hand, described honestly and delivered with care.",
   path: "/about",
 });
 
@@ -33,7 +33,7 @@ export default async function AboutPage() {
             <p className="eyebrow">Our Story</p>
             <h1 id="about-hero-heading" className="page-title">Crystals, Chosen with Care</h1>
             <p className="page-subtitle" style={{ marginInline: "auto" }}>
-              Arcana Crystals brings you natural crystals and gemstone jewellery, from everyday bracelets to sacred Rudraksha, chosen by hand and described honestly.
+              Arvina Crystal brings you natural crystals and gemstone jewellery, from everyday bracelets to sacred Rudraksha, chosen by hand and described honestly.
             </p>
           </div>
         </section>
@@ -45,12 +45,11 @@ export default async function AboutPage() {
               <img src="/assets/products/about-workbench.jpg" alt="An amethyst and rose quartz bracelet surrounded by loose crystal beads" width={600} height={600} loading="lazy" />
             </div>
             <div className="about-story-text">
-              <h2 id="story-heading" className="section-title">Why Arcana</h2>
+              <h2 id="story-heading" className="section-title">Why Arvina</h2>
               {/* Edit this story to tell your own: how you started and what crystals mean to you. */}
               <p>
-                <em>Arcana</em> means &ldquo;hidden things&rdquo;, and that is what drew us to crystals: the quiet
-                beauty of stones formed over millions of years, and the meaning people have found in them for just as
-                long.
+                Arvina began with a simple love of crystals: the quiet beauty of stones formed over millions of
+                years, and the meaning people have found in them for just as long.
               </p>
               <p>
                 We bring that beauty into everyday life with bracelets, pendants, rings, crystal points and Rudraksha,
@@ -61,7 +60,7 @@ export default async function AboutPage() {
                 Not sure where to start? Our <Link href="/guides">crystal guides</Link> explain what each stone is
                 known for, or <Link href="/contact">ask us</Link> and we&apos;ll help you choose.
               </p>
-              <div className="about-stats" aria-label="Arcana Crystals by the numbers">
+              <div className="about-stats" aria-label="Arvina Crystal by the numbers">
                 {storeRating && (
                   <div className="stat-item"><span className="stat-num">{storeRating.rating.toFixed(1)}★</span><span className="stat-label">Average Rating</span></div>
                 )}

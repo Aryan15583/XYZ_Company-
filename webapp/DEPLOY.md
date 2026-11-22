@@ -1,4 +1,4 @@
-# Deploying Arcana Crystals — Vercel + Neon
+# Deploying Arvina Crystal — Vercel + Neon
 
 **How the pieces fit**
 
@@ -15,7 +15,7 @@ Everything below is done in your browser; nothing to install. Total time ≈ 30 
 ## 1. Create the database on Neon (5 min)
 
 1. Sign up at **https://neon.tech** (Sign in with GitHub is easiest).
-2. **Create project** → name `arcana-crystals` → Postgres 16 → region **AWS Asia Pacific (Singapore)**
+2. **Create project** → name `arvina-crystal` → Postgres 16 → region **AWS Asia Pacific (Singapore)**
    (closest to India; the app is pinned to Vercel's Singapore region to match).
 3. On the project dashboard click **Connect**. You need **two** connection strings:
    - Turn **Connection pooling ON** → copy it → this is your **`DATABASE_URL`**.

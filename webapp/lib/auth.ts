@@ -3,7 +3,7 @@ import { SignJWT, jwtVerify } from "jose";
 // jose (not jsonwebtoken) so the same verification code can run in both
 // Node.js API routes and the Edge middleware that protects /admin pages.
 
-export const ADMIN_COOKIE_NAME = "arcanacrystals_admin";
+export const ADMIN_COOKIE_NAME = "arvinacrystal_admin";
 const COOKIE_MAX_AGE_SECONDS = 8 * 60 * 60; // 8 hours, matches original design
 
 const KNOWN_PLACEHOLDER_SECRETS = new Set([

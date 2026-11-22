@@ -38,10 +38,10 @@ export function CartPageClient() {
       if (restoring) setCouponInput(code.toUpperCase());
       setDiscountPercent(data.discountPercent ?? 0);
       setCouponFeedback({ message: `✓ Coupon applied! ${data.discountPercent}% off your order.`, ok: true });
-      sessionStorage.setItem("arcanaCrystals_coupon", code.toUpperCase());
+      sessionStorage.setItem("arvinaCrystal_coupon", code.toUpperCase());
     } else {
       setDiscountPercent(0);
-      sessionStorage.removeItem("arcanaCrystals_coupon");
+      sessionStorage.removeItem("arvinaCrystal_coupon");
       setCouponFeedback({ message: `✕ ${data.message || "Invalid coupon code."}`, ok: false });
     }
   }
@@ -65,7 +65,7 @@ export function CartPageClient() {
   const hasItems = items.length > 0;
   useEffect(() => {
     if (!hasItems) return;
-    const saved = sessionStorage.getItem("arcanaCrystals_coupon");
+    const saved = sessionStorage.getItem("arvinaCrystal_coupon");
     if (!saved) return;
     fetchCouponCheck(saved)
       .then((data) => showCouponResult(saved, data, true))

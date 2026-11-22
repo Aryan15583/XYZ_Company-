@@ -1,4 +1,4 @@
--- Arcana Crystals: jewellery types replace the single generic "products"
+-- Arvina Crystal: jewellery types replace the single generic "products"
 -- type, and a starter set of crystal stones is added as categories.
 -- ON CONFLICT DO NOTHING never overwrites categories edited in the admin.
 ALTER TABLE "products" ALTER COLUMN "product_type" SET DEFAULT 'bracelets';

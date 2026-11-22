@@ -103,7 +103,7 @@ export default function AdminLoginPage() {
       <div id="login-screen">
         <div className="login-box otp-box">
           <div className="login-logo">✦</div>
-          <div className="login-title">Arcana Crystals</div>
+          <div className="login-title">Arvina Crystal</div>
           <div className="login-subtitle">Admin Panel</div>
 
           {step === "request" ? (

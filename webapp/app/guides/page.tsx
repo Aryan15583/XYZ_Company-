@@ -13,7 +13,7 @@ export const revalidate = 300;
 export const metadata = pageMetadata({
   title: "Crystal Guides",
   description:
-    "Free guides to crystal meanings, benefits and care, and Rudraksha mukhi meanings, from Arcana Crystals.",
+    "Free guides to crystal meanings, benefits and care, and Rudraksha mukhi meanings, from Arvina Crystal.",
   path: "/guides",
 });
 

@@ -5,7 +5,7 @@
 
 const db = require('./db');
 
-// The Arcana Crystals catalogue starts empty. Add products and coupons from the
+// The Arvina Crystal catalogue starts empty. Add products and coupons from the
 // admin panel, or list starter rows here.
 const products = [];
 

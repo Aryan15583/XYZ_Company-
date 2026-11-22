@@ -1,4 +1,4 @@
--- Arcana Crystals starter catalogue: 49 crystal products using the product
+-- Arvina Crystal starter catalogue: 49 crystal products using the product
 -- images in public/assets/products. The 8 bracelets carry prices and stock;
 -- the rest are "price on request" (price 0, stock 0) until priced in the admin.
 -- ON CONFLICT DO NOTHING never overwrites products edited in the admin.

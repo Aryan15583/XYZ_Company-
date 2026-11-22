@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   description: DEFAULT_DESCRIPTION,
   applicationName: SITE_NAME,
   keywords: [
-    "Arcana Crystals",
+    "Arvina Crystal",
     "crystal bracelets",
     "gemstone jewellery",
     "amethyst bracelet",

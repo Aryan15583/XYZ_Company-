@@ -6,7 +6,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "Privacy Policy",
   description:
-    "Arcana Crystals Privacy Policy — how we collect, store, and protect your personal data. GDPR and CCPA compliant.",
+    "Arvina Crystal Privacy Policy — how we collect, store, and protect your personal data. GDPR and CCPA compliant.",
   path: "/privacy",
 });
 
@@ -47,10 +47,10 @@ export default function PrivacyPage() {
               <p className="legal-meta">Last updated: <time dateTime="2025-01-01">1 January 2025</time></p>
             </header>
 
-            <p>This Privacy Policy explains how Arcana Crystals (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) collects, uses, stores, and protects your personal data when you visit our website or purchase our products and services. We comply with the EU General Data Protection Regulation (GDPR), the UK GDPR, and the California Consumer Privacy Act (CCPA).</p>
+            <p>This Privacy Policy explains how Arvina Crystal (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) collects, uses, stores, and protects your personal data when you visit our website or purchase our products and services. We comply with the EU General Data Protection Regulation (GDPR), the UK GDPR, and the California Consumer Privacy Act (CCPA).</p>
 
             <section id="who-we-are"><h2>1. Who We Are</h2>
-              <p><strong>Data Controller:</strong> Arcana Crystals<br /><strong>Contact:</strong> <a href="mailto:privacy@example.com">privacy@example.com</a><br /><strong>Address:</strong> Mumbai, Maharashtra, India</p>
+              <p><strong>Data Controller:</strong> Arvina Crystal<br /><strong>Contact:</strong> <a href="mailto:privacy@example.com">privacy@example.com</a><br /><strong>Address:</strong> Mumbai, Maharashtra, India</p>
             </section>
 
             <section id="data-collected"><h2>2. Data We Collect</h2>
@@ -151,7 +151,7 @@ export default function PrivacyPage() {
 
             <section id="contact-privacy"><h2>13. Contact Us</h2>
               <address>
-                <strong>Arcana Crystals — Privacy Team</strong><br />
+                <strong>Arvina Crystal — Privacy Team</strong><br />
                 Email: <a href="mailto:privacy@example.com">privacy@example.com</a><br />
                 Address: Mumbai, Maharashtra, India
               </address>

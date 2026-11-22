@@ -11,7 +11,7 @@ import type { Transporter } from "nodemailer";
 import { Resend } from "resend";
 import { getSiteUrl } from "./seo";
 
-const FROM_ADDRESS = process.env.EMAIL_FROM || "Arcana Crystals <onboarding@resend.dev>";
+const FROM_ADDRESS = process.env.EMAIL_FROM || "Arvina Crystal <onboarding@resend.dev>";
 const ADMIN_NOTIFY_ADDRESS = process.env.ADMIN_NOTIFY_EMAIL || null;
 
 // Every email template below interpolates user-supplied text (names, contact
@@ -97,7 +97,7 @@ export async function sendEmail(opts: { to: string; subject: string; html: strin
     if (provider === "smtp") {
       const cfg = smtpConfig()!;
       await getSmtpTransport(cfg).sendMail({
-        from: process.env.SMTP_FROM || `Arcana Crystals <${cfg.user}>`,
+        from: process.env.SMTP_FROM || `Arvina Crystal <${cfg.user}>`,
         to: opts.to,
         subject: opts.subject,
         html: opts.html,
@@ -139,10 +139,10 @@ export function adminLoginCodeEmail(opts: {
   requestIp: string | null;
 }): { subject: string; html: string } {
   return {
-    subject: "Your Arcana Crystals admin login code",
+    subject: "Your Arvina Crystal admin login code",
     html: `
       <div style="font-family:sans-serif;max-width:480px;margin:auto;">
-        <h1 style="color:#f4b400;">Arcana Crystals</h1>
+        <h1 style="color:#f4b400;">Arvina Crystal</h1>
         <p>Use this one-time code to sign in to the admin panel:</p>
         <p style="font-size:30px;letter-spacing:6px;font-family:monospace;font-weight:700;
                   background:#191933;padding:16px 20px;border-radius:10px;text-align:center;">
@@ -163,9 +163,9 @@ export function adminLoginCodeEmail(opts: {
 function emailShell(inner: string): string {
   return `
     <div style="font-family:sans-serif;max-width:520px;margin:auto;color:#191933;">
-      <h1 style="color:#f4b400;">Arcana Crystals</h1>
+      <h1 style="color:#f4b400;">Arvina Crystal</h1>
       ${inner}
-      <p style="color:#6a7f94;font-size:12px;margin-top:32px;">Arcana Crystals</p>
+      <p style="color:#6a7f94;font-size:12px;margin-top:32px;">Arvina Crystal</p>
     </div>
   `;
 }
@@ -290,7 +290,7 @@ export function newsletterWelcomeEmail(opts: {
       } on your first order.</p>`
     : "";
   return {
-    subject: "Welcome to Arcana Crystals ✦",
+    subject: "Welcome to Arvina Crystal ✦",
     html: emailShell(`
       <p>Thanks for subscribing! You'll hear from us about new products and offers — never spam.</p>
       ${offer}

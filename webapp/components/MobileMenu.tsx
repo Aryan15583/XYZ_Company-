@@ -60,7 +60,7 @@ export function MobileMenu({ open, onClose, links, isActive }: { open: boolean; 
           <Link href="/" className="mnav-brand" onClick={onClose}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/assets/brand/logo-badge-160.png" alt="" width={44} height={44} />
-            <span>Arcana Crystals</span>
+            <span>Arvina Crystal</span>
           </Link>
           <button type="button" className="mnav-close" onClick={onClose} aria-label="Close menu">
             <Icon name="close" size={22} />

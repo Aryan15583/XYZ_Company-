@@ -6,7 +6,7 @@ export default function GlobalError({ reset }: { error: Error & { digest?: strin
   return (
     <html lang="en">
       <body style={{ fontFamily: "system-ui, sans-serif", background: "#191933", color: "#fdfdfd", textAlign: "center", padding: "20vh 24px" }}>
-        <h1 style={{ color: "#ffdab9" }}>Arcana Crystals</h1>
+        <h1 style={{ color: "#ffdab9" }}>Arvina Crystal</h1>
         <p>Something went wrong on our side. Please try again in a moment.</p>
         <button
           onClick={reset}

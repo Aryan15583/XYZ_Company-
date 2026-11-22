@@ -10,7 +10,7 @@ import { Icon } from "@/components/Icon";
 export const metadata = pageMetadata({
   title: "Contact Us",
   description:
-    "Contact Arcana Crystals. Get in touch for order support or product questions. We respond within 24–48 hours.",
+    "Contact Arvina Crystal. Get in touch for order support or product questions. We respond within 24–48 hours.",
   path: "/contact",
 });
 
