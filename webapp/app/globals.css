@@ -4610,3 +4610,118 @@ html { scroll-behavior: smooth; }
   .filter-scroll { max-height: none; }
 }
 @media (prefers-reduced-motion: reduce) { .shop-sidebar { transition: none; } }
+
+/* =============================================================
+   PRODUCT PAGE
+   ============================================================= */
+.product-detail { padding-top: var(--space-4); }
+.product-detail-inner { gap: clamp(2rem, 5vw, 4rem); }
+
+/* Gallery: soft glow behind the photo, rounded thumbnails */
+.product-gallery { position: sticky; top: calc(var(--header-height) + var(--space-4)); isolation: isolate; }
+.gallery-main { border-radius: 24px; border: 1px solid var(--card-border); box-shadow: var(--card-shadow-hover); }
+.product-gallery::before {
+  content: ""; position: absolute; inset: -8% -6%; z-index: -1; pointer-events: none;
+  background: radial-gradient(closest-side at 50% 40%, var(--section-wash-b), transparent), radial-gradient(closest-side at 25% 75%, var(--section-wash-a), transparent);
+}
+.gallery-thumb { border-radius: 14px; overflow: hidden; border: 2px solid transparent; transition: border-color 0.2s ease, transform 0.2s ease; }
+.gallery-thumb:hover { transform: translateY(-2px); }
+.gallery-thumb.active { border-color: var(--orn); }
+
+/* Title block */
+.product-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px; margin: 0 0 var(--space-2);
+  padding: 5px 12px; border-radius: 9999px; background: var(--bg-surface-2);
+  font-size: 0.85rem; font-weight: 700; color: var(--text-body); letter-spacing: 0.01em;
+}
+.product-detail-title { font-size: clamp(2rem, 1.4rem + 2vw, 3rem); line-height: 1.08; margin-bottom: var(--space-2); }
+
+/* Buy box: price, stock, quantity and buttons as one card */
+.buy-box {
+  margin-block: var(--space-5); padding: var(--space-6);
+  background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 22px; box-shadow: var(--card-shadow);
+  position: relative; overflow: hidden;
+}
+.buy-box::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 3px; background: linear-gradient(90deg, #00a9a5, #f4b400, #b87333); }
+.buy-box .product-detail-price { margin-bottom: var(--space-3); }
+.buy-box .price-main { font-size: clamp(2rem, 1.6rem + 1.4vw, 2.6rem); line-height: 1; }
+.buy-box .price-note { display: block; margin-top: var(--space-2); }
+.buy-box .stock-status { margin-bottom: var(--space-4); }
+.buy-box .product-options { margin: 0; }
+.buy-box .quantity-group { margin-bottom: var(--space-4); }
+.buy-box .quantity-control { border-radius: 9999px; overflow: hidden; }
+.buy-box .product-cta-group { margin-bottom: 0; }
+.buy-box .add-to-cart-main { min-height: 54px; font-size: 1.05rem; }
+
+/* Trust row as small badges */
+.product-trust { padding: 0; border: 0; margin-bottom: var(--space-5); }
+.product-trust .trust-item-sm {
+  padding: 10px 12px; border-radius: 12px; background: var(--bg-surface-2);
+  font-size: 0.82rem; font-weight: 600; color: var(--text-body);
+}
+
+/* The stone: meaning card drawn from its crystal guide */
+.stone-card {
+  display: flex; gap: var(--space-5); align-items: flex-start; margin-bottom: var(--space-6);
+  padding: var(--space-5) var(--space-6); border-radius: 22px; border: 1px solid var(--orn-soft);
+  background: radial-gradient(circle at 0% 0%, var(--section-wash-b), transparent 60%), var(--card-bg);
+}
+.stone-card-gem {
+  flex: none; width: 64px; height: 64px; border-radius: 50%;
+  background: radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.85) 0 7%, rgba(255, 255, 255, 0.25) 16%, transparent 34%), radial-gradient(circle at 70% 78%, rgba(0, 0, 0, 0.35), transparent 55%), var(--gem);
+  box-shadow: inset 0 -6px 12px rgba(0, 0, 0, 0.25), 0 10px 18px -8px rgba(0, 0, 0, 0.5);
+}
+.stone-card-body { min-width: 0; }
+.stone-card-kicker { margin: 0; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orn); }
+.stone-card-title { margin: 2px 0 2px; font-family: var(--font-heading); font-size: 1.5rem; font-weight: 600; color: var(--text-primary); }
+.stone-card-tagline { margin: 0 0 var(--space-3); font-family: var(--font-heading); font-style: italic; color: var(--text-body); }
+.stone-card-facts { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 var(--space-3); }
+.stone-card-facts div { padding: 4px 10px; border-radius: 9999px; background: var(--bg-surface-2); font-size: 0.8rem; }
+.stone-card-facts dt { display: inline; color: var(--text-muted); }
+.stone-card-facts dt::after { content: ": "; }
+.stone-card-facts dd { display: inline; margin: 0; color: var(--text-primary); font-weight: 600; }
+.stone-card-link { font-weight: 700; color: var(--text-link); text-decoration: none; }
+.stone-card-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* Specs and description */
+.product-specs .specs-list { border-radius: 16px; overflow: hidden; }
+.product-description { padding-top: var(--space-5); border-top: 1px solid var(--card-border); }
+.product-description h2 { font-family: var(--font-heading); font-size: 1.35rem; margin-bottom: var(--space-3); }
+.product-description p { line-height: 1.75; }
+
+/* Tabs: pills above a card panel */
+.product-tabs { border-bottom: 0; gap: var(--space-2); margin-bottom: var(--space-4); padding: 6px; border-radius: 9999px; background: var(--bg-surface-2); width: fit-content; max-width: 100%; }
+.tab-btn { border: 0; margin: 0; padding: 10px 20px; border-radius: 9999px; font-weight: 600; }
+.tab-btn.active { background: var(--card-bg); color: var(--text-primary); box-shadow: 0 4px 12px -6px rgba(0, 0, 0, 0.35); }
+.tab-panel { padding: var(--space-6); border-radius: 22px; background: var(--card-bg); border: 1px solid var(--card-border); box-shadow: var(--card-shadow); margin-bottom: var(--space-10); }
+
+/* Sticky add-to-bag bar: phones only */
+.sticky-buy { display: none; }
+@media (max-width: 900px) {
+  .product-gallery { position: relative; top: auto; }
+  .product-gallery::before { inset: 0; }
+  .sticky-buy {
+    display: flex; align-items: center; gap: var(--space-3);
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: calc(var(--z-header) - 1);
+    padding: 10px var(--space-4) calc(10px + env(safe-area-inset-bottom));
+    background: var(--bg-header); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid var(--card-border); box-shadow: 0 -10px 30px -12px rgba(0, 0, 0, 0.35);
+    transform: translateY(110%); transition: transform 0.3s ease; visibility: hidden;
+  }
+  .sticky-buy.is-visible { transform: none; visibility: visible; }
+  .sticky-buy img { width: 44px; height: 44px; border-radius: 10px; object-fit: cover; flex: none; }
+  .sticky-buy-text { display: flex; flex-direction: column; min-width: 0; flex: 1; }
+  .sticky-buy-name { font-size: 0.85rem; font-weight: 600; color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .sticky-buy-price { font-family: var(--font-heading); font-weight: 700; color: var(--text-primary); }
+  .sticky-buy .btn { flex: none; padding: 10px 16px; font-size: 0.9rem; }
+  .product-tabs { width: 100%; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-radius: 20px; overflow: visible; }
+  .tab-btn { padding: 10px 8px; font-size: 0.85rem; white-space: normal; text-align: center; }
+}
+@media (max-width: 600px) {
+  .buy-box { padding: var(--space-5); }
+  .stone-card { padding: var(--space-4); gap: var(--space-4); }
+  .stone-card-gem { width: 48px; height: 48px; }
+  .stone-card-title { font-size: 1.3rem; }
+  .tab-panel { padding: var(--space-4); }
+}
+@media (prefers-reduced-motion: reduce) { .sticky-buy { transition: none; } }

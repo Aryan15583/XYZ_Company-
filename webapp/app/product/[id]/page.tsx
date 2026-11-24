@@ -134,11 +134,33 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
           </ol>
         </nav>
 
-        <ProductDetailClient product={product} guide={guideLink} />
+        <ProductDetailClient
+          product={product}
+          guide={guideLink}
+          stone={
+            product.category
+              ? {
+                  slug: product.category,
+                  name: stoneGuide?.name ?? categoryRow?.name ?? product.category,
+                  tagline: stoneGuide?.tagline ?? null,
+                  facts: stoneGuide
+                    ? [
+                        { label: "Chakra", value: stoneGuide.chakra },
+                        { label: "Zodiac", value: stoneGuide.zodiac.join(", ") },
+                        { label: "Element", value: stoneGuide.element },
+                      ]
+                    : [],
+                }
+              : undefined
+          }
+        />
 
         <section data-reveal className="section related-products" aria-labelledby="related-heading">
           <div className="container">
-            <h2 id="related-heading" className="section-title">You May Also Like</h2>
+            <div className="section-header">
+              <p className="eyebrow">Pairs beautifully with</p>
+              <h2 id="related-heading" className="section-title">You May Also Like</h2>
+            </div>
             <div className="product-grid" role="list" aria-label="Related products">
               {related.map((p) => (
                 <ProductCard key={p.id} product={p} />

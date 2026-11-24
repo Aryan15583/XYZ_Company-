@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { stoneColor } from "@/lib/stone-colors";
 import { useCart } from "./CartContext";
 import { useCurrency } from "./CurrencyContext";
 import { ProductReviews } from "./ProductReviews";
@@ -16,7 +17,17 @@ import { isPriced } from "@/lib/pricing";
 import { getProductType } from "@/lib/product-types";
 import { Icon } from "./Icon";
 
-export function ProductDetailClient({ product, guide }: { product: ProductDTO; guide?: { href: string; label: string } }) {
+export type ProductStone = { slug: string; name: string; tagline: string | null; facts: { label: string; value: string }[] };
+
+export function ProductDetailClient({
+  product,
+  guide,
+  stone,
+}: {
+  product: ProductDTO;
+  guide?: { href: string; label: string };
+  stone?: ProductStone;
+}) {
   const { addToCart } = useCart();
   const { format } = useCurrency();
   const [activeImg, setActiveImg] = useState(product.imageUrl || product.images[0] || "/assets/placeholder.svg");
@@ -25,6 +36,16 @@ export function ProductDetailClient({ product, guide }: { product: ProductDTO; g
   const [added, setAdded] = useState(false);
   const [freeShippingThreshold, setFreeShippingThreshold] = useState(50);
   const [zoomOrigin, setZoomOrigin] = useState<string | null>(null);
+  // Phones: show a sticky "Add to bag" bar once the main button scrolls away.
+  const buyRef = useRef<HTMLDivElement>(null);
+  const [showStickyBuy, setShowStickyBuy] = useState(false);
+  useEffect(() => {
+    const el = buyRef.current;
+    if (!el || !("IntersectionObserver" in window)) return;
+    const io = new IntersectionObserver(([entry]) => setShowStickyBuy(!entry.isIntersecting && entry.boundingClientRect.top < 0));
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
 
   function handleZoomMove(e: React.MouseEvent<HTMLDivElement>) {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -97,6 +118,12 @@ export function ProductDetailClient({ product, guide }: { product: ProductDTO; g
               {product.badge && <span className="badge badge-bestseller">{product.badge}</span>}
             </div>
 
+            {(stone || type) && (
+              <p className="product-eyebrow">
+                {stone && <span className="stone-dot" style={{ "--gem": stoneColor(stone.slug) } as React.CSSProperties} aria-hidden="true" />}
+                {[stone?.name, type?.singular].filter(Boolean).join(" · ")}
+              </p>
+            )}
             <h1 id="product-heading" className="product-detail-title">{product.name}</h1>
 
             {product.reviewCount > 0 ? (
@@ -110,6 +137,7 @@ export function ProductDetailClient({ product, guide }: { product: ProductDTO; g
               </div>
             )}
 
+            <div className="buy-box" ref={buyRef}>
             {priced ? (
               <div className="product-detail-price" aria-label="Product pricing">
                 <span className="price-main">{format(product.priceUsd)}</span>
@@ -141,14 +169,6 @@ export function ProductDetailClient({ product, guide }: { product: ProductDTO; g
               </div>
             )}
 
-            <div className="product-specs" aria-label="Product specifications">
-              <h2 className="specs-title">Specifications</h2>
-              <dl className="specs-list">
-                {type && <div className="spec-row"><dt>Type</dt><dd>{type.singular}</dd></div>}
-                <div className="spec-row"><dt>Material</dt><dd>{product.material}</dd></div>
-                {type?.beaded && product.beadSize && <div className="spec-row"><dt>Bead Size</dt><dd>{product.beadSize} diameter</dd></div>}
-              </dl>
-            </div>
 
             {priced && (
             <div className="product-options">
@@ -185,6 +205,8 @@ export function ProductDetailClient({ product, guide }: { product: ProductDTO; g
               )}
               <WishlistButton productId={product.id} productName={product.name} variant="full" />
             </div>
+            </div>
+
 
             <div className="product-trust" aria-label="Trust indicators">
               <div className="trust-item-sm"><Icon name="lock" size={16} /> Secure checkout</div>
@@ -193,12 +215,40 @@ export function ProductDetailClient({ product, guide }: { product: ProductDTO; g
               <div className="trust-item-sm"><Icon name="check" size={16} /> Quality checked</div>
             </div>
 
+            {stone && stone.tagline && (
+              <div className="stone-card">
+                <span className="stone-card-gem" style={{ "--gem": stoneColor(stone.slug) } as React.CSSProperties} aria-hidden="true" />
+                <div className="stone-card-body">
+                  <p className="stone-card-kicker">The stone</p>
+                  <h2 className="stone-card-title">{stone.name}</h2>
+                  <p className="stone-card-tagline">{stone.tagline}</p>
+                  {stone.facts.length > 0 && (
+                    <dl className="stone-card-facts">
+                      {stone.facts.map((f) => (
+                        <div key={f.label}><dt>{f.label}</dt><dd>{f.value}</dd></div>
+                      ))}
+                    </dl>
+                  )}
+                  {guide && <Link href={guide.href} className="stone-card-link">{guide.label} →</Link>}
+                </div>
+              </div>
+            )}
+
+            <div className="product-specs" aria-label="Product specifications">
+              <h2 className="specs-title">Specifications</h2>
+              <dl className="specs-list">
+                {type && <div className="spec-row"><dt>Type</dt><dd>{type.singular}</dd></div>}
+                <div className="spec-row"><dt>Material</dt><dd>{product.material}</dd></div>
+                {type?.beaded && product.beadSize && <div className="spec-row"><dt>Bead Size</dt><dd>{product.beadSize} diameter</dd></div>}
+              </dl>
+            </div>
+
             <ShareButtons path={productPath(product.id)} title={product.name} />
 
             <div className="product-description">
               <h2>About This {type?.singular ?? "Product"}</h2>
               <p>{product.description}</p>
-              {guide && (
+              {guide && !(stone && stone.tagline) && (
                 <Link href={guide.href} className="product-guide-link">{guide.label} →</Link>
               )}
             </div>
@@ -285,6 +335,20 @@ export function ProductDetailClient({ product, guide }: { product: ProductDTO; g
         )}
 
       </section>
+
+      {priced && !isOut && (
+        <div className={`sticky-buy ${showStickyBuy ? "is-visible" : ""}`} aria-hidden={!showStickyBuy}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={images[0]} alt="" width={44} height={44} />
+          <div className="sticky-buy-text">
+            <span className="sticky-buy-name">{product.name}</span>
+            <span className="sticky-buy-price">{format(product.priceUsd)}</span>
+          </div>
+          <button type="button" className="btn btn-primary" onClick={handleAdd} tabIndex={showStickyBuy ? 0 : -1}>
+            {added ? <><Icon name="check" size={16} /> Added</> : <><Icon name="bag" size={16} /> Add to bag</>}
+          </button>
+        </div>
+      )}
     </>
   );
 }
