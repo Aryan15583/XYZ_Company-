@@ -7,6 +7,7 @@ import { isPriced } from "@/lib/pricing";
 import { PRODUCT_TYPES, getProductType } from "@/lib/product-types";
 import { Icon } from "./Icon";
 import { stoneColor } from "@/lib/stone-colors";
+import { getSmoothScroll } from "@/lib/smooth-scroll";
 
 const SIZE_OPTIONS = ["6mm", "8mm", "10mm"];
 const PRICE_OPTIONS = [
@@ -48,7 +49,8 @@ export function ShopClient({
     const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setFiltersOpen(false); };
     document.addEventListener("keydown", onKey);
     document.body.style.overflow = "hidden";
-    return () => { document.removeEventListener("keydown", onKey); document.body.style.overflow = ""; };
+    getSmoothScroll()?.stop();
+    return () => { document.removeEventListener("keydown", onKey); document.body.style.overflow = ""; getSmoothScroll()?.start(); };
   }, [filtersOpen]);
 
   function toggleSize(size: string) {
@@ -133,7 +135,7 @@ export function ShopClient({
   return (
     <div className="container shop-layout">
       {filtersOpen && <div className="shop-filters-backdrop" onClick={() => setFiltersOpen(false)} aria-hidden="true" />}
-      <aside id="shop-filters" className={`shop-sidebar ${filtersOpen ? "is-open" : ""}`} aria-label="Filter and sort products">
+      <aside id="shop-filters" data-lenis-prevent className={`shop-sidebar ${filtersOpen ? "is-open" : ""}`} aria-label="Filter and sort products">
         <div className="filter-section">
           <div className="filter-head">
             <h2 className="filter-title">Filter By</h2>

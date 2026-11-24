@@ -155,7 +155,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
           }
         />
 
-        <section data-reveal className="section related-products" aria-labelledby="related-heading">
+        <section className="section related-products" aria-labelledby="related-heading">
           <div className="container">
             <div className="section-header">
               <p className="eyebrow">Pairs beautifully with</p>

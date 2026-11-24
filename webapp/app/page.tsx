@@ -149,7 +149,7 @@ export default async function HomePage() {
         </section>
 
         {typeTiles.length > 0 && (
-        <section data-reveal className="section shop-categories" aria-labelledby="categories-heading">
+        <section className="section shop-categories" aria-labelledby="categories-heading">
           <div className="container">
             <div className="section-header">
               <p className="eyebrow">The Collection</p>
@@ -174,7 +174,7 @@ export default async function HomePage() {
         </section>
         )}
 
-        <section data-reveal className="section stone-strip" aria-labelledby="stones-heading">
+        <section className="section stone-strip" aria-labelledby="stones-heading">
           <div className="container">
             <div className="section-header">
               <p className="eyebrow">Shop by stone</p>
@@ -194,7 +194,7 @@ export default async function HomePage() {
         </section>
 
         {products.length > 0 && (
-          <section data-reveal className="section featured-products" aria-labelledby="featured-heading">
+          <section className="section featured-products" aria-labelledby="featured-heading">
             <div className="container">
               <div className="section-header">
                 <p className="eyebrow">Curated</p>
@@ -216,7 +216,7 @@ export default async function HomePage() {
         )}
 
 
-        <section data-reveal className="section guide-cleanse" aria-labelledby="find-crystal-heading">
+        <section className="section guide-cleanse" aria-labelledby="find-crystal-heading">
           <div className="container">
             <div className="section-header">
               <p className="eyebrow">Crystal guides</p>
@@ -252,7 +252,7 @@ export default async function HomePage() {
           </div>
         </section>
 
-        <section data-reveal className="section why-us" aria-labelledby="why-heading">
+        <section className="section why-us" aria-labelledby="why-heading">
           <div className="container">
             <div className="section-header">
               <p className="eyebrow">Our promise</p>
@@ -284,7 +284,7 @@ export default async function HomePage() {
         </section>
 
         {testimonials.length > 0 && (
-          <section data-reveal className="section testimonials" aria-labelledby="testimonials-heading">
+          <section className="section testimonials" aria-labelledby="testimonials-heading">
             <div className="container">
               <div className="section-header">
                 <p className="eyebrow">Kind words</p>

@@ -8,7 +8,9 @@ import { Providers } from "@/components/Providers";
 import { THEME_KEY } from "@/lib/theme";
 import { CookieBanner } from "@/components/CookieBanner";
 import { Analytics } from "@/components/Analytics";
-import { ScrollReveal } from "@/components/ScrollReveal";
+import { Motion } from "@/components/Motion";
+import { SmoothScroll } from "@/components/SmoothScroll";
+import "lenis/dist/lenis.css";
 import { CardTilt } from "@/components/CardTilt";
 import { DEFAULT_DESCRIPTION, SITE_NAME, SITE_TAGLINE, getSiteUrl, isIndexableSite } from "@/lib/seo";
 
@@ -76,8 +78,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Providers>
           <a href="#main-content" className="skip-link">Skip to content</a>
           <CookieBanner />
-          <ScrollReveal />
+          <Motion />
           <CardTilt />
+          <SmoothScroll />
           {children}
           <Analytics />
         </Providers>

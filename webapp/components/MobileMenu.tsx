@@ -9,6 +9,7 @@ import { useWishlist } from "./WishlistContext";
 import { Icon } from "./Icon";
 import { EXCHANGE_RATES, type CurrencyCode } from "@/lib/currency";
 import { PRODUCT_TYPES } from "@/lib/product-types";
+import { getSmoothScroll } from "@/lib/smooth-scroll";
 
 type NavLink = { href: string; label: string };
 const CURRENCIES = Object.keys(EXCHANGE_RATES) as CurrencyCode[];
@@ -36,11 +37,13 @@ export function MobileMenu({ open, onClose, links, isActive }: { open: boolean; 
     if (!open) return;
     const previous = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+    getSmoothScroll()?.stop();
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
     window.addEventListener("keydown", onKey);
     panelRef.current?.querySelector<HTMLElement>(".mnav-close")?.focus();
     return () => {
       document.body.style.overflow = previous;
+      getSmoothScroll()?.start();
       window.removeEventListener("keydown", onKey);
     };
   }, [open, onClose]);
