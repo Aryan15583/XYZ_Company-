@@ -41,10 +41,23 @@ export function ProductDetailClient({
   const [showStickyBuy, setShowStickyBuy] = useState(false);
   useEffect(() => {
     const el = buyRef.current;
-    if (!el || !("IntersectionObserver" in window)) return;
-    const io = new IntersectionObserver(([entry]) => setShowStickyBuy(!entry.isIntersecting && entry.boundingClientRect.top < 0));
-    io.observe(el);
-    return () => io.disconnect();
+    if (!el) return;
+    // Checked on every scroll (once per frame), so even a fast flick that
+    // jumps straight past the buy box is caught.
+    let frame = 0;
+    const check = () => {
+      frame = 0;
+      setShowStickyBuy(el.getBoundingClientRect().bottom < 0);
+    };
+    const onScroll = () => { if (!frame) frame = requestAnimationFrame(check); };
+    check();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, []);
 
   function handleZoomMove(e: React.MouseEvent<HTMLDivElement>) {

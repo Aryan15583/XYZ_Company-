@@ -10,6 +10,7 @@ import { CookieBanner } from "@/components/CookieBanner";
 import { Analytics } from "@/components/Analytics";
 import { Motion } from "@/components/Motion";
 import { SmoothScroll } from "@/components/SmoothScroll";
+import { MobileTabBar } from "@/components/MobileTabBar";
 import "lenis/dist/lenis.css";
 import { CardTilt } from "@/components/CardTilt";
 import { DEFAULT_DESCRIPTION, SITE_NAME, SITE_TAGLINE, getSiteUrl, isIndexableSite } from "@/lib/seo";
@@ -82,6 +83,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <CardTilt />
           <SmoothScroll />
           {children}
+          <MobileTabBar />
           <Analytics />
         </Providers>
       </body>
