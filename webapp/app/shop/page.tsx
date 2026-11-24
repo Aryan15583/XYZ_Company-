@@ -110,16 +110,25 @@ export default async function ShopPage({ searchParams }: Props) {
           </ol>
         </nav>
 
-        <div className="page-header container">
-          <h1 className="page-title">{heading}</h1>
-          <p className="page-subtitle">{productType ? productType.description : "Natural crystals and gemstone jewellery. Every piece is unique, with natural variations in colour and markings."}</p>
-          {(() => {
-            const g = category ? getCrystalGuide(category.slug) : null;
-            if (g) return <Link href={crystalPath(g.slug)} className="page-guide-link">{g.name} meaning, benefits &amp; care →</Link>;
-            if (productType?.slug === "rudraksha") return <Link href={RUDRAKSHA_PATH} className="page-guide-link">What each Rudraksha mukhi means →</Link>;
-            return null;
-          })()}
-        </div>
+        <section className="shop-hero" aria-labelledby="shop-heading">
+          <div className="hero-bg" aria-hidden="true"></div>
+          <div className="container shop-hero-inner">
+            <p className="eyebrow eyebrow--light">{category ? "Crystal" : "The Collection"}</p>
+            <h1 id="shop-heading" className="page-title">{heading}</h1>
+            <p className="page-subtitle">{productType ? productType.description : "Natural crystals and gemstone jewellery. Every piece is unique, with natural variations in colour and markings."}</p>
+            <div className="shop-hero-meta">
+              <span>{listed.length} piece{listed.length === 1 ? "" : "s"}</span>
+              <span aria-hidden="true">·</span>
+              <span>Ships worldwide</span>
+              {(() => {
+                const g = category ? getCrystalGuide(category.slug) : null;
+                if (g) return <><span aria-hidden="true">·</span><Link href={crystalPath(g.slug)} className="page-guide-link">{g.name} meaning, benefits &amp; care →</Link></>;
+                if (productType?.slug === "rudraksha") return <><span aria-hidden="true">·</span><Link href={RUDRAKSHA_PATH} className="page-guide-link">What each Rudraksha mukhi means →</Link></>;
+                return <><span aria-hidden="true">·</span><Link href="/guides" className="page-guide-link">Which crystal is right for me? →</Link></>;
+              })()}
+            </div>
+          </div>
+        </section>
 
         <ShopClient initialProducts={products} initialCat={cat} initialQuery={q} initialType={productType?.slug} categories={categories} />
       </main>

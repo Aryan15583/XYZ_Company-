@@ -1,13 +1,21 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ProductCard } from "./ProductCard";
 import type { ProductDTO } from "@/lib/types";
 import { isPriced } from "@/lib/pricing";
 import { PRODUCT_TYPES, getProductType } from "@/lib/product-types";
 import { Icon } from "./Icon";
+import { stoneColor } from "@/lib/stone-colors";
 
 const SIZE_OPTIONS = ["6mm", "8mm", "10mm"];
+const PRICE_OPTIONS = [
+  { value: "all", label: "All Prices" },
+  { value: "0-20", label: "Under $20" },
+  { value: "20-30", label: "$20 – $30" },
+  { value: "30-50", label: "$30 – $50" },
+  { value: "50+", label: "Over $50" },
+];
 
 type SortValue = "featured" | "price-low" | "price-high" | "rating";
 
@@ -33,6 +41,15 @@ export function ShopClient({
   const [inStockOnly, setInStockOnly] = useState(false);
   const [sort, setSort] = useState<SortValue>("featured");
   const [query, setQuery] = useState((initialQuery || "").slice(0, 80));
+  // Phones/tablets: the filters open as a slide-up panel.
+  const [filtersOpen, setFiltersOpen] = useState(false);
+  useEffect(() => {
+    if (!filtersOpen) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setFiltersOpen(false); };
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => { document.removeEventListener("keydown", onKey); document.body.style.overflow = ""; };
+  }, [filtersOpen]);
 
   function toggleSize(size: string) {
     setSizes((prev) => (prev.includes(size) ? prev.filter((s) => s !== size) : [...prev, size]));
@@ -104,11 +121,26 @@ export function ShopClient({
     if (slug !== "all" && !getProductType(slug)?.beaded) setSizes([]);
   }
 
+  // Filters currently narrowing the list, shown as removable chips.
+  const activeFilters: { key: string; label: string; clear: () => void }[] = [];
+  if (productType !== "all") activeFilters.push({ key: "type", label: selectedType?.name || productType, clear: () => chooseType("all") });
+  if (crystal !== "all") activeFilters.push({ key: "stone", label: categories.find((c) => c.slug === crystal)?.name || crystal, clear: () => setCrystal("all") });
+  if (price !== "all") activeFilters.push({ key: "price", label: PRICE_OPTIONS.find((o) => o.value === price)?.label || price, clear: () => setPrice("all") });
+  for (const size of sizes) activeFilters.push({ key: `size-${size}`, label: `${size} beads`, clear: () => toggleSize(size) });
+  if (inStockOnly) activeFilters.push({ key: "stock", label: "In stock", clear: () => setInStockOnly(false) });
+  if (query.trim()) activeFilters.push({ key: "q", label: `“${query.trim()}”`, clear: () => setQuery("") });
+
   return (
     <div className="container shop-layout">
-      <aside className="shop-sidebar" aria-label="Filter and sort products">
+      {filtersOpen && <div className="shop-filters-backdrop" onClick={() => setFiltersOpen(false)} aria-hidden="true" />}
+      <aside id="shop-filters" className={`shop-sidebar ${filtersOpen ? "is-open" : ""}`} aria-label="Filter and sort products">
         <div className="filter-section">
-          <h2 className="filter-title">Filter By</h2>
+          <div className="filter-head">
+            <h2 className="filter-title">Filter By</h2>
+            <button type="button" className="filter-close" onClick={() => setFiltersOpen(false)} aria-label="Close filters">
+              <Icon name="close" size={20} />
+            </button>
+          </div>
 
           <fieldset className="filter-group">
             <legend className="filter-label">Product Type</legend>
@@ -125,28 +157,25 @@ export function ShopClient({
           </fieldset>
 
           <fieldset className="filter-group">
-            <legend className="filter-label">Category</legend>
-            <label className="filter-option">
-              <input type="radio" name="crystal" checked={crystal === "all"} onChange={() => setCrystal("all")} />
-              All Categories
-            </label>
-            {stonesInType.map((c) => (
-              <label className="filter-option" key={c.slug}>
-                <input type="radio" name="crystal" checked={crystal === c.slug} onChange={() => setCrystal(c.slug)} />
-                {c.name}
+            <legend className="filter-label">Stone</legend>
+            <div className="filter-scroll">
+              <label className="filter-option">
+                <input type="radio" name="crystal" checked={crystal === "all"} onChange={() => setCrystal("all")} />
+                All Stones
               </label>
-            ))}
+              {stonesInType.map((c) => (
+                <label className="filter-option" key={c.slug}>
+                  <input type="radio" name="crystal" checked={crystal === c.slug} onChange={() => setCrystal(c.slug)} />
+                  <span className="stone-dot" style={{ "--gem": stoneColor(c.slug) } as React.CSSProperties} aria-hidden="true" />
+                  {c.name}
+                </label>
+              ))}
+            </div>
           </fieldset>
 
           <fieldset className="filter-group">
             <legend className="filter-label">Price Range</legend>
-            {[
-              { value: "all", label: "All Prices" },
-              { value: "0-20", label: "Under $20" },
-              { value: "20-30", label: "$20 – $30" },
-              { value: "30-50", label: "$30 – $50" },
-              { value: "50+", label: "Over $50" },
-            ].map((opt) => (
+            {PRICE_OPTIONS.map((opt) => (
               <label className="filter-option" key={opt.value}>
                 <input type="radio" name="price" checked={price === opt.value} onChange={() => setPrice(opt.value)} />
                 {opt.label}
@@ -174,9 +203,14 @@ export function ShopClient({
             </label>
           </fieldset>
 
-          <button className="btn btn-outline btn-sm filter-reset" onClick={resetFilters}>
-            Reset Filters
-          </button>
+          <div className="filter-actions">
+            <button className="btn btn-outline btn-sm filter-reset" onClick={resetFilters}>
+              Reset Filters
+            </button>
+            <button type="button" className="btn btn-primary btn-sm filter-apply" onClick={() => setFiltersOpen(false)}>
+              Show {filtered.length} product{filtered.length !== 1 ? "s" : ""}
+            </button>
+          </div>
         </div>
       </aside>
 
@@ -212,6 +246,15 @@ export function ShopClient({
         </nav>
 
         <div className="shop-toolbar" role="toolbar" aria-label="Sort and view options">
+          <button
+            type="button"
+            className="btn btn-outline btn-sm filter-open"
+            onClick={() => setFiltersOpen(true)}
+            aria-expanded={filtersOpen}
+            aria-controls="shop-filters"
+          >
+            <Icon name="filter" size={16} /> Filters{activeFilters.length > 0 && <span className="filter-open-count">{activeFilters.length}</span>}
+          </button>
           <p className="results-count" aria-live="polite">
             Showing {filtered.length} product{filtered.length !== 1 ? "s" : ""}
           </p>
@@ -231,6 +274,18 @@ export function ShopClient({
             </select>
           </div>
         </div>
+
+        {activeFilters.length > 0 && (
+          <div className="active-filters" aria-label="Active filters">
+            {activeFilters.map((f) => (
+              <button type="button" key={f.key} className="active-filter" onClick={f.clear} aria-label={`Remove filter ${f.label}`}>
+                {f.key === "stone" && <span className="stone-dot" style={{ "--gem": stoneColor(crystal) } as React.CSSProperties} aria-hidden="true" />}
+                {f.label} <Icon name="close" size={14} />
+              </button>
+            ))}
+            <button type="button" className="active-filter-clear" onClick={resetFilters}>Clear all</button>
+          </div>
+        )}
 
         <div className="product-grid" role="list" aria-label="Products">
           {filtered.map((p) => (

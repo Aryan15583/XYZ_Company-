@@ -14,21 +14,22 @@ import { PRODUCT_TYPES } from "@/lib/product-types";
 import { CRYSTAL_GUIDES, crystalPath } from "@/lib/guides/crystals";
 import { getStoneImages } from "@/lib/guides/data";
 import { thumbnailFor } from "@/lib/product-thumbs";
+import { stoneColor } from "@/lib/stone-colors";
 
 // Gem colours for the "Shop by stone" chips (CSS draws a polished sphere).
-const STONE_CHIPS = [
-  { slug: "amethyst", name: "Amethyst", color: "#7b4fa3" },
-  { slug: "rose-quartz", name: "Rose Quartz", color: "#e3a2b4" },
-  { slug: "citrine", name: "Citrine", color: "#e2ae3c" },
-  { slug: "tiger-eye", name: "Tiger Eye", color: "#a66d24" },
-  { slug: "lapis-lazuli", name: "Lapis Lazuli", color: "#2c4fa6" },
-  { slug: "black-obsidian", name: "Black Obsidian", color: "#24242c" },
-  { slug: "green-aventurine", name: "Green Aventurine", color: "#3e9a68" },
-  { slug: "clear-quartz", name: "Clear Quartz", color: "#dfe7ee" },
-  { slug: "moonstone", name: "Moonstone", color: "#c9d3e3" },
-  { slug: "red-jasper", name: "Red Jasper", color: "#a3412f" },
-  { slug: "turquoise", name: "Turquoise", color: "#38b1ab" },
-  { slug: "pyrite", name: "Pyrite", color: "#b49a4c" },
+const STONE_CHIPS: { slug: string; name: string }[] = [
+  { slug: "amethyst", name: "Amethyst" },
+  { slug: "rose-quartz", name: "Rose Quartz" },
+  { slug: "citrine", name: "Citrine" },
+  { slug: "tiger-eye", name: "Tiger Eye" },
+  { slug: "lapis-lazuli", name: "Lapis Lazuli" },
+  { slug: "black-obsidian", name: "Black Obsidian" },
+  { slug: "green-aventurine", name: "Green Aventurine" },
+  { slug: "clear-quartz", name: "Clear Quartz" },
+  { slug: "moonstone", name: "Moonstone" },
+  { slug: "red-jasper", name: "Red Jasper" },
+  { slug: "turquoise", name: "Turquoise" },
+  { slug: "pyrite", name: "Pyrite" },
 ];
 
 const FEATURED_GUIDES = ["amethyst", "rose-quartz", "citrine", "tiger-eye", "lapis-lazuli", "black-obsidian"]
@@ -183,7 +184,7 @@ export default async function HomePage() {
               {STONE_CHIPS.map((s) => (
                 <li key={s.slug}>
                   <Link href={`/shop?cat=${s.slug}`} className="stone-chip">
-                    <span className="stone-chip-gem" style={{ "--gem": s.color } as React.CSSProperties} aria-hidden="true" />
+                    <span className="stone-chip-gem" style={{ "--gem": stoneColor(s.slug) } as React.CSSProperties} aria-hidden="true" />
                     <span className="stone-chip-name">{s.name}</span>
                   </Link>
                 </li>
