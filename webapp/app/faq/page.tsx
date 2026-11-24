@@ -89,7 +89,7 @@ const GROUPS: { title: string; items: Faq[] }[] = [
     items: [
       {
         q: "What is your return policy?",
-        a: "You can return non-customised items within 14 days of delivery if they are unused and in their original packaging. Contact us within the 14 days to start a return; refunds are processed within 5–7 business days of us receiving the item. Return shipping is the buyer's responsibility unless the item arrived defective.",
+        a: "You can return non-customised items within 7 days of delivery if they are unused and in their original packaging. Contact us within the 7 days to start a return; refunds are processed within 5–7 business days of us receiving the item. Return shipping is the buyer's responsibility unless the item arrived defective.",
         link: { href: "/returns", label: "Read the full returns policy" },
       },
       {

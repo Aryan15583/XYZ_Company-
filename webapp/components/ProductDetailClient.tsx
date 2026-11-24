@@ -189,7 +189,7 @@ export function ProductDetailClient({ product, guide }: { product: ProductDTO; g
             <div className="product-trust" aria-label="Trust indicators">
               <div className="trust-item-sm"><Icon name="lock" size={16} /> Secure checkout</div>
               <div className="trust-item-sm"><Icon name="globe" size={16} /> Ships worldwide</div>
-              <div className="trust-item-sm"><Icon name="returns" size={16} /> 14-day returns</div>
+              <div className="trust-item-sm"><Icon name="returns" size={16} /> 7-day returns</div>
               <div className="trust-item-sm"><Icon name="check" size={16} /> Quality checked</div>
             </div>
 
@@ -259,10 +259,10 @@ export function ProductDetailClient({ product, guide }: { product: ProductDTO; g
         {activeTab === "returns" && (
           <div className="tab-panel">
             <h3>Return &amp; Refund Policy</h3>
-            <p>We offer a <strong>14-day return window</strong> on all non-customised products, in compliance with the EU Distance Selling Directive and applicable consumer protection laws.</p>
+            <p>We offer a <strong>7-day return window</strong> on all non-customised products. This does not affect your statutory rights under local consumer law.</p>
             <ul className="info-list">
               <li>Items must be unused and in original packaging</li>
-              <li>Contact us within 14 days of delivery to initiate a return</li>
+              <li>Contact us within 7 days of delivery to initiate a return</li>
               <li>Refunds are processed within 5–7 business days of receiving the return</li>
               <li>Return shipping costs are the buyer&apos;s responsibility unless the item is defective</li>
             </ul>

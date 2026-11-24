@@ -267,7 +267,7 @@ All of these work out of the box; the items below are the bits only you can fill
       order on each coupon (Admin → Coupons). Online-payment orders count toward a
       coupon's limit when payment succeeds; COD/bank-transfer orders when placed.
 - [ ] Review the **FAQ** page text (`app/faq/page.tsx`) — it summarises your current
-      policies (14-day returns, delivery times, payment methods). Edit it if any of
+      policies (7-day returns, delivery times, payment methods). Edit it if any of
       that changes.
 - [ ] **Clean out the test data** before launch (a few test orders, a
       message, an audit log) — or reset with `npx prisma migrate reset` (wipes the database — never run it against the live database).

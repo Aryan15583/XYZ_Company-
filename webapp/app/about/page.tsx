@@ -119,7 +119,7 @@ export default async function AboutPage() {
               <div className="cert-item" role="listitem"><span className="cert-icon"><Icon name="shield" size={26} /></span><h3>GDPR Compliant</h3><p>We meet European Union data protection standards. Cookie consent, data access rights, and full transparency.</p></div>
               <div className="cert-item" role="listitem"><span className="cert-icon"><Icon name="shield" size={26} /></span><h3>CCPA Compliant</h3><p>California residents can request, delete, or opt out of data sale at any time.</p></div>
               <div className="cert-item" role="listitem"><span className="cert-icon"><Icon name="accessibility" size={26} /></span><h3>WCAG 2.1 AA</h3><p>Designed to meet Web Content Accessibility Guidelines 2.1 Level AA.</p></div>
-              <div className="cert-item" role="listitem"><span className="cert-icon"><Icon name="returns" size={26} /></span><h3>EU Distance Selling</h3><p>14-day return window on non-customised products, in compliance with EU consumer law.</p></div>
+              <div className="cert-item" role="listitem"><span className="cert-icon"><Icon name="returns" size={26} /></span><h3>7-Day Returns</h3><p>Not the right piece for you? Return non-customised items within 7 days of delivery.</p></div>
             </div>
           </div>
         </section>

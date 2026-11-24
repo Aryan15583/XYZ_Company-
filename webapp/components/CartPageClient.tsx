@@ -241,7 +241,7 @@ export function CartPageClient() {
         <p className="security-note"><Icon name="lock" size={16} /> Pay by Cash on Delivery, Bank Transfer, UPI/GPay, or card (Visa/Mastercard) at checkout.</p>
 
         <p className="cart-policy-note">
-          <Link href="/returns">14-day returns</Link> · <Link href="/returns#shipping">Shipping info</Link>
+          <Link href="/returns">7-day returns</Link> · <Link href="/returns#shipping">Shipping info</Link>
         </p>
       </aside>
     </div>

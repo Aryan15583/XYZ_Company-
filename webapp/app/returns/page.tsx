@@ -7,7 +7,7 @@ import { PRODUCT_IMAGE_NOTE } from "@/lib/business";
 export const metadata = pageMetadata({
   title: "Returns & Shipping Policy",
   description:
-    "Arvina Crystal Returns and Shipping Policy — 14-day returns, international shipping rates, customs information and delivery times worldwide.",
+    "Arvina Crystal Returns and Shipping Policy — 7-day returns, international shipping rates, customs information and delivery times worldwide.",
   path: "/returns",
 });
 
@@ -41,15 +41,15 @@ export default function ReturnsPage() {
           <article className="legal-content" aria-labelledby="returns-heading">
             <header className="legal-header">
               <h1 id="returns-heading" className="legal-title">Returns &amp; Shipping Policy</h1>
-              <p className="legal-meta">Last updated: <time dateTime="2025-01-01">1 January 2025</time></p>
+              <p className="legal-meta">Last updated: <time dateTime="2026-11-24">24 November 2026</time></p>
             </header>
 
             <section id="returns-policy"><h2>1. Returns Policy</h2>
-              <p>We want you to be completely satisfied with your purchase. We offer a <strong>14-day return window</strong> from the date of delivery on all eligible non-customised physical products.</p>
+              <p>We want you to be completely satisfied with your purchase. We offer a <strong>7-day return window</strong> from the date of delivery on all eligible non-customised physical products. This policy does not affect your statutory rights under the consumer law of your country.</p>
               <div className="policy-highlight" role="note">
                 <strong>To be eligible for a return, items must be:</strong>
                 <ul>
-                  <li>Returned within 14 days of your delivery date</li>
+                  <li>Returned within 7 days of your delivery date</li>
                   <li>Unused and in original condition</li>
                   <li>In their original packaging</li>
                   <li>Not customised or personalised</li>
@@ -60,7 +60,7 @@ export default function ReturnsPage() {
 
             <section id="how-to-return"><h2>2. How to Return</h2>
               <ol className="numbered-list">
-                <li><strong>Contact us</strong> within 14 days of delivery at <a href="mailto:info.arvinacrystal@gmail.com">info.arvinacrystal@gmail.com</a> with your order number and reason for return</li>
+                <li><strong>Contact us</strong> within 7 days of delivery at <a href="mailto:info.arvinacrystal@gmail.com">info.arvinacrystal@gmail.com</a> with your order number and reason for return</li>
                 <li><strong>Receive your return authorisation</strong> — we&apos;ll confirm your return is eligible and provide a return address</li>
                 <li><strong>Pack securely</strong> — use the original packaging if possible</li>
                 <li><strong>Ship the item</strong> — use a tracked shipping method</li>
@@ -75,7 +75,7 @@ export default function ReturnsPage() {
             <section id="non-returnable"><h2>4. Non-Returnable Items</h2>
               <ul>
                 <li>Customised or personalised items</li>
-                <li>Items returned after the 14-day window</li>
+                <li>Items returned after the 7-day window</li>
               </ul>
             </section>
 

@@ -42,7 +42,7 @@ export default function TermsPage() {
           <article className="legal-content" aria-labelledby="terms-heading">
             <header className="legal-header">
               <h1 id="terms-heading" className="legal-title">Terms of Service</h1>
-              <p className="legal-meta">Last updated: <time dateTime="2025-01-01">1 January 2025</time></p>
+              <p className="legal-meta">Last updated: <time dateTime="2026-11-24">24 November 2026</time></p>
             </header>
 
             <p>Please read these Terms of Service carefully before using the Arvina Crystal website or placing an order. By accessing our website or purchasing our products or services, you agree to be bound by these Terms.</p>
@@ -71,7 +71,7 @@ export default function TermsPage() {
             </section>
 
             <section id="returns-terms"><h2>6. Returns &amp; Refunds</h2>
-              <p>We offer a 14-day return window on non-customised physical products from the date of delivery. See our full <Link href="/returns">Returns Policy</Link>.</p>
+              <p>We offer a 7-day return window on non-customised physical products from the date of delivery. See our full <Link href="/returns">Returns Policy</Link>.</p>
             </section>
 
             <section id="ip"><h2>7. Intellectual Property</h2>

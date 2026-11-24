@@ -21,7 +21,7 @@ const FAQS = [
   },
   {
     q: "Can I return my order?",
-    a: "We offer a 14-day return window on all non-customised items. See our Returns Policy for full details.",
+    a: "We offer a 7-day return window on all non-customised items. See our Returns Policy for full details.",
   },
   {
     q: "How is my personal data used?",

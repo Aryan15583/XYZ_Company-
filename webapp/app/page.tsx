@@ -124,7 +124,7 @@ export default async function HomePage() {
               <ul className="hero-trust" aria-label="Why shop with us">
                 <li><Icon name="gem" size={16} /> Natural stones</li>
                 <li><Icon name="globe" size={16} /> Ships worldwide</li>
-                <li><Icon name="returns" size={16} /> 14-day returns</li>
+                <li><Icon name="returns" size={16} /> 7-day returns</li>
               </ul>
             </div>
             <div className="hero-visual" aria-hidden="true">
@@ -141,7 +141,7 @@ export default async function HomePage() {
             <div className="trust-item"><Icon name="lock" /><span>Secure checkout</span></div>
             <div className="trust-item"><Icon name="card" /><span>UPI, cards &amp; cash on delivery</span></div>
             <div className="trust-item"><Icon name="truck" /><span>Tracked worldwide shipping</span></div>
-            <div className="trust-item"><Icon name="returns" /><span>14-day returns</span></div>
+            <div className="trust-item"><Icon name="returns" /><span>7-day returns</span></div>
             {storeRating && (
               <div className="trust-item"><Icon name="star" /><span>{storeRating.rating.toFixed(1)}/5 from customers</span></div>
             )}
@@ -271,8 +271,8 @@ export default async function HomePage() {
               </div>
               <div className="feature-card" role="listitem">
                 <span className="feature-icon"><Icon name="returns" size={26} /></span>
-                <h3>14-Day Return Policy</h3>
-                <p>Not the right stone for you? Return non-customised pieces within 14 days of delivery.</p>
+                <h3>7-Day Return Policy</h3>
+                <p>Not the right stone for you? Return non-customised pieces within 7 days of delivery.</p>
               </div>
               <div className="feature-card" role="listitem">
                 <span className="feature-icon"><Icon name="lock" size={26} /></span>
